@@ -3,35 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/23 10:46:13 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/01/23 12:57:27 by lmarzano         ###   ########.fr       */
+/*   Created: 2021/01/26 11:19:48 by lmarzano          #+#    #+#             */
+/*   Updated: 2021/01/26 12:23:34 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	get_next_line(int fd, char **line)
+int get_next_line(int fd, char **line)
 {
-	static int	nextfd;
-	int			i;
-	char		*str_tmp;
-
-	nextfd = 0;
-	i = 0;
-	if (!fd || !*line || !(*line = malloc(BUFFER_SIZE + 1)))
+    charbuffer[BUFFER_SIZE + 1];
+    
+    if (fd < 0 || line == NULL)
 		return (-1);
-	while (*line[i])
-	{
-		while (*line[i] != '\n')
-		{
-			str_tmp[i] = *line[i];
-			i++;
-		}
-		str_tmp[i] = '\0';
-		free(str_tmp);
-		return (1);
-	}
-	return (0);
 }
+/*
+read() attempts to read nbyte bytes of data from the object referenced by the descriptor fildes into the buffer pointed to by buf.
+
+If successful, the number of bytes actually read is returned.  Upon reading end-of-file, zero is returned.  Otherwise, a -1 is 
+returned and the global variable errno is set to indicate the error.
+
+
+*/
