@@ -6,7 +6,7 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 10:46:37 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/01/27 17:24:21 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/01/27 18:49:09 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@ char	*ft_realloc(char **line)
 	int		i;
 
 	i = 0;
+	if (!(new = malloc(ft_strlen(*line) + BUFFER_SIZE + 1)))
+		return (NULL);
 	new = malloc(ft_strlen(*line) + BUFFER_SIZE + 1);
 	if (*line)
 	{
