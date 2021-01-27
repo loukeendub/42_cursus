@@ -5,57 +5,33 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/26 11:19:48 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/01/27 17:29:26 by lmarzano         ###   ########.fr       */
+/*   Created: 2021/01/23 10:46:13 by lmarzano          #+#    #+#             */
+/*   Updated: 2021/01/23 12:57:27 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-int	just_do_it(char **line, char *buffer)
-{
-	int	j;
-	int	i;
-	int len;
-
-	j = 0;
-	i = 0;
-	*line = ft_realloc(line);
-	len = ft_strlen(*line);
-	while (buffer[j] && buffer[j] != '\n')
-	{
-		(*line)[j + len] = buffer[j];
-		j++;
-	}
-	line[0][j + len] = '\0';
-	if (buffer[j] == '\n')
-		j++;
-	while (buffer[j] && buffer[j] != '\0')
-		buffer[i++] = buffer[j++];
-	if (i == 0)
-	{
-		buffer[0] = 0;
-		return (0);
-	}
-	buffer[i] = '\0';
-	return (1);
-}
-
 int	get_next_line(int fd, char **line)
 {
-	static char	buffer[BUFFER_SIZE + 1];
+	static int	nextfd;
 	int			i;
+	char		*str_tmp;
 
-	if (fd < 0 || line == NULL)
+	nextfd = 0;
+	i = 0;
+	if (!fd || !*line || !(*line = malloc(BUFFER_SIZE + 1)))
 		return (-1);
-	*line = NULL;
-	if (just_do_it(line, buffer))
-		return (1);
-	while ((i = read(fd, buffer, BUFFER_SIZE)) > 0)
+	while (*line[i])
 	{
-		buffer[i] = '\0';
-		if (just_do_it(line, buffer))
-			return (1);
+		while (*line[i] != '\n')
+		{
+			str_tmp[i] = *line[i];
+			i++;
+		}
+		str_tmp[i] = '\0';
+		free(str_tmp);
+		return (1);
 	}
 	return (0);
 }
