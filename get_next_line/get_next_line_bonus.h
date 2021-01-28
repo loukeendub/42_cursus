@@ -1,37 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/23 10:46:13 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/01/23 12:57:27 by lmarzano         ###   ########.fr       */
+/*   Created: 2021/01/23 10:46:55 by lmarzano          #+#    #+#             */
+/*   Updated: 2021/01/28 16:17:06 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 4097
+# endif
 
-int	get_next_line(int fd, char **line)
-{
-	static int	nextfd;
-	int			i;
-	char		*str_tmp;
+# include <stdlib.h>
+# include <string.h>
+# include <unistd.h>
 
-	nextfd = 0;
-	i = 0;
-	if (!fd || !*line || !(*line = malloc(BUFFER_SIZE + 1)))
-		return (-1);
-	while (*line[i])
-	{
-		while (*line[i] != '\n')
-		{
-			str_tmp[i] = *line[i];
-			i++;
-		}
-		str_tmp[i] = '\0';
-		free(str_tmp);
-		return (1);
-	}
-	return (0);
-}
+int		get_next_line(int fd, char **line);
+int		just_do_it(char **line, char *buffer);
+
+size_t	ft_strlen(const char *s);
+char	*ft_realloc(char **line);
+char	*ft_realloc_finale(char **line);
+
+#endif
