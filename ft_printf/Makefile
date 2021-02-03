@@ -6,24 +6,29 @@
 #    By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/01 11:08:25 by lmarzano          #+#    #+#              #
-#    Updated: 2021/02/03 10:56:18 by lmarzano         ###   ########.fr        #
+#    Updated: 2021/02/03 18:50:55 by lmarzano         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS	=	ft_printf.c
-OBJS	=	${SRCS: .c = .o}
+SRCS	=	ft_printf.c tools.c
+OBJS	=	${SRCS:.c=.o}
 CC		=	gcc
-CFLAGS	=	-Wall -Wextra - Werror
+CFLAGS	=	-Wall -Wextra -Werror
 NAME	=	libftprintf.a
 AR		=	ar -rcs
 
-.c.o	:
-			${CC} ${CFLAGS} ${NAME}
+%.o		: %.c
+			${CC} ${CFLAGS} -c $^ -o $@
 
 ${NAME}	:	${OBJS}
 			${AR} ${NAME} ${OBJS}
 
 all		:	${NAME}
+
+test	:	all
+			${CC} ${CFLAGS} ${NAME} main.c -o test
+			./test
+			rm test
 
 clean	:
 			rm -f ${OBJS}
