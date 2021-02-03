@@ -1,24 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/01 11:09:18 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/03 11:05:16 by lmarzano         ###   ########.fr       */
+/*   Created: 2021/02/03 10:25:39 by lmarzano          #+#    #+#             */
+/*   Updated: 2021/02/03 10:56:15 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+#include <stdio.h>
 
-char	ft_putchar(int c, t_format *carrier)
+int	main(void)
 {
-	write(1, &c, 1);
-}
+	char	str[] = "äbcdefghijklmnopqrSTuvWXyz";
 
-int		ft_printf(const char *fstr, ...)
-{
-	if (!fstr || !*fstr)
-		return (0);
+	printf("res : %c\n", str);
+	ft_printf("ft_res : %c\n", str);
+	return (0);
 }

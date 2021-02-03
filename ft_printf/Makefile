@@ -6,23 +6,31 @@
 #    By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/01 11:08:25 by lmarzano          #+#    #+#              #
-#    Updated: 2021/02/01 11:23:01 by lmarzano         ###   ########.fr        #
+#    Updated: 2021/02/03 10:56:18 by lmarzano         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS	=	ft_print.c
+SRCS	=	ft_printf.c
 OBJS	=	${SRCS: .c = .o}
 CC		=	gcc
 CFLAGS	=	-Wall -Wextra - Werror
-NAME	=	ft_print.a
+NAME	=	libftprintf.a
 AR		=	ar -rcs
 
+.c.o	:
+			${CC} ${CFLAGS} ${NAME}
+
 ${NAME}	:	${OBJS}
-					${AR} ${NAME} ${OBJS}
+			${AR} ${NAME} ${OBJS}
+
 all		:	${NAME}
+
 clean	:
-					rm -f ${OBJS}
+			rm -f ${OBJS}
+
 fclean	:	clean
-					rm -f ${NAME}
+			rm -f ${NAME}
+
 re		:	fclean all
+
 .PHONY	:	all clean fclean re
