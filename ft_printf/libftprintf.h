@@ -6,7 +6,7 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 11:09:01 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/03 18:48:49 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/05 16:40:58 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,19 +14,26 @@
 # define LIBFTPRINTF_H
 # include <stdlib.h>
 # include <unistd.h>
+# include <stdarg.h>
 
 /*
 ** structure
 */
 typedef	struct	s_format
 {
-	int	count;
+	int		count;
+	char	flags;
+	int		witdth;
+	int		precision;
+	int		length;
+	char	type;
 }				t_format;
 t_format		*g_carrier;
 /*
 ** ft_printf
 */
 int				ft_printf(const char *fstr, ...);
+void			print_output(const char *fstr);
 /*
 ** converter
 */
