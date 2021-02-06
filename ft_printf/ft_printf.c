@@ -6,7 +6,7 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 11:09:18 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/06 15:12:05 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/06 16:38:44 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,9 @@ void	print_output(const char *fstr)
 int		ft_printf(const char *fstr, ...)
 {
 	t_format	*carrier;
+	t_format	format;
 
+	va_start(format.args, carrier);
 	if (!fstr || !*fstr)
 		return (-1);
 	g_carrier = &carrier;

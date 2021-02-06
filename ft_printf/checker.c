@@ -6,7 +6,7 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 10:26:03 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/06 15:12:55 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/06 16:50:34 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ void	check_width(t_format *carrier, char **c)
 		carrier->witdth = (carrier->witdth * 10) + (*c[i] - '0');
 		i++;
 	}
+	if (c == '*')
+		carrier->witdth = va_arg(carrier->args, int);
 	(*c)++;
 }
 
@@ -53,8 +55,13 @@ void	check_precision(t_format *carrier, char **c)
 		(*c)++;
 		while (c >= '0' && c <= '9')
 		{
-			carrier->precision = (carrier->precision * 10) + (*c[i] - '0');
-			i++;
+			carrier->precision = (carrier->precision * 10) + (**c - '0');
+			(*c)++;
+		}
+		if (c == '*')
+		{
+			carrier->precision = va_arg(carrier->args, int);
+			(*c)++;
 		}
 	}
 }
