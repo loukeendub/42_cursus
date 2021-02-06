@@ -6,7 +6,7 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 11:09:18 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/05 16:53:48 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/06 15:12:05 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,22 @@
 
 void	print_output(const char *fstr)
 {
-	while (*fstr && *fstr != '%')
+	int	i;
+
+	while (*fstr)
 	{
-		ft_putchar(*fstr);
+		if (*fstr != '%')
+			ft_putchar(*fstr);
+		else
+		{
+			fstr++;
+			check_flags(g_carrier, &fstr);
+			check_width(g_carrier, &fstr);
+			check_precision(g_carrier, &fstr);
+			check_type(g_carrier, &fstr);
+		}
 		fstr++;
 	}
-	fstr++;
 }
 
 int		ft_printf(const char *fstr, ...)

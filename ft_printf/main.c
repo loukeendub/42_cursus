@@ -6,7 +6,7 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 10:25:39 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/05 16:27:21 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/06 15:40:49 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@ int	main(void)
 	char	*str;
 
 	str = "abcdefghijklmnopqrSTuvWXyz";
-	printf("res : %s\n", str);
-	ft_printf("ft_res : %s\n", str);
+	printf("res : %-+12.5s\n", str);
+	ft_printf("ft_res : %-+12.5s\n", str);
 	return (0);
 }
 /*
