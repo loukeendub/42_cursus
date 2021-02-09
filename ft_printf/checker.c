@@ -6,98 +6,94 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 10:26:03 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/06 16:50:34 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/09 15:22:12 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	check_flags(t_format *carrier, char **c)
+void	check_flags(char **c)
 {
-	while (c == '-' || c == '0' || c == '#' || c == '+' || c == ' ')
+	while (**c == '-' || **c == '0' || **c == '#' || **c == '+' || **c == ' ')
 	{
-		if (c == '-')
-			carrier->flags[0] = '-';
-		if (c == '0' && carrier->flags[0] != '-')
-			carrier->flags[0] = '0';
-		if (c == '#')
-			carrier->flags[1] = '#';
-		if (c == '+')
-			carrier->flags[2] = '+';
-		if (c == ' ' && carrier->flags[2] != '+')
-			carrier->flags[2] = ' ';
+		if (**c == '-')
+			g_carrier->flags[0] = '-';
+		if (**c == '0' && g_carrier->flags[0] != '-')
+			g_carrier->flags[0] = '0';
+		if (**c == '#')
+			g_carrier->flags[1] = '#';
+		if (**c == '+')
+			g_carrier->flags[2] = '+';
+		if (**c == ' ' && g_carrier->flags[2] != '+')
+			g_carrier->flags[2] = ' ';
 		(*c)++;
 	}
 }
 
-void	check_width(t_format *carrier, char **c)
+void	check_width(char **c)
 {
-	int	i;
-
-	i = 0;
-	while (*c[i] >= '0' && *c[i] <= '9')
+	while (**c >= '0' && **c <= '9')
 	{
-		carrier->witdth = (carrier->witdth * 10) + (*c[i] - '0');
-		i++;
+		g_carrier->witdth = (g_carrier->witdth * 10) + (**c - '0');
+		(*c)++;
 	}
-	if (c == '*')
-		carrier->witdth = va_arg(carrier->args, int);
-	(*c)++;
+	if (**c == '*')
+		g_carrier->witdth = va_arg(g_carrier->args, int);
 }
 
-void	check_precision(t_format *carrier, char **c)
+void	check_precision(char **c)
 {
-	int	i;
-
-	i = 0;
-	if (c == '.')
+	if (**c == '.')
 	{
 		(*c)++;
-		while (c >= '0' && c <= '9')
+		while (**c >= '0' && **c <= '9')
 		{
-			carrier->precision = (carrier->precision * 10) + (**c - '0');
+			g_carrier->precision = (g_carrier->precision * 10) + (**c - '0');
 			(*c)++;
 		}
-		if (c == '*')
-		{
-			carrier->precision = va_arg(carrier->args, int);
-			(*c)++;
-		}
+		if (**c == '*')
+			g_carrier->precision = va_arg(g_carrier->args, int);
 	}
 }
 
-void	check_length(t_format *carrier, char **c)
+void	check_length(char **c)
 {
-	while (c == 'l' || c == 'h')
+	if (**c == 'l' || **c == 'h')
 	{
-		if (c == 'l')
-			carrier->length[0] = 'l';
-		if ((*c) + 1 == 'l')
-			carrier->length[1] = 'l';
-		if (c == 'h')
-			carrier->length[0] = 'l';
-		if ((*c) + 1 == 'h')
-			carrier->length[1] = 'l';
+		if (**c == 'l')
+		{
+			g_carrier->length[0] = 'l';
+			(*c)++;
+			if (**c == 'l')
+				g_carrier->length[1] = 'l';
+		}
+		if (**c == 'h')
+		{
+			g_carrier->length[0] = 'h';
+			(*c)++;
+			if (**c == 'h')
+				g_carrier->length[1] = 'h';
+		}
 	}
 	(*c)++;
 }
 
-void	check_type(t_format *carrier, char **c)
+void	check_type(char **c)
 {
-	if (c == 'd')
-		carrier->type = 'd';
-	if (c == 'i')
-		carrier->type = 'i';
-	if (c == 'u')
-		carrier->type = 'u';
-	if (c == 'x')
-		carrier->type = 'x';
-	if (c == 'X')
-		carrier->type = 'X';
-	if (c == 'c')
-		carrier->type = 'c';
-	if (c == 's')
-		carrier->type = 's';
-	if (c == 'p')
-		carrier->type = 'p';
+	if (**c == 'd')
+		g_carrier->type = 'd';
+	if (**c == 'i')
+		g_carrier->type = 'i';
+	if (**c == 'u')
+		g_carrier->type = 'u';
+	if (**c == 'x')
+		g_carrier->type = 'x';
+	if (**c == 'X')
+		g_carrier->type = 'X';
+	if (**c == 'c')
+		g_carrier->type = 'c';
+	if (**c == 's')
+		g_carrier->type = 's';
+	if (**c == 'p')
+		g_carrier->type = 'p';
 }

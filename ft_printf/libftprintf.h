@@ -6,7 +6,7 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 11:09:01 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/06 16:27:33 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/09 13:54:47 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <stdarg.h>
+# include <stdio.h>
 
 /*
 ** structure
@@ -25,7 +26,7 @@ typedef	struct	s_format
 	char	flags[3];
 	int		witdth;
 	int		precision;
-	int		length[2];
+	char	length[2];
 	char	type;
 	va_list	args;
 }				t_format;
@@ -34,7 +35,7 @@ t_format		*g_carrier;
 ** ft_printf
 */
 int				ft_printf(const char *fstr, ...);
-void			print_output(const char *fstr);
+void			print_output(char *fstr);
 /*
 ** converter
 */
@@ -48,9 +49,9 @@ size_t			ft_strlen(const char *s);
 /*
 ** checker
 */
-void			check_flags(t_format *carrier, char **c);
-void			check_width(t_format *carrier, char **c);
-void			check_precision(t_format *carrier, char **c);
-void			check_length(t_format *carrier, char **c);
-void			check_type(t_format *carrier, char **c);
+void			check_flags(char **c);
+void			check_width(char **c);
+void			check_precision(char **c);
+void			check_length(char **c);
+void			check_type(char **c);
 #endif
