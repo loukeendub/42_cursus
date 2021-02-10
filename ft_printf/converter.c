@@ -6,7 +6,7 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 12:02:33 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/10 13:22:55 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/10 14:23:03 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,10 @@ int		ft_atoi(const char *str)
 	return (n);
 }
 
-void	char_conv(void)
+void	char_conv(char *fstr)
 {
-	putchar
+	putchar(*fstr);
 }
 
-void	str_conv(void)
+void	str_conv(char *fstr)
 {}
