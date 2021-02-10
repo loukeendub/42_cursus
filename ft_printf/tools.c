@@ -6,7 +6,7 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 14:03:45 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/10 17:59:25 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/10 18:12:15 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ size_t	ft_strlen(const char *s)
 	return (i);
 }
 
-void	ft_putstr(int *s)
+void	ft_putstr(char *s)
 {
 	while (s && *s)
 	{

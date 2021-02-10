@@ -6,7 +6,7 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 11:09:01 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/10 18:02:57 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/10 18:12:46 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int				ft_atoi(const char *str);
 */
 void			ft_putchar(int c);
 size_t			ft_strlen(const char *s);
-void			ft_putstr(int *s);
+void			ft_putstr(char *s);
 /*
 ** checker
 */
