@@ -6,7 +6,7 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 10:26:03 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/09 15:22:12 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/10 16:41:53 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	check_precision(char **c)
 	}
 }
 
-void	check_length(char **c)
+int	check_length(char **c)
 {
 	if (**c == 'l' || **c == 'h')
 	{
@@ -66,6 +66,8 @@ void	check_length(char **c)
 			(*c)++;
 			if (**c == 'l')
 				g_carrier->length[1] = 'l';
+			else if (**c != 'l' && **c != 'h')
+				return (1);
 		}
 		if (**c == 'h')
 		{
@@ -73,9 +75,13 @@ void	check_length(char **c)
 			(*c)++;
 			if (**c == 'h')
 				g_carrier->length[1] = 'h';
+			else if (**c != 'l' && **c != 'h')
+				return (1);
 		}
+		(*c)++;
+		return (1);
 	}
-	(*c)++;
+	return (0);
 }
 
 void	check_type(char **c)
