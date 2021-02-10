@@ -6,7 +6,7 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 10:25:39 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/09 15:23:17 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/10 12:32:21 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(void)
 	char	*str;
 
 	str = "abcdefghijklmnopqrSTuvWXyz";
-	ft_printf("ciao  %-0+# 17.51lld", 2);
+	ft_printf("ciao  %c", A);
 	puts("\n--- § ---");
 	printf("flags : %c %c %c\n", g_carrier->flags[0], g_carrier->flags[1], g_carrier->flags[2]);
 	printf("width : %d\n", g_carrier->witdth);

@@ -6,11 +6,19 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 11:09:18 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/09 15:25:53 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/10 13:22:55 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+
+void		convert_input(char *fstr)
+{
+	if (g_carrier->type == 'c')
+		char_conv(*fstr);
+	if (g_carrier->type == 's')
+		str_conv(*fstr);
+}
 
 static void	init(void)
 {
@@ -42,6 +50,7 @@ void		print_output(char *fstr)
 			check_type(&fstr);
 		}
 		fstr++;
+		convert_input(*fstr);
 	}
 }
 
