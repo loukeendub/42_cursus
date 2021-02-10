@@ -6,7 +6,7 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 11:09:01 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/10 17:57:29 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/10 18:02:57 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ void			ft_putstr(int *s);
 ** checker
 */
 void			check_flags(char **c);
-void				check_width(char **c);
-void				check_precision(char **c);
+void			check_width(char **c);
+void			check_precision(char **c);
 int				check_length(char **c);
 void			check_type(char **c);
 #endif
