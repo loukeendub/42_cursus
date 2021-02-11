@@ -6,11 +6,11 @@
 #    By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/01 11:08:25 by lmarzano          #+#    #+#              #
-#    Updated: 2021/02/10 15:19:19 by lmarzano         ###   ########.fr        #
+#    Updated: 2021/02/11 12:21:21 by lmarzano         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS	=	ft_printf.c tools.c checker.c converter.c
+SRCS	=	ft_printf.c tools.c checker.c itoa_conv.c
 OBJS	=	${SRCS:.c=.o}
 CC		=	gcc
 CFLAGS	=	-Wall -Wextra -Werror

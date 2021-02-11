@@ -6,7 +6,7 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 11:09:01 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/10 18:12:46 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/11 12:36:30 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,18 +38,22 @@ int				ft_printf(const char *fstr, ...);
 void			print_output(char *fstr);
 void			convert_input(char *fstr);
 /*
-** converter
+** itoa_conv
 */
+int				ft_intcount(int n);
 char			*ft_itoa(int n);
-int				ft_atoi(const char *str);
+int				unsigned_intcount(unsigned int n);
+char			*ft_utoa(unsigned int n);
 /*
-** tools
+** tools [FULL]
 */
 void			ft_putchar(int c);
 size_t			ft_strlen(const char *s);
 void			ft_putstr(char *s);
+char			*ft_strdup(const char *s1);
+size_t			ft_strlcpy(char *dst, const char *src, size_t dstsize);
 /*
-** checker
+** checker [FULL]
 */
 void			check_flags(char **c);
 void			check_width(char **c);

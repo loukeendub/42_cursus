@@ -6,7 +6,7 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 10:25:39 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/10 18:05:59 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/11 12:41:06 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	main(void)
 	char	*str;
 
 	str = "stafava";
-	ft_printf("ft_ciao  %s  A\n", str);
+	ft_printf("ft_ciao  %u  A\n", 4294967295);
 	//printf("ciao  %c  stafregna", 'A');
 	puts("\n--- § ---");
 	printf("flags : %c %c %c\n", g_carrier->flags[0], g_carrier->flags[1], g_carrier->flags[2]);

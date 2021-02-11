@@ -6,7 +6,7 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 11:09:18 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/10 18:12:27 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/11 12:33:57 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,23 @@
 
 void		convert_input(char *fstr)
 {
+	char	*tmp;
+
+	tmp = 0;
 	if (g_carrier->type == 'c')
 		ft_putchar(va_arg(g_carrier->args, int));
 	if (g_carrier->type == 's')
 		ft_putstr(va_arg(g_carrier->args, char *));
+	if (g_carrier->type == 'd' || g_carrier->type == 'i')
+	{
+		tmp = ft_itoa(va_arg(g_carrier->args, int));
+		ft_putstr(tmp);
+	}
+	if (g_carrier->type == 'u')
+	{
+		tmp = ft_utoa(va_arg(g_carrier->args, unsigned int));
+		ft_putstr(tmp);
+	}
 }
 
 static void	init(void)
