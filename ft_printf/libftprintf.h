@@ -6,7 +6,7 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 11:09:01 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/11 12:36:30 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/11 15:14:47 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int				ft_intcount(int n);
 char			*ft_itoa(int n);
 int				unsigned_intcount(unsigned int n);
 char			*ft_utoa(unsigned int n);
+char			hex_conv(int n);
 /*
 ** tools [FULL]
 */

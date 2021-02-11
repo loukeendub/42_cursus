@@ -6,7 +6,7 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 11:09:18 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/11 12:33:57 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/11 15:12:07 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,11 @@ void		convert_input(char *fstr)
 	if (g_carrier->type == 'u')
 	{
 		tmp = ft_utoa(va_arg(g_carrier->args, unsigned int));
+		ft_putstr(tmp);
+	}
+	if (g_carrier->type == 'x' || g_carrier->type == 'X')
+	{
+		tmp = hex_conv(va_arg(g_carrier->args, int));
 		ft_putstr(tmp);
 	}
 }

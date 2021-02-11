@@ -6,7 +6,7 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 12:02:33 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/11 12:34:41 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/11 18:25:09 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,4 +83,20 @@ char	*ft_utoa(unsigned int n)
 		n /= 10;
 	}
 	return (res);
+}
+
+char	hex_conv(int n)
+{
+	size_t	len;
+	char	*tmp;
+
+
+	if (g_carrier->type == 'X')
+		while (tmp && *tmp)
+		{
+			if (*tmp >= 'a' && *tmp <= 'z')
+				*tmp -= 32;
+			tmp++;
+		}
+	return (tmp);
 }
