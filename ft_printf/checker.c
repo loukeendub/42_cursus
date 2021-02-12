@@ -6,7 +6,7 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 10:26:03 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/10 16:41:53 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/12 18:06:07 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,15 @@ void	check_flags(char **c)
 	while (**c == '-' || **c == '0' || **c == '#' || **c == '+' || **c == ' ')
 	{
 		if (**c == '-')
-			g_carrier->flags[0] = '-';
-		if (**c == '0' && g_carrier->flags[0] != '-')
-			g_carrier->flags[0] = '0';
+			g_c->flags[0] = '-';
+		if (**c == '0' && g_c->flags[0] != '-')
+			g_c->flags[0] = '0';
 		if (**c == '#')
-			g_carrier->flags[1] = '#';
+			g_c->flags[1] = '#';
 		if (**c == '+')
-			g_carrier->flags[2] = '+';
-		if (**c == ' ' && g_carrier->flags[2] != '+')
-			g_carrier->flags[2] = ' ';
+			g_c->flags[2] = '+';
+		if (**c == ' ' && g_c->flags[2] != '+')
+			g_c->flags[2] = ' ';
 		(*c)++;
 	}
 }
@@ -34,11 +34,11 @@ void	check_width(char **c)
 {
 	while (**c >= '0' && **c <= '9')
 	{
-		g_carrier->witdth = (g_carrier->witdth * 10) + (**c - '0');
+		g_c->width = (g_c->width * 10) + (**c - '0');
 		(*c)++;
 	}
 	if (**c == '*')
-		g_carrier->witdth = va_arg(g_carrier->args, int);
+		g_c->width = va_arg(g_c->args, int);
 }
 
 void	check_precision(char **c)
@@ -48,33 +48,33 @@ void	check_precision(char **c)
 		(*c)++;
 		while (**c >= '0' && **c <= '9')
 		{
-			g_carrier->precision = (g_carrier->precision * 10) + (**c - '0');
+			g_c->precision = (g_c->precision * 10) + (**c - '0');
 			(*c)++;
 		}
 		if (**c == '*')
-			g_carrier->precision = va_arg(g_carrier->args, int);
+			g_c->precision = va_arg(g_c->args, int);
 	}
 }
 
-int	check_length(char **c)
+int		check_length(char **c)
 {
 	if (**c == 'l' || **c == 'h')
 	{
 		if (**c == 'l')
 		{
-			g_carrier->length[0] = 'l';
+			g_c->length[0] = 'l';
 			(*c)++;
 			if (**c == 'l')
-				g_carrier->length[1] = 'l';
+				g_c->length[1] = 'l';
 			else if (**c != 'l' && **c != 'h')
 				return (1);
 		}
 		if (**c == 'h')
 		{
-			g_carrier->length[0] = 'h';
+			g_c->length[0] = 'h';
 			(*c)++;
 			if (**c == 'h')
-				g_carrier->length[1] = 'h';
+				g_c->length[1] = 'h';
 			else if (**c != 'l' && **c != 'h')
 				return (1);
 		}
@@ -87,19 +87,19 @@ int	check_length(char **c)
 void	check_type(char **c)
 {
 	if (**c == 'd')
-		g_carrier->type = 'd';
+		g_c->type = 'd';
 	if (**c == 'i')
-		g_carrier->type = 'i';
+		g_c->type = 'i';
 	if (**c == 'u')
-		g_carrier->type = 'u';
+		g_c->type = 'u';
 	if (**c == 'x')
-		g_carrier->type = 'x';
+		g_c->type = 'x';
 	if (**c == 'X')
-		g_carrier->type = 'X';
+		g_c->type = 'X';
 	if (**c == 'c')
-		g_carrier->type = 'c';
+		g_c->type = 'c';
 	if (**c == 's')
-		g_carrier->type = 's';
+		g_c->type = 's';
 	if (**c == 'p')
-		g_carrier->type = 'p';
+		g_c->type = 'p';
 }

@@ -6,7 +6,7 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 14:03:45 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/11 11:36:50 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/12 17:56:23 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_putchar(int c)
 {
 	write(1, &c, 1);
-	g_carrier->count++;
+	g_c->count++;
 }
 
 size_t	ft_strlen(const char *s)

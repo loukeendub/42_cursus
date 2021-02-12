@@ -6,7 +6,7 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 11:09:01 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/12 15:49:37 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/12 18:13:43 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ typedef	struct	s_format
 {
 	int		count;
 	char	flags[3];
-	int		witdth;
+	int		width;
 	int		precision;
 	char	length[2];
 	char	type;
 	va_list	args;
 }				t_format;
-t_format		*g_carrier;
+t_format		*g_c;
 /*
 ** ft_printf
 */
@@ -49,6 +49,10 @@ char			*ft_utoa(unsigned int n);
 */
 char			*hex_conv(unsigned int n);
 char			*ptr_conv(size_t n);
+/*
+** int_flags
+*/
+char			*d_flags(char *s);
 /*
 ** tools [FULL]
 */

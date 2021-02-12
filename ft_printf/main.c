@@ -6,7 +6,7 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 10:25:39 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/12 15:50:26 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/12 18:49:05 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,17 @@ int	main(void)
 	int	*p;
 	int		i;
 
-	i = 42;
+	i = 123;
 	p = &i;
-	ft_printf(" %p  A\n", p);
-	printf("[%p]", p);
+	ft_printf("{%-8d}\n", 123);
+	printf("[%-8d]", i);
 	//printf("ciao  %p  A\n", p);
 	puts("\n--- § ---");
-	printf("flags : %c %c %c\n", g_carrier->flags[0], g_carrier->flags[1], g_carrier->flags[2]);
-	printf("width : %d\n", g_carrier->witdth);
-	printf("precision : %d\n", g_carrier->precision);
-	printf("length : %c%c\n", g_carrier->length[0], g_carrier->length[1]);
-	printf("type : %c\n", g_carrier->type);
+	printf("flags : %c %c %c\n", g_c->flags[0], g_c->flags[1], g_c->flags[2]);
+	printf("width : %d\n", g_c->width);
+	printf("precision : %d\n", g_c->precision);
+	printf("length : %c%c\n", g_c->length[0], g_c->length[1]);
+	printf("type : %c\n", g_c->type);
 	return (0);
 }
 /*

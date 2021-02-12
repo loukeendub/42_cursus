@@ -6,7 +6,7 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 11:09:18 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/12 16:00:43 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/12 18:07:10 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,41 +17,41 @@ void		convert_input(char *fstr)
 	char	*tmp;
 
 	tmp = 0;
-	if (g_carrier->type == 'c')
-		ft_putchar(va_arg(g_carrier->args, int));
-	if (g_carrier->type == 's')
-		ft_putstr(va_arg(g_carrier->args, char *));
+	if (g_c->type == 'c')
+		ft_putchar(va_arg(g_c->args, int));
+	if (g_c->type == 's')
+		ft_putstr(va_arg(g_c->args, char *));
 	else
 	{
-		if (g_carrier->type == 'd' || g_carrier->type == 'i')
-			tmp = ft_itoa(va_arg(g_carrier->args, int));
-		if (g_carrier->type == 'u')
-			tmp = ft_utoa(va_arg(g_carrier->args, unsigned int));
-		if (g_carrier->type == 'x' || g_carrier->type == 'X')
-			tmp = hex_conv(va_arg(g_carrier->args, unsigned int));
-		if (g_carrier->type == 'p')
-			tmp = ptr_conv(va_arg(g_carrier->args, size_t));
+		if (g_c->type == 'd' || g_c->type == 'i')
+			tmp = d_flags(tmp);
+		if (g_c->type == 'u')
+			tmp = ft_utoa(va_arg(g_c->args, unsigned int));
+		if (g_c->type == 'x' || g_c->type == 'X')
+			tmp = hex_conv(va_arg(g_c->args, unsigned int));
+		if (g_c->type == 'p')
+			tmp = ptr_conv(va_arg(g_c->args, size_t));
 		ft_putstr(tmp);
 	}
 }
 
 static void	init(void)
 {
-	g_carrier->flags[0] = 0;
-	g_carrier->flags[1] = '\0';
-	g_carrier->flags[2] = '\0';
-	g_carrier->witdth = 0;
-	g_carrier->precision = -1;
-	g_carrier->length[0] = '\0';
-	g_carrier->length[1] = '\0';
-	g_carrier->type = '\0';
+	g_c->flags[0] = 0;
+	g_c->flags[1] = '\0';
+	g_c->flags[2] = '\0';
+	g_c->width = 0;
+	g_c->precision = -1;
+	g_c->length[0] = '\0';
+	g_c->length[1] = '\0';
+	g_c->type = '\0';
 }
 
 void		print_output(char *fstr)
 {
 	while (*fstr)
 	{
-		if (*fstr != '%' && *fstr != g_carrier->type)
+		if (*fstr != '%' && *fstr != g_c->type)
 		{
 			ft_putchar(*fstr);
 			fstr++;
@@ -66,7 +66,7 @@ void		print_output(char *fstr)
 			check_length(&fstr);
 			check_type(&fstr);
 		}
-		if (*fstr == g_carrier->type)
+		if (*fstr == g_c->type)
 			convert_input(fstr++);
 	}
 }
@@ -75,10 +75,10 @@ int			ft_printf(const char *fstr, ...)
 {
 	if (!fstr || !*fstr)
 		return (-1);
-	if (!(g_carrier = (t_format *)malloc(sizeof(t_format))))
+	if (!(g_c = (t_format *)malloc(sizeof(t_format))))
 		return (-1);
-	va_start(g_carrier->args, fstr);
-	g_carrier->count = 0;
+	va_start(g_c->args, fstr);
+	g_c->count = 0;
 	print_output((char *)fstr);
-	return (g_carrier->count);
+	return (g_c->count);
 }
