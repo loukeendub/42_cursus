@@ -6,7 +6,7 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 11:09:18 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/11 15:12:07 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/12 14:19:07 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,19 +21,16 @@ void		convert_input(char *fstr)
 		ft_putchar(va_arg(g_carrier->args, int));
 	if (g_carrier->type == 's')
 		ft_putstr(va_arg(g_carrier->args, char *));
-	if (g_carrier->type == 'd' || g_carrier->type == 'i')
+	else
 	{
-		tmp = ft_itoa(va_arg(g_carrier->args, int));
-		ft_putstr(tmp);
-	}
-	if (g_carrier->type == 'u')
-	{
-		tmp = ft_utoa(va_arg(g_carrier->args, unsigned int));
-		ft_putstr(tmp);
-	}
-	if (g_carrier->type == 'x' || g_carrier->type == 'X')
-	{
-		tmp = hex_conv(va_arg(g_carrier->args, int));
+		if (g_carrier->type == 'd' || g_carrier->type == 'i')
+			tmp = ft_itoa(va_arg(g_carrier->args, int));
+		if (g_carrier->type == 'u')
+			tmp = ft_utoa(va_arg(g_carrier->args, unsigned int));
+		if (g_carrier->type == 'x' || g_carrier->type == 'X')
+			tmp = hex_conv(va_arg(g_carrier->args, unsigned int));
+		if (g_carrier->type == 'p')
+			tmp = ptr_conv(va_arg(g_carrier->args, unsigned long long));
 		ft_putstr(tmp);
 	}
 }

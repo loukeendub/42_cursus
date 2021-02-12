@@ -1,86 +1,60 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   itoa_conv.c                                        :+:      :+:    :+:   */
+/*   hex_conv.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/03 12:02:33 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/12 12:18:35 by lmarzano         ###   ########.fr       */
+/*   Created: 2021/02/12 12:17:41 by lmarzano          #+#    #+#             */
+/*   Updated: 2021/02/12 14:17:56 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-int		ft_intcount(int n)
+char	*hex_conv(unsigned int n)
 {
-	int count;
-
-	count = 1;
-	while (!(n / 10 == 0))
-	{
-		n /= 10;
-		count++;
-	}
-	return (count);
-}
-
-char	*ft_itoa(int n)
-{
-	char	*res;
 	size_t	len;
+	char	*res;
+	char	*hex;
 
-	if (n == -2147483648)
-		return (ft_strdup("-2147483648"));
-	len = n >= 0 ? ft_intcount(n) : ft_intcount(n) + 1;
+	if (g_carrier->type == 'X')
+		hex = "0123456789ABCDEF";
+	else if (g_carrier->type == 'x')
+		hex = "0123456789abcdef";
+	len = ft_intcount(n);
 	if (!(res = malloc((len + 1) * sizeof(char))))
-		return (NULL);
+		return (0);
 	res[len] = '\0';
 	if (n == 0)
 		res[0] = '0';
-	if (n < 0)
-	{
-		n *= -1;
-		res[0] = '-';
-	}
 	while (n > 0)
 	{
-		res[--len] = '0' + n % 10;
-		n /= 10;
+		res[--len] = hex[(n % 16)];
+		n /= 16;
 	}
+	return (res);
 	return (res);
 }
 
-int		unsigned_intcount(unsigned int n)
+char	*ptr_conv(unsigned long long n)
 {
-	unsigned int count;
-
-	count = 1;
-	while (!(n / 10 == 0))
-	{
-		n /= 10;
-		count++;
-	}
-	return (count);
-}
-
-char	*ft_utoa(unsigned int n)
-{
-	char	*res;
 	size_t	len;
+	char	*res;
+	char	*hex;
 
-	if (n < 0)
-		return (NULL);
-	len = n >= 0 ? unsigned_intcount(n) : unsigned_intcount(n) + 1;
+	hex = "0123456789abcdef";
+	len = ft_intcount(n);
 	if (!(res = malloc((len + 1) * sizeof(char))))
-		return (NULL);
+		return (0);
 	res[len] = '\0';
 	if (n == 0)
 		res[0] = '0';
 	while (n > 0)
 	{
-		res[--len] = '0' + n % 10;
-		n /= 10;
+		res[--len] = hex[(n % 16)];
+		n /= 16;
 	}
+	return (res);
 	return (res);
 }
