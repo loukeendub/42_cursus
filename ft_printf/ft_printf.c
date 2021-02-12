@@ -6,7 +6,7 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 11:09:18 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/12 15:35:04 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/12 16:00:43 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void		convert_input(char *fstr)
 		if (g_carrier->type == 'x' || g_carrier->type == 'X')
 			tmp = hex_conv(va_arg(g_carrier->args, unsigned int));
 		if (g_carrier->type == 'p')
-			tmp = ptr_conv(va_arg(g_carrier->args, unsigned long long));
+			tmp = ptr_conv(va_arg(g_carrier->args, size_t));
 		ft_putstr(tmp);
 	}
 }
@@ -41,7 +41,7 @@ static void	init(void)
 	g_carrier->flags[1] = '\0';
 	g_carrier->flags[2] = '\0';
 	g_carrier->witdth = 0;
-	g_carrier->precision = 0;
+	g_carrier->precision = -1;
 	g_carrier->length[0] = '\0';
 	g_carrier->length[1] = '\0';
 	g_carrier->type = '\0';
@@ -82,5 +82,3 @@ int			ft_printf(const char *fstr, ...)
 	print_output((char *)fstr);
 	return (g_carrier->count);
 }
-/* 7ffee251d89c
-7ffee82ce89c */

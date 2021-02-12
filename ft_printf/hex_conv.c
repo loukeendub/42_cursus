@@ -6,7 +6,7 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 12:17:41 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/12 15:45:22 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/12 15:49:42 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	*hex_conv(unsigned int n)
 	return (res);
 }
 
-char	*ptr_conv(unsigned long long n)
+char	*ptr_conv(size_t n)
 {
 	size_t	len;
 	size_t	tmp;
