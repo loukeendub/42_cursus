@@ -6,7 +6,7 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 11:09:18 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/12 14:19:07 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/12 15:35:04 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,3 +82,5 @@ int			ft_printf(const char *fstr, ...)
 	print_output((char *)fstr);
 	return (g_carrier->count);
 }
+/* 7ffee251d89c
+7ffee82ce89c */

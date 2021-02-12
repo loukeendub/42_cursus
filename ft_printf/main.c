@@ -6,7 +6,7 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 10:25:39 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/12 14:16:32 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/12 15:35:54 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	main(void)
 	i = 42;
 	p = &i;
 	ft_printf("ft_ciao  %p  A\n", p);
+	printf("[%p]", p);
 	//printf("ciao  %p  A\n", p);
 	puts("\n--- § ---");
 	printf("flags : %c %c %c\n", g_carrier->flags[0], g_carrier->flags[1], g_carrier->flags[2]);

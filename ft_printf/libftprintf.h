@@ -6,7 +6,7 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 11:09:01 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/12 13:07:25 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/12 15:44:03 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,11 @@ size_t			ft_strlen(const char *s);
 void			ft_putstr(char *s);
 char			*ft_strdup(const char *s1);
 size_t			ft_strlcpy(char *dst, const char *src, size_t dstsize);
+/*
+** tools2
+*/
+size_t			ft_strlcat(char *dst, const char *src, size_t dstsize);
+char			*ft_strjoin(char const *s1, char const *s2);
 /*
 ** checker [FULL]
 */
