@@ -6,7 +6,7 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 11:09:18 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/12 18:07:10 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/15 15:32:56 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,9 @@ void		convert_input(char *fstr)
 	else
 	{
 		if (g_c->type == 'd' || g_c->type == 'i')
-			tmp = d_flags(tmp);
+			tmp = d_manager(tmp);
 		if (g_c->type == 'u')
-			tmp = ft_utoa(va_arg(g_c->args, unsigned int));
+			tmp = u_manager(tmp);
 		if (g_c->type == 'x' || g_c->type == 'X')
 			tmp = hex_conv(va_arg(g_c->args, unsigned int));
 		if (g_c->type == 'p')
@@ -41,7 +41,7 @@ static void	init(void)
 	g_c->flags[1] = '\0';
 	g_c->flags[2] = '\0';
 	g_c->width = 0;
-	g_c->precision = -1;
+	g_c->prec = -1;
 	g_c->length[0] = '\0';
 	g_c->length[1] = '\0';
 	g_c->type = '\0';

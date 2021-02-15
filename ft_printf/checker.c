@@ -6,7 +6,7 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 10:26:03 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/12 18:06:07 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/15 16:36:15 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,14 +45,21 @@ void	check_precision(char **c)
 {
 	if (**c == '.')
 	{
+		g_c->prec = 0;
 		(*c)++;
-		while (**c >= '0' && **c <= '9')
+		if (**c >= '0' && **c <= '9')
 		{
-			g_c->precision = (g_c->precision * 10) + (**c - '0');
+			while (**c >= '0' && **c <= '9')
+			{
+				g_c->prec = ((g_c->prec) * 10) + (**c - '0');
+				(*c)++;
+			}
+		}
+		else if (**c == '*')
+		{
+			g_c->prec = va_arg(g_c->args, int);
 			(*c)++;
 		}
-		if (**c == '*')
-			g_c->precision = va_arg(g_c->args, int);
 	}
 }
 

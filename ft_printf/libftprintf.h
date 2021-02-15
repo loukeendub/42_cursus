@@ -6,7 +6,7 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 11:09:01 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/12 18:13:43 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/15 16:07:29 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ typedef	struct	s_format
 	int		count;
 	char	flags[3];
 	int		width;
-	int		precision;
+	int		prec;
 	char	length[2];
 	char	type;
 	va_list	args;
@@ -52,7 +52,11 @@ char			*ptr_conv(size_t n);
 /*
 ** int_flags
 */
-char			*d_flags(char *s);
+char			*d_manager(char *s);
+char			*u_manager(char *s);
+char			*int_precision(char *s, char *t, size_t len);
+char			*prec_manager(char *s, char *t, size_t len);
+char			*int_flags(char *s, char *t);
 /*
 ** tools [FULL]
 */
@@ -66,6 +70,8 @@ size_t			ft_strlcpy(char *dst, const char *src, size_t dstsize);
 */
 size_t			ft_strlcat(char *dst, const char *src, size_t dstsize);
 char			*ft_strjoin(char const *s1, char const *s2);
+void			ft_bzero(void *str, size_t n);
+void			*ft_calloc(size_t count, size_t size);
 /*
 ** checker [FULL]
 */
