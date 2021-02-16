@@ -6,7 +6,7 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 12:02:33 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/12 17:55:25 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/16 11:48:14 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ char	*ft_itoa(int n)
 	if (n < 0)
 	{
 		n *= -1;
-		res[0] = '-';
+		g_c->sign = 1;
+		res[len--] = '\0';
 	}
 	while (n > 0)
 	{
@@ -83,4 +84,18 @@ char	*ft_utoa(unsigned int n)
 		n /= 10;
 	}
 	return (res);
+}
+
+char	*sign_manager(char *s, char *t)
+{
+	if (g_c->sign == 0)
+	{
+		if (g_c->flags[2] == ' ')
+			s = ft_strjoin(" ", s);
+		else if (g_c->flags[2] == '+')
+			s = ft_strjoin("+", s);
+	}
+	else
+		s = ft_strjoin("-", s);
+	return (s);
 }

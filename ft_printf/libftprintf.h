@@ -6,7 +6,7 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 11:09:01 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/15 16:07:29 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/16 11:48:00 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 typedef	struct	s_format
 {
 	int		count;
+	int		sign;
 	char	flags[3];
 	int		width;
 	int		prec;
@@ -44,6 +45,7 @@ int				ft_intcount(int n);
 char			*ft_itoa(int n);
 int				unsigned_intcount(unsigned int n);
 char			*ft_utoa(unsigned int n);
+char			*sign_manager(char *s, char *t);
 /*
 ** hex_conv
 */

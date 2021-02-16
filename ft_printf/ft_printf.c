@@ -6,7 +6,7 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 11:09:18 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/15 15:32:56 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/16 10:45:48 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ static void	init(void)
 	g_c->length[0] = '\0';
 	g_c->length[1] = '\0';
 	g_c->type = '\0';
+	g_c->sign = 0;
 }
 
 void		print_output(char *fstr)

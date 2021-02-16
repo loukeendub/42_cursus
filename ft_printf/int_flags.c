@@ -6,7 +6,7 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 17:17:59 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/15 16:59:58 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/16 11:49:00 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ char	*d_manager(char *s)
 		t[len] = '\0';
 		s = int_precision(s, t, len);
 	}
+	s = sign_manager(s, t);
 	return (s);
 }
 
@@ -95,5 +96,6 @@ char	*int_flags(char *s, char *t)
 		s = ft_strjoin(s, t);
 	else
 		s = ft_strjoin(t, s);
+	s = sign_manager(s, t);
 	return (s);
 }
