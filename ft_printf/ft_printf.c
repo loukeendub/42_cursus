@@ -6,7 +6,7 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 11:09:18 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/16 10:45:48 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/16 17:18:19 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void		convert_input(char *fstr)
 		if (g_c->type == 'u')
 			tmp = u_manager(tmp);
 		if (g_c->type == 'x' || g_c->type == 'X')
-			tmp = hex_conv(va_arg(g_c->args, unsigned int));
+			tmp = hex_manager(tmp);
 		if (g_c->type == 'p')
 			tmp = ptr_conv(va_arg(g_c->args, size_t));
 		ft_putstr(tmp);
@@ -40,8 +40,8 @@ static void	init(void)
 	g_c->flags[0] = 0;
 	g_c->flags[1] = '\0';
 	g_c->flags[2] = '\0';
-	g_c->width = 0;
-	g_c->prec = -1;
+	g_c->wd = 0;
+	g_c->pr = -1;
 	g_c->length[0] = '\0';
 	g_c->length[1] = '\0';
 	g_c->type = '\0';

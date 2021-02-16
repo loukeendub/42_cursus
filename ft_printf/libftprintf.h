@@ -6,7 +6,7 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 11:09:01 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/16 11:48:00 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/16 17:08:01 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ typedef	struct	s_format
 	int		count;
 	int		sign;
 	char	flags[3];
-	int		width;
-	int		prec;
+	int		wd;
+	int		pr;
 	char	length[2];
 	char	type;
 	va_list	args;
@@ -49,8 +49,10 @@ char			*sign_manager(char *s, char *t);
 /*
 ** hex_conv
 */
+int				ft_hex_count(int n);
 char			*hex_conv(unsigned int n);
 char			*ptr_conv(size_t n);
+char			*hex_manager(char *s);
 /*
 ** int_flags
 */
@@ -74,6 +76,7 @@ size_t			ft_strlcat(char *dst, const char *src, size_t dstsize);
 char			*ft_strjoin(char const *s1, char const *s2);
 void			ft_bzero(void *str, size_t n);
 void			*ft_calloc(size_t count, size_t size);
+char			*fill_space(char *s);
 /*
 ** checker [FULL]
 */

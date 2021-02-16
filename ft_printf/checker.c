@@ -6,7 +6,7 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/06 10:26:03 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/15 16:36:15 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/16 17:18:19 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,30 +34,30 @@ void	check_width(char **c)
 {
 	while (**c >= '0' && **c <= '9')
 	{
-		g_c->width = (g_c->width * 10) + (**c - '0');
+		g_c->wd = (g_c->wd * 10) + (**c - '0');
 		(*c)++;
 	}
 	if (**c == '*')
-		g_c->width = va_arg(g_c->args, int);
+		g_c->wd = va_arg(g_c->args, int);
 }
 
 void	check_precision(char **c)
 {
 	if (**c == '.')
 	{
-		g_c->prec = 0;
+		g_c->pr = 0;
 		(*c)++;
 		if (**c >= '0' && **c <= '9')
 		{
 			while (**c >= '0' && **c <= '9')
 			{
-				g_c->prec = ((g_c->prec) * 10) + (**c - '0');
+				g_c->pr = ((g_c->pr) * 10) + (**c - '0');
 				(*c)++;
 			}
 		}
 		else if (**c == '*')
 		{
-			g_c->prec = va_arg(g_c->args, int);
+			g_c->pr = va_arg(g_c->args, int);
 			(*c)++;
 		}
 	}

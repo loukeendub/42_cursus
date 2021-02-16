@@ -6,7 +6,7 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 15:41:31 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/15 15:09:51 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/16 18:15:43 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,3 +70,21 @@ void	*ft_calloc(size_t count, size_t size)
 	ft_bzero(ptr, size * count);
 	return (ptr);
 }
+
+char	*fill_space(char *s)
+{
+	size_t	len;
+	char	*tmp;
+
+	len = g_c->wd - g_c->pr;
+	if (!(tmp = ft_calloc((len + 1), sizeof(char))))
+		return (0);
+	len = (g_c->flags[2] == '+' || g_c->flags[2] == ' ') ? len - 1 : len;
+	tmp[len] = '\0';
+	while (len-- > 0)
+		tmp[len] = ' ';
+	s = g_c->flags[0] == '-' ? ft_strjoin(s, tmp) : ft_strjoin(tmp, s);
+	free(tmp);
+	return (s);
+}
+//on hex with #, flag- width and prec, it just adds 2 spaces at the end...

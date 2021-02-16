@@ -6,7 +6,7 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/12 17:17:59 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/16 11:49:00 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/16 18:00:45 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,22 @@ char	*d_manager(char *s)
 	size_t	len;
 
 	s = ft_itoa(va_arg(g_c->args, int));
-	if (g_c->width > 0)
+	if (g_c->wd > 0)
 	{
-		len = (g_c->width - ft_strlen(s));
+		len = (g_c->wd - ft_strlen(s));
 		if (!(t = ft_calloc((len + 1), sizeof(char))))
 			return (0);
 		t[len] = '\0';
 		s = int_precision(s, t, len);
 	}
-	s = sign_manager(s, t);
+	else if (g_c->pr > 0)
+	{
+		len = (g_c->pr - ft_strlen(s));
+		if (!(t = ft_calloc((len + 1), sizeof(char))))
+			return (0);
+		t[len] = '\0';
+		s = int_precision(s, t, len);
+	}
 	return (s);
 }
 
@@ -36,9 +43,17 @@ char	*u_manager(char *s)
 	size_t	len;
 
 	s = ft_utoa(va_arg(g_c->args, int));
-	if (g_c->width > 0)
+	if (g_c->wd > 0)
 	{
-		len = (g_c->width - ft_strlen(s));
+		len = (g_c->wd - ft_strlen(s));
+		if (!(t = ft_calloc((len + 1), sizeof(char))))
+			return (0);
+		t[len] = '\0';
+		s = int_precision(s, t, len);
+	}
+	else if (g_c->pr > 0)
+	{
+		len = (g_c->pr - ft_strlen(s));
 		if (!(t = ft_calloc((len + 1), sizeof(char))))
 			return (0);
 		t[len] = '\0';
@@ -49,13 +64,13 @@ char	*u_manager(char *s)
 
 char	*int_precision(char *s, char *t, size_t len)
 {
-	if (g_c->prec == 0 && s[0] == '0')
+	if (g_c->pr == 0 && s[0] == '0')
 	{
-		len = g_c->width;
+		len = g_c->wd;
 		while (len-- > 0)
 			s[len] = ' ';
 	}
-	else if (g_c->prec > 0 && g_c->prec >= ft_strlen(s))
+	else if (g_c->pr > 0 && g_c->pr >= ft_strlen(s))
 		s = prec_manager(s, t, len);
 	else
 	{
@@ -68,34 +83,32 @@ char	*int_precision(char *s, char *t, size_t len)
 
 char	*prec_manager(char *s, char *t, size_t len)
 {
-	if (len > g_c->prec)
+	if (len > g_c->pr)
 	{
-		len = g_c->prec - ft_strlen(s);
+		len = g_c->pr - ft_strlen(s);
 		while (len-- > 0)
 			t[len] = '0';
 		s = int_flags(t, s);
-		len = g_c->width - g_c->prec;
+		len = g_c->wd - g_c->pr;
 		t[len] = '\0';
-		while (len-- > 0)
-			t[len] = ' ';
-		s = ft_strjoin(s, t);
 	}
 	else
 	{
-		len = g_c->prec - ft_strlen(s);
+		len = g_c->pr - ft_strlen(s);
 		while (len-- > 0)
 			t[len] = '0';
 		s = int_flags(t, s);
 	}
+	if (g_c->wd - g_c->pr > 0)
+		s = fill_space(s);
 	return (s);
 }
 
 char	*int_flags(char *s, char *t)
 {
-	if (g_c->width < g_c->prec || g_c->flags[0] == '-')
-		s = ft_strjoin(s, t);
-	else
-		s = ft_strjoin(t, s);
+	if ((g_c->type == 'x' || g_c->type == 'X') && g_c->flags[1] == '#')
+		s = g_c->type == 'X' ? ft_strjoin("0X", s) : ft_strjoin("0x", s);
+	s = ft_strjoin(s, t);
 	s = sign_manager(s, t);
 	return (s);
 }
