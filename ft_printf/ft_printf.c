@@ -6,13 +6,13 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 11:09:18 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/16 17:18:19 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/17 16:27:40 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void		convert_input(char *fstr)
+void		convert_input(void)
 {
 	char	*tmp;
 
@@ -68,7 +68,10 @@ void		print_output(char *fstr)
 			check_type(&fstr);
 		}
 		if (*fstr == g_c->type)
-			convert_input(fstr++);
+		{
+			convert_input();
+			fstr++;
+		}
 	}
 }
 

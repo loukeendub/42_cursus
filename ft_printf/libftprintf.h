@@ -6,7 +6,7 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/01 11:09:01 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/16 17:08:01 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/17 12:36:56 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,15 +37,15 @@ t_format		*g_c;
 */
 int				ft_printf(const char *fstr, ...);
 void			print_output(char *fstr);
-void			convert_input(char *fstr);
+void			convert_input(void);
 /*
-** itoa_conv
+** itoa_conv [FULL]
 */
 int				ft_intcount(int n);
 char			*ft_itoa(int n);
 int				unsigned_intcount(unsigned int n);
 char			*ft_utoa(unsigned int n);
-char			*sign_manager(char *s, char *t);
+char			*sign_manager(char *s);
 /*
 ** hex_conv
 */
@@ -54,7 +54,7 @@ char			*hex_conv(unsigned int n);
 char			*ptr_conv(size_t n);
 char			*hex_manager(char *s);
 /*
-** int_flags
+** int_flags [FULL]
 */
 char			*d_manager(char *s);
 char			*u_manager(char *s);
@@ -70,7 +70,7 @@ void			ft_putstr(char *s);
 char			*ft_strdup(const char *s1);
 size_t			ft_strlcpy(char *dst, const char *src, size_t dstsize);
 /*
-** tools2
+** tools2 [FULL]
 */
 size_t			ft_strlcat(char *dst, const char *src, size_t dstsize);
 char			*ft_strjoin(char const *s1, char const *s2);

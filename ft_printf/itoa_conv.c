@@ -6,7 +6,7 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 12:02:33 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/16 17:10:40 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/17 12:17:36 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ char	*ft_utoa(unsigned int n)
 	return (res);
 }
 
-char	*sign_manager(char *s, char *t)
+char	*sign_manager(char *s)
 {
 	if (g_c->sign == 0)
 	{
