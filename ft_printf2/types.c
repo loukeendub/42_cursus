@@ -6,7 +6,7 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/18 14:57:41 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/18 15:30:48 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/18 18:54:47 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,12 @@ void	convert_p(void)
 
 	tmp = ft_utoa(va_arg(g_p->args, size_t), 16);
 	print_order(tmp);
+}
+
+void	convert_s(void)
+{
+	char	*tmp;
+
+	tmp = va_arg(g_p->args, char *);
+	print_order_s(tmp);
 }

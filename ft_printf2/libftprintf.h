@@ -6,7 +6,7 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 14:02:53 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/18 15:28:55 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/18 18:59:52 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ size_t			set_len(const char *format);
 ** print_order
 */
 void			print_order(char *str);
+void			print_order_s(char *str);
+void			convert_c(void);
 /*
 ** utils [FULL]
 */
@@ -66,10 +68,13 @@ size_t			ft_strlen(const char *s);
 void			ft_putstr(char *s);
 char			*ft_strdup(const char *s1);
 size_t			ft_strlcpy(char *dst, const char *src, size_t dstsize);
-
+/*
+** types [FULL]
+*/
 void			convert_d(void);
 void			convert_u(void);
 void			convert_x(void);
 void			convert_p(void);
+void			convert_s(void);
 
 #endif

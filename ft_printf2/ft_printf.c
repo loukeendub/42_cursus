@@ -6,7 +6,7 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 14:03:04 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/18 16:13:22 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/18 18:54:24 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,9 @@ void		convert_input(void)
 	else if (g_p->type == 'x' || g_p->type == 'X')
 		convert_x();
 	else if (g_p->type == 'c')
-		;
+		convert_c();
 	else if (g_p->type == 's')
-		;
+		convert_s();
 	else if (g_p->type == 'p')
 		convert_p();
 }

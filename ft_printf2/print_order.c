@@ -6,7 +6,7 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/18 13:56:26 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/18 17:49:19 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/18 19:00:29 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,5 +64,59 @@ void	print_order(char *str)
 		while (i++ < g_p->pr - len)
 			ft_putchar('0');
 		ft_putstr(str);
+	}
+}
+
+void	print_order_s(char *str)
+{
+	int	len;
+	int	i;
+
+	len = ft_strlen(str);
+	i = 0;
+	if (g_p->flags[0] == '-')
+	{
+		ft_putstr(str);
+		while (i < g_p->wd - len)
+		{
+			ft_putchar(' ');
+			i++;
+		}
+	}
+	else
+	{
+		while (i < g_p->wd - len)
+		{
+			ft_putchar(' ');
+			i++;
+		}
+		ft_putstr(str);
+	}
+}
+
+void	convert_c(void)
+{
+	char	t;
+	int		i;
+
+	t = va_arg(g_p->args, int);
+	i = 0;
+	if (g_p->flags[0] == '-')
+	{
+		ft_putchar(t);
+		while (i < g_p->wd - 1)
+		{
+			ft_putchar(' ');
+			i++;
+		}
+	}
+	else
+	{
+		while (i < g_p->wd - 1)
+		{
+			ft_putchar(' ');
+			i++;
+		}
+		ft_putchar(t);
 	}
 }
