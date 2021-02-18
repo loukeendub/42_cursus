@@ -6,7 +6,7 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 14:15:08 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/17 17:16:51 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/18 15:07:00 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,24 +89,4 @@ int		parse_length(char **c)
 		return (1);
 	}
 	return (0);
-}
-
-void	parse_type(char **c)
-{
-	if (**c == 'd')
-		g_p->type = 'd';
-	if (**c == 'i')
-		g_p->type = 'i';
-	if (**c == 'u')
-		g_p->type = 'u';
-	if (**c == 'x')
-		g_p->type = 'x';
-	if (**c == 'X')
-		g_p->type = 'X';
-	if (**c == 'c')
-		g_p->type = 'c';
-	if (**c == 's')
-		g_p->type = 's';
-	if (**c == 'p')
-		g_p->type = 'p';
 }

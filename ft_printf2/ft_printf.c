@@ -6,7 +6,7 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 14:03:04 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/17 18:18:29 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/18 16:13:22 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,27 +23,32 @@ static void	struct_init(void)
 	g_p->length[1] = '\0';
 	g_p->type = '\0';
 	g_p->sign = 0;
-	g_p->filler = 0;
 }
 
-void		convert_input(char *format)
+void		convert_input(void)
 {
+	char	*tmp;
+
+	tmp = 0;
 	if (g_p->type == 'd' || g_p->type == 'i')
-		int_print_flags(format);
-	//	if (g_p->type == 'u')
-	//	if (g_p->type == 'x' || g_p->type == 'X')
-	//	if (g_p->type == 'c')
-	//	if (g_p->type == 's')
-	//	if (g_p->type == 'p')
+		convert_d();
+	else if (g_p->type == 'u')
+		convert_u();
+	else if (g_p->type == 'x' || g_p->type == 'X')
+		convert_x();
+	else if (g_p->type == 'c')
+		;
+	else if (g_p->type == 's')
+		;
+	else if (g_p->type == 'p')
+		convert_p();
 }
 
-void		print_output(const char *format)
+void		print_output(char *format)
 {
 	while (*format)
 	{
-		if (*format != '%' && *format != g_p->type)
-			ft_putchar(*format);
-		else if (*format == '%')
+		if (*format == '%')
 		{
 			format++;
 			struct_init();
@@ -51,10 +56,11 @@ void		print_output(const char *format)
 			parse_width(&format);
 			parse_precision(&format);
 			parse_length(&format);
-			parse_type(&format);
+			g_p->type = *format;
+			convert_input();
 		}
-		if (*format == g_p->type)
-			convert_input((char *)format);
+		else
+			ft_putchar(*format);
 		format++;
 	}
 }
@@ -66,6 +72,7 @@ int			ft_printf(const char *fstr, ...)
 	if (!(g_p = (t_format *)malloc(sizeof(t_format))))
 		return (-1);
 	va_start(g_p->args, fstr);
-	print_output(fstr);
+	print_output((char *)fstr);
+	va_end(g_p->args);
 	return (g_p->count);
 }

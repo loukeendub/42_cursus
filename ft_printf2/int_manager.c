@@ -6,46 +6,61 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 15:28:38 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/17 17:36:59 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/18 15:30:52 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
-void	int_print_flags(const char *format)
+int		ft_intcount_base(unsigned int n, int base)
 {
-	int	dif;
+	int count;
 
-	while (*format++ == g_p->type)
+	count = 1;
+	while (!(n / base == 0))
 	{
-		if (g_p->flags[2] == '+')
-			ft_putchar(g_p->sign == 0 ? '+' : '-');
-		else if (g_p->flags[2] == ' ')
-			ft_putchar(' ');
-		if (g_p->flags[0] == '-')
-		{
-			dif = g_p->wd > g_p->pr ? g_p->wd - g_p->pr : g_p->pr - g_p->wd;
-			while (dif-- != -1)
-				ft_putchar('0');
-		}
+		n /= base;
+		count++;
 	}
+	return (count);
+}
+
+char	*ft_utoa(unsigned int n, int base)
+{
+	char	*res;
+	size_t	len;
+	char	*radix;
+
+	radix = g_p->type == 'X' ? "0123456789ABCDEF" : "0123456789abcdef";
+	len = ft_intcount_base(n, base);
+	if (!(res = malloc((len + 1) * sizeof(char))))
+		return (NULL);
+	res[len] = '\0';
+	if (n == 0)
+		res[0] = '0';
+	while (n > 0)
+	{
+		res[--len] = radix[n % base];
+		n /= base;
+	}
+	return (res);
 }
 
 size_t	set_len(const char *format)
 {
 	size_t	size;
 
-	if (g_p->wd > g_p->pr || g_p->wd > ft_strlen(format))
+	if (g_p->wd > g_p->pr || (size_t)g_p->wd > ft_strlen(format))
 	{
 		size = g_p->wd;
 		g_p->filler = 1; //filler prints spaces
 	}
-	if (g_p->wd < g_p->pr && g_p->pr > ft_strlen(format))
+	if (g_p->wd < g_p->pr && (size_t)g_p->pr > ft_strlen(format))
 	{
 		size = g_p->pr;
 		g_p->filler = 0; //filler prints zeroes
 	}
-	if (g_p->wd < g_p->pr && g_p->pr < ft_strlen(format))
+	if (g_p->wd < g_p->pr && (size_t)g_p->pr < ft_strlen(format))
 		size = ft_strlen(format);
 	return (size);
 }

@@ -6,7 +6,7 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 14:37:37 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/17 17:13:33 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/18 12:14:02 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,39 @@ void	ft_putstr(char *s)
 		ft_putchar(*s);
 		s++;
 	}
+}
+
+char	*ft_strdup(const char *s1)
+{
+	size_t	len;
+	char	*s2;
+
+	len = ft_strlen(s1);
+	if (!(s2 = malloc(len + 1)))
+		return (NULL);
+	ft_strlcpy(s2, s1, len + 1);
+	return (s2);
+}
+
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
+{
+	size_t	len;
+	size_t	i;
+
+	len = 0;
+	i = 0;
+	if (!dst)
+		return (0);
+	while (src[len])
+		len++;
+	if (dstsize != 0)
+	{
+		while (src[i] && i < (dstsize - 1))
+		{
+			dst[i] = src[i];
+			i++;
+		}
+		dst[i] = '\0';
+	}
+	return (len);
 }

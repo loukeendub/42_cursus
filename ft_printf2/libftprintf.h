@@ -6,7 +6,7 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 14:02:53 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/17 17:12:19 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/18 15:28:55 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,8 @@ t_format		*g_p;
 /*
 ** ft_printf
 */
-void			parse_struct(char *format_str);
+void			convert_input();
+void			print_output(char *format);
 int				ft_printf(const char *fstr, ...);
 /*
 ** parse_struct [FULL]
@@ -45,17 +46,30 @@ void			parse_flags(char **c);
 void			parse_width(char **c);
 void			parse_precision(char **c);
 int				parse_length(char **c);
-void			parse_type(char **c);
 /*
-** int_manager
+** int_manager [FULL]
 */
-void			int_print_flags(const char *format);
+int				sign_manager(int n);
+int				ft_intcount_base(unsigned int n, int base);
+char			*ft_utoa(unsigned int n, int base);
+void			int_print_flags(char *str);
 size_t			set_len(const char *format);
 /*
-** utils
+** print_order
+*/
+void			print_order(char *str);
+/*
+** utils [FULL]
 */
 void			ft_putchar(int c);
 size_t			ft_strlen(const char *s);
 void			ft_putstr(char *s);
+char			*ft_strdup(const char *s1);
+size_t			ft_strlcpy(char *dst, const char *src, size_t dstsize);
+
+void			convert_d(void);
+void			convert_u(void);
+void			convert_x(void);
+void			convert_p(void);
 
 #endif
