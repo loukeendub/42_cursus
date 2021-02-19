@@ -6,7 +6,7 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 10:25:39 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/18 19:01:19 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/19 13:11:29 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,13 +18,13 @@ int	main(void)
 	int		*p;
 	int		i;
 	//char	*str = "stafava";
-	char	c = 'C';
+	//char	c = 'C';
 
-	i = -512;
+	i = 512;
 	p = &i;
-	char s[] = "|% -.2c|\n";
-	printf(s, c);
-	ft_printf(s, c);
+	char s[] = "|%+-7x|\n";
+	printf(s, i);
+	ft_printf(s, i);
 	puts("\n--- § ---");
 	printf("flags : %c %c %c\n", g_p->flags[0], g_p->flags[1], g_p->flags[2]);
 	printf("width : %d\n", g_p->wd);

@@ -6,7 +6,7 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 14:03:04 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/18 18:54:24 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/19 12:28:16 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,17 @@ void		convert_input(void)
 		convert_s();
 	else if (g_p->type == 'p')
 		convert_p();
+}
+
+int			set_prefix(void)
+{
+	if (g_p->type == 'p')
+		return (2);
+	else if ((g_p->type == 'X' || g_p->type == 'x') && g_p->flags[1] == '#')
+		return (2);
+	else if (g_p->sign || g_p->flags[2] == '+' || g_p->flags[2] == ' ')
+		return (1);
+	return (0);
 }
 
 void		print_output(char *format)

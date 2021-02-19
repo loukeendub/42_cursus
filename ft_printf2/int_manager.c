@@ -6,7 +6,7 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 15:28:38 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/18 15:30:52 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/19 11:38:01 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,15 +51,9 @@ size_t	set_len(const char *format)
 	size_t	size;
 
 	if (g_p->wd > g_p->pr || (size_t)g_p->wd > ft_strlen(format))
-	{
 		size = g_p->wd;
-		g_p->filler = 1; //filler prints spaces
-	}
 	if (g_p->wd < g_p->pr && (size_t)g_p->pr > ft_strlen(format))
-	{
 		size = g_p->pr;
-		g_p->filler = 0; //filler prints zeroes
-	}
 	if (g_p->wd < g_p->pr && (size_t)g_p->pr < ft_strlen(format))
 		size = ft_strlen(format);
 	return (size);

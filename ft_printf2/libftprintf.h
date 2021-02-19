@@ -6,7 +6,7 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 14:02:53 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/18 18:59:52 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/19 12:28:08 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ typedef	struct	s_format
 {
 	int		count;
 	int		sign;
-	int		filler;
 	char	flags[3];
 	int		wd;
 	int		pr;
@@ -37,6 +36,7 @@ t_format		*g_p;
 ** ft_printf
 */
 void			convert_input();
+int				set_prefix(void);
 void			print_output(char *format);
 int				ft_printf(const char *fstr, ...);
 /*
@@ -55,8 +55,9 @@ char			*ft_utoa(unsigned int n, int base);
 void			int_print_flags(char *str);
 size_t			set_len(const char *format);
 /*
-** print_order
+** print_order [FULL]
 */
+int				print_prefix(int i);
 void			print_order(char *str);
 void			print_order_s(char *str);
 void			convert_c(void);

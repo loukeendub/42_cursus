@@ -6,11 +6,34 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/18 13:56:26 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/18 19:00:29 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/19 13:11:06 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+
+void	order_minus(char *str, int prefix)
+{
+	int	i;
+	int	len;
+
+	i = 0;
+	len = ft_strlen(str);
+	i = print_prefix(prefix);
+	while (i++ < g_p->pr - len)
+		ft_putchar('0');
+	if ((g_p->type == 'x' || g_p->type == 'X') && g_p->flags[1] == '#')
+	{
+		ft_putstr(g_p->type == 'x' ? "0x" : "0X");
+		i++;
+		len--;
+	}
+	ft_putstr(str);
+	if (!(g_p->flags[2] == '#'))
+		len++;
+	while (i++ < g_p->wd - (len - 1))
+		ft_putchar(' ');
+}
 
 int		print_prefix(int i)
 {
@@ -26,7 +49,8 @@ int		print_prefix(int i)
 	}
 	else if (g_p->flags[2] == '+')
 	{
-		ft_putchar('+');
+		if (!(g_p->type == 'x' || g_p->type == 'X'))
+			ft_putchar('+');
 		i = 0;
 	}
 	else if (g_p->flags[2] == ' ')
@@ -45,24 +69,21 @@ void	print_order(char *str)
 
 	i = 0;
 	len = ft_strlen(str);
-	prefix = (g_p->type == 'p') * 2 || g_p->sign || g_p->flags[2] == '+' || g_p->flags[2] == ' ';
+	prefix = set_prefix();
 	if (g_p->flags[0] == '-')
-	{
-		i = print_prefix(prefix);
-		while (i++ < g_p->pr - len)
-			ft_putchar('0');
-		ft_putstr(str);
-		while (i++ < g_p->wd - len - prefix)
-			ft_putchar(' ');
-		printf("[%d]", prefix);
-	}
+		order_minus(str, prefix);
 	else
 	{
-		while (i++ < g_p->wd - g_p->pr - 1)
+		while (i++ < g_p->wd - (g_p->pr >= 0 ? g_p->pr : 0) - prefix - len)
 			ft_putchar(' ');
 		i = print_prefix(prefix);
 		while (i++ < g_p->pr - len)
 			ft_putchar('0');
+		if ((g_p->type == 'x' || g_p->type == 'X') && g_p->flags[1] == '#')
+		{
+			ft_putstr(g_p->type == 'x' ? "0x" : "0X");
+			i++;
+		}
 		ft_putstr(str);
 	}
 }
