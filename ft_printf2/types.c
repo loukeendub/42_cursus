@@ -6,7 +6,7 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/18 14:57:41 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/18 18:54:47 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/24 14:39:16 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	convert_d(void)
 		g_p->sign = 1;
 	}
 	tmp = ft_utoa(n, 10);
-	print_order(tmp);
+	order_manager_d(tmp);
 }
 
 void	convert_u(void)
@@ -32,7 +32,7 @@ void	convert_u(void)
 	char	*tmp;
 
 	tmp = ft_utoa(va_arg(g_p->args, unsigned int), 10);
-	print_order(tmp);
+	//order_manager_u(tmp);
 }
 
 void	convert_x(void)
@@ -40,7 +40,7 @@ void	convert_x(void)
 	char	*tmp;
 
 	tmp = ft_utoa(va_arg(g_p->args, unsigned int), 16);
-	print_order(tmp);
+	//order_manager_x(tmp);
 }
 
 void	convert_p(void)
@@ -48,7 +48,7 @@ void	convert_p(void)
 	char	*tmp;
 
 	tmp = ft_utoa(va_arg(g_p->args, size_t), 16);
-	print_order(tmp);
+	//order_manager_p(tmp);
 }
 
 void	convert_s(void)
