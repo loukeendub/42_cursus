@@ -6,7 +6,7 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/18 14:57:41 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/25 14:14:58 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/25 15:07:19 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	convert_p(void)
 	char	*tmp;
 
 	tmp = ft_utoa(va_arg(g_p->args, size_t), 16);
-	//order_manager_p(tmp);
+	order_manager_p(tmp);
 }
 
 void	convert_s(void)

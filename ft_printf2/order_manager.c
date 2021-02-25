@@ -6,7 +6,7 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/18 13:56:26 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/25 15:02:41 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/25 15:06:47 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,11 @@ void	order_manager_x(char *s)
 
 void	order_manager_p(char *s)
 {
+	unsigned int	len;
 
+	len = ft_strlen(s);
+	if (g_p->flags[0] == '-')
+		print_minus_p(s, len);
+	else
+		print_standard_p(s, len);
 }
