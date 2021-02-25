@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 10:25:39 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/25 15:22:11 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/25 18:38:15 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,15 @@ int	main(void)
 {
 	int		*p;
 	int		i;
-	//char	*str = "stafava";
+	int		res1;
+	//char	*str = "hello, world!";
 	//char	c = 'C';
 
 	i = 15;
 	p = &i;
-	char s[] = "|%-15.25p|\n";
-	printf(s, i);
-	ft_printf(s, i);
+	//char s[] = "|%015u|\n";
+	res1 = printf("hello, world!");
+	ft_printf("");
 	puts("\n--- § ---");
 	printf("flags : %c %c %c\n", g_p->flags[0], g_p->flags[1], g_p->flags[2]);
 	printf("width : %d\n", g_p->wd);
@@ -33,6 +34,7 @@ int	main(void)
 	printf("type : %c\n", g_p->type);
 	printf("sign : %d\n", g_p->sign);
 	printf("count : %d\n", g_p->count);
+	printf("printf count : %d\n", res1);
 	return (0);
 }
 /*

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 14:03:04 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/25 12:14:09 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/25 18:53:02 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,8 +78,8 @@ void		print_output(char *format)
 
 int			ft_printf(const char *fstr, ...)
 {
-	if (!fstr || !*fstr)
-		return (-1);
+	if (!fstr)
+		return (0);
 	if (!(g_p = (t_format *)malloc(sizeof(t_format))))
 		return (-1);
 	va_start(g_p->args, fstr);

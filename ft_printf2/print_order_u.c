@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_order_u.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 11:10:10 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/25 14:21:33 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/25 18:35:39 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void	print_standard_u(char *s, int len)
 	{
 		if (g_p->flags[0] == '0')
 			while ((g_p->wd--) - len > 0)
-				ft_putchar(' ');
+				ft_putchar('0');
 		else
 			while (g_p->wd - len > 0)
 			{

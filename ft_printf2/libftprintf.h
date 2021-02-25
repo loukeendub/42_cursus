@@ -6,7 +6,7 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 14:02:53 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/25 15:17:53 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/25 15:48:01 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,8 +107,6 @@ void			print_minus_p(char *s, int len);
 void			ft_putchar(int c);
 size_t			ft_strlen(const char *s);
 void			ft_putstr(char *s);
-char			*ft_strdup(const char *s1);
-size_t			ft_strlcpy(char *dst, const char *src, size_t dstsize);
 /*
 ** types [FULL]
 */
