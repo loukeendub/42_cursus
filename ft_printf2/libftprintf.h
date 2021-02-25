@@ -6,7 +6,7 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 14:02:53 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/25 11:01:44 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/25 12:14:00 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,30 +55,36 @@ char			*ft_utoa(unsigned int n, int base);
 void			int_print_flags(char *str);
 size_t			set_len(const char *format);
 /*
-** print_order [FULL]
+** print_order_cs
 */
-int				print_prefix(int i);
-void			print_order(char *str);
 void			print_order_s(char *str);
 void			convert_c(void);
 /*
 ** order_manager
 */
 void			order_manager_d(char *s);
+void			order_manager_u(char *s);
 /*
-** order_d
+** print_order_d
 */
 void			zero_flag_d(int len);
 void			standard_order_d(int len);
 void			noprec_order_d(int len);
 void			print_standard_d(char *s, int len);
 /*
-** order_minus_d
+** print_order_minus_d
 */
 void			zero_flag_minus_d(int len);
 void			standard_order_minus_d(char *s, int len);
 void			noprec_order_minus_d(char *s, int len);
 void			print_minus_d(char *s, int len);
+/*
+** print_order_u
+*/
+void			standard_order_u(int len);
+void			print_standard_u(char *s, int len);
+void			minus_order_u(int len);
+void			print_minus_u(char *s, int len);
 /*
 ** utils [FULL]
 */

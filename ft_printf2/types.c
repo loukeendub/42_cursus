@@ -6,7 +6,7 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/18 14:57:41 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/24 14:39:16 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/25 11:07:13 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	convert_u(void)
 	char	*tmp;
 
 	tmp = ft_utoa(va_arg(g_p->args, unsigned int), 10);
-	//order_manager_u(tmp);
+	order_manager_u(tmp);
 }
 
 void	convert_x(void)
