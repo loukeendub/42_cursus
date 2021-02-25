@@ -6,7 +6,7 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 14:02:53 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/24 19:26:47 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/25 11:01:44 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,14 @@ void			order_manager_d(char *s);
 */
 void			zero_flag_d(int len);
 void			standard_order_d(int len);
+void			noprec_order_d(int len);
 void			print_standard_d(char *s, int len);
 /*
 ** order_minus_d
 */
 void			zero_flag_minus_d(int len);
 void			standard_order_minus_d(char *s, int len);
+void			noprec_order_minus_d(char *s, int len);
 void			print_minus_d(char *s, int len);
 /*
 ** utils [FULL]
