@@ -6,7 +6,7 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 10:25:39 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/25 12:12:15 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/25 14:57:24 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ int	main(void)
 	//char	*str = "stafava";
 	//char	c = 'C';
 
-	i = 0;
+	i = 15;
 	p = &i;
-	char s[] = "|% .u|\n";
+	char s[] = "|%#15.20X|\n";
 	printf(s, i);
 	ft_printf(s, i);
 	puts("\n--- § ---");

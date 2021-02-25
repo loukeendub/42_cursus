@@ -6,7 +6,7 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 14:02:53 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/25 12:14:00 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/25 14:56:41 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ void			convert_c(void);
 */
 void			order_manager_d(char *s);
 void			order_manager_u(char *s);
+void			order_manager_x(char *s);
 /*
 ** print_order_d
 */
@@ -85,6 +86,13 @@ void			standard_order_u(int len);
 void			print_standard_u(char *s, int len);
 void			minus_order_u(int len);
 void			print_minus_u(char *s, int len);
+/*
+** print_order_x
+*/
+void			standard_order_x(char *s, int len);
+void			print_standard_x(char *s, int len);
+void			minus_order_x(char *s, int len);
+void			print_minus_x(char *s, int len);
 /*
 ** utils [FULL]
 */
