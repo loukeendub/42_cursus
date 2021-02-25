@@ -6,7 +6,7 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/18 13:56:26 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/25 14:31:18 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/25 15:02:41 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,7 @@ void	order_manager_x(char *s)
 		print_standard_x(s, len);
 }
 
-//void	order_manager_p(char *s){}
+void	order_manager_p(char *s)
+{
+
+}
