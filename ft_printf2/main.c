@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 10:25:39 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/26 16:36:46 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/26 17:38:26 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ int	main(void)
 	i = 15;
 	p = &i;
 	//char s[] = "|%015u|\n";
-	res1 = printf("*|%32s.|\n", NULL);
-	ft_printf("#|%32s.|\n", NULL);
+	res1 = printf("*|%-8.5u|\n", 34);
+	ft_printf("#|%-8.5u|\n", 34);
 	puts("\n--- § ---");
 	printf("flags : %c %c %c\n", g_p->flags[0], g_p->flags[1], g_p->flags[2]);
 	printf("width : %d\n", g_p->wd);

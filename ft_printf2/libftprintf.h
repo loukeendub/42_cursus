@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 14:02:53 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/26 16:26:32 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/26 17:37:03 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,9 @@ void			order_manager_u(char *s);
 void			order_manager_x(char *s);
 void			order_manager_p(char *s);
 /*
-** print_order_d
+** print_order_d [FULL]
 */
+void			zero_flag_noprec_d(int len);
 void			zero_flag_d(int len);
 void			standard_order_d(int len);
 void			noprec_order_d(int len);
