@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 14:02:53 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/26 17:37:03 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/26 18:53:15 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,10 @@ int				parse_length(char **c);
 /*
 ** int_manager [FULL]
 */
-int				sign_manager(int n);
 int				ft_intcount_base(unsigned int n, int base);
+int				ft_szcount_base(size_t n, int base);
 char			*ft_utoa(unsigned int n, int base);
-void			int_print_flags(char *str);
+char			*ft_sztoa(size_t n, int base);
 size_t			set_len(const char *format);
 /*
 ** print_order_cs
@@ -88,12 +88,13 @@ void			print_minus_d(char *s, int len);
 */
 void			standard_order_u(int len);
 void			print_standard_u(char *s, int len);
-void			minus_order_u(int len);
+void			minus_order_u(int len, char *s);
 void			print_minus_u(char *s, int len);
 /*
 ** print_order_x
 */
 void			standard_order_x(char *s, int len);
+void			zero_fill_x(int len);
 void			print_standard_x(char *s, int len);
 void			minus_order_x(char *s, int len);
 void			print_minus_x(char *s, int len);

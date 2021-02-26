@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_order_x.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/25 12:40:54 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/25 14:56:29 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/26 18:11:03 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,24 @@ void	standard_order_x(char *s, int len)
 	}
 }
 
+void	zero_fill_x(int len)
+{
+	if (g_p->flags[0] == '0')
+		while ((g_p->wd--) - len > 0)
+		{
+			if (g_p->pr > len || g_p->pr < 0)
+				ft_putchar('0');
+			else
+				ft_putchar(' ');
+		}
+	else
+		while (g_p->wd - len > 0)
+		{
+			ft_putchar(' ');
+			g_p->wd--;
+		}
+}
+
 void	print_standard_x(char *s, int len)
 {
 	if (g_p->pr == 0 && s[0] == '0')
@@ -47,15 +65,7 @@ void	print_standard_x(char *s, int len)
 			ft_putstr(g_p->type == 'x' ? "0x" : "0X");
 			g_p->wd -= 2;
 		}
-		if (g_p->flags[0] == '0')
-			while ((g_p->wd--) - len > 0)
-				ft_putchar('0');
-		else
-			while (g_p->wd - len > 0)
-			{
-				ft_putchar(' ');
-				g_p->wd--;
-			}
+		zero_fill_x(len);
 	}
 	ft_putstr(s);
 }

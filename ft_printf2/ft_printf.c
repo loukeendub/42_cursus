@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 14:03:04 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/26 14:39:49 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/26 17:44:19 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,6 @@ static void	struct_init(void)
 
 void		convert_input(void)
 {
-	char	*tmp;
-
-	tmp = 0;
 	if (g_p->type == 'd' || g_p->type == 'i')
 		convert_d();
 	else if (g_p->type == 'u')
