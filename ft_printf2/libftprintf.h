@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 14:02:53 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/26 14:43:11 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/26 16:26:32 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ size_t			set_len(const char *format);
 /*
 ** print_order_cs
 */
-void			prec_manager_s(char *str);
-void			wd_manager_s(int i, int len);
+void			prec_manager_s(char *str, int prec);
+void			wd_manager_s(int i, int len, int prec);
 void			print_order_s(char *str);
 void			print_order_c(char t);
 void			convert_c(void);
