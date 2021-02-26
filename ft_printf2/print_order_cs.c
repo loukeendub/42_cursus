@@ -1,16 +1,51 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_order2.c                                     :+:      :+:    :+:   */
+/*   print_order_cs.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 11:05:20 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/24 11:24:59 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/26 14:52:10 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
+
+void	prec_manager_s(char *str)
+{
+	int	len;
+
+	len = ft_strlen(str);
+	if (g_p->pr < 0)
+		ft_putstr(str);
+	else
+		while ((len - g_p->pr > 0 ? g_p->pr-- : len--) > 0)
+		{
+			ft_putchar(*str);
+			str++;
+		}
+}
+
+void	wd_manager_s(int i, int len)
+{
+	if (g_p->pr < 0)
+	{
+		while (i < g_p->wd - len)
+		{
+			ft_putchar(g_p->flags[0] == '0' ? '0' : ' ');
+			i++;
+		}
+	}
+	else
+	{
+		while (i < g_p->wd - (g_p->pr > len ? len : g_p->pr))
+		{
+			ft_putchar(' ');
+			i++;
+		}
+	}
+}
 
 void	print_order_s(char *str)
 {
@@ -21,30 +56,20 @@ void	print_order_s(char *str)
 	i = 0;
 	if (g_p->flags[0] == '-')
 	{
-		ft_putstr(str);
-		while (i < g_p->wd - len)
-		{
-			ft_putchar(' ');
-			i++;
-		}
+		prec_manager_s(str);
+		wd_manager_s(i, len);
 	}
 	else
 	{
-		while (i < g_p->wd - len)
-		{
-			ft_putchar(' ');
-			i++;
-		}
-		ft_putstr(str);
+		wd_manager_s(i, len);
+		prec_manager_s(str);
 	}
 }
 
-void	convert_c(void)
+void	print_order_c(char t)
 {
-	char	t;
-	int		i;
+	int	i;
 
-	t = va_arg(g_p->args, int);
 	i = 0;
 	if (g_p->flags[0] == '-')
 	{
@@ -59,9 +84,20 @@ void	convert_c(void)
 	{
 		while (i < g_p->wd - 1)
 		{
-			ft_putchar(' ');
+			ft_putchar(g_p->flags[0] == '0' ? '0' : ' ');
 			i++;
 		}
 		ft_putchar(t);
 	}
+}
+
+void	convert_c(void)
+{
+	char	t;
+
+	if (g_p->type == '%')
+		t = '%';
+	else
+		t = va_arg(g_p->args, int);
+	print_order_c(t);
 }

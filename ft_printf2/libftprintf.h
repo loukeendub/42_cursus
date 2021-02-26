@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libftprintf.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 14:02:53 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/25 15:48:01 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/26 14:43:11 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ t_format		*g_p;
 ** ft_printf
 */
 void			convert_input();
-int				set_prefix(void);
 void			print_output(char *format);
 int				ft_printf(const char *fstr, ...);
 /*
@@ -57,7 +56,10 @@ size_t			set_len(const char *format);
 /*
 ** print_order_cs
 */
+void			prec_manager_s(char *str);
+void			wd_manager_s(int i, int len);
 void			print_order_s(char *str);
+void			print_order_c(char t);
 void			convert_c(void);
 /*
 ** order_manager
@@ -102,7 +104,7 @@ void			print_standard_p(char *s, int len);
 void			minus_order_p(char *s, int len);
 void			print_minus_p(char *s, int len);
 /*
-** utils [FULL]
+** utils
 */
 void			ft_putchar(int c);
 size_t			ft_strlen(const char *s);

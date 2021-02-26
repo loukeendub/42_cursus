@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 10:25:39 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/25 18:38:15 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/26 14:52:41 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ int	main(void)
 	i = 15;
 	p = &i;
 	//char s[] = "|%015u|\n";
-	res1 = printf("hello, world!");
-	ft_printf("");
+	res1 = printf("*|%-7.5s|\n", "yolo");
+	ft_printf("#|%-7.5s|\n", "yolo");
 	puts("\n--- § ---");
 	printf("flags : %c %c %c\n", g_p->flags[0], g_p->flags[1], g_p->flags[2]);
 	printf("width : %d\n", g_p->wd);

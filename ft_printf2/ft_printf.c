@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 14:03:04 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/25 18:55:40 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/02/26 14:39:49 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,17 +42,8 @@ void		convert_input(void)
 		convert_s();
 	else if (g_p->type == 'p')
 		convert_p();
-}
-
-int			set_prefix(void)
-{
-	if (g_p->type == 'p')
-		return (2);
-	else if ((g_p->type == 'X' || g_p->type == 'x') && g_p->flags[1] == '#')
-		return (2);
-	else if (g_p->sign || g_p->flags[2] == '+' || g_p->flags[2] == ' ')
-		return (1);
-	return (0);
+	else if (g_p->type == '%')
+		convert_c();
 }
 
 void		print_output(char *format)
@@ -67,8 +58,15 @@ void		print_output(char *format)
 			parse_width(&format);
 			parse_precision(&format);
 			parse_length(&format);
-			g_p->type = *format;
-			convert_input();
+			if (*format == 'd' || *format == 'i' || *format == 'u'\
+			|| *format == 'x' || *format == 'X' || *format == 'p'\
+			|| *format == 's' || *format == 'c' || *format == '%')
+			{
+				g_p->type = *format;
+				convert_input();
+			}
+			else
+				ft_putstr(--format);
 		}
 		else
 			ft_putchar(*format);
