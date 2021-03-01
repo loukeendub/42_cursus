@@ -6,7 +6,11 @@
 /*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 10:46:37 by lmarzano          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2021/01/28 16:16:48 by lmarzano         ###   ########.fr       */
+=======
+/*   Updated: 2021/01/28 17:55:19 by lmarzano         ###   ########.fr       */
+>>>>>>> origin/main
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +56,11 @@ char	*ft_realloc_finale(char **line)
 	int		i;
 
 	i = 0;
+<<<<<<< HEAD
 	if (!(new = malloc(ft_strlen(*line)+ 1)))
+=======
+	if (!(new = malloc(ft_strlen(*line) + 1)))
+>>>>>>> origin/main
 		return (NULL);
 	if (*line)
 	{
