@@ -6,7 +6,7 @@
 #    By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/01 11:08:25 by lmarzano          #+#    #+#              #
-#    Updated: 2021/03/01 12:49:50 by lmarzano         ###   ########.fr        #
+#    Updated: 2021/03/01 13:58:38 by lmarzano         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,8 @@ ${NAME}	:	${OBJS}
 			${AR} ${NAME} ${OBJS}
 
 all		:	${NAME}
+
+bonus	: 	re
 
 clean	:
 			rm -f ${OBJS}

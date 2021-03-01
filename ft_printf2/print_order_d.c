@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/24 12:20:00 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/26 17:36:27 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/03/01 13:52:15 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,25 @@
 
 void	zero_flag_noprec_d(int len)
 {
-	while ((g_p->wd--) - len > 0)
-	{
-		if (g_p->pr > len || g_p->pr < 0)
-			ft_putchar('0');
-		else
-			ft_putchar(' ');
-	}
 	if (g_p->flags[2] == '+')
 		ft_putchar(g_p->sign == 0 ? '+' : '-');
 	else if (g_p->sign == 1)
 		ft_putchar('-');
+	while ((g_p->wd--) - len > 0)
+		ft_putchar('0');
 }
 
 void	zero_flag_d(int len)
 {
+	while (g_p->wd - len > 0 && g_p->wd > g_p->pr && g_p->wd--)
+		ft_putchar(' ');
 	if (g_p->flags[2] == '+')
 		ft_putchar(g_p->sign == 0 ? '+' : '-');
 	else if (g_p->sign == 1)
 		ft_putchar('-');
 	while ((g_p->wd--) - len > 0)
-	{
 		if (g_p->pr > len || g_p->pr < 0)
 			ft_putchar('0');
-		else
-			ft_putchar(' ');
-	}
 }
 
 void	standard_order_d(int len)
@@ -70,7 +63,7 @@ void	noprec_order_d(int len)
 		g_p->wd--;
 	if (g_p->flags[0] == '0')
 	{
-		if (len > g_p->pr && g_p->pr > 0)
+		if (len > g_p->pr && g_p->pr < 0)
 			zero_flag_noprec_d(len);
 		else
 			zero_flag_d(len);
