@@ -1,5 +1,6 @@
 {
 	"files.associations": {
-		"ios": "c"
+		"libftprintf.h": "c",
+		"stdarg.h": "c"
 	}
 }

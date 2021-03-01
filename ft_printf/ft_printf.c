@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 14:03:04 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/03/01 12:15:29 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/03/01 13:56:25 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,10 @@ int			ft_printf(const char *fstr, ...)
 		return (0);
 	if (!(g_p = (t_format *)malloc(sizeof(t_format))))
 		return (-1);
+	g_p->count = 0;
 	va_start(g_p->args, fstr);
 	print_output((char *)fstr);
 	va_end(g_p->args);
+	free(g_p);
 	return (g_p->count);
 }
