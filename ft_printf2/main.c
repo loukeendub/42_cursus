@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/03 10:25:39 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/03/01 13:07:32 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/03/01 15:32:51 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,12 @@ int	main(void)
 	//printf("precision : %d\n", g_p->pr);
 	//printf("length : %c%c\n", g_p->length[0], g_p->length[1]);
 	//printf("type : [%c]\n", g_p->type);
-	//printf("sign : %d\n", g_p->sign);
 	//printf("count : %d\n", g_p->count);
 	//printf("printf count : %d\n", res1);
-	char s[] = "|%0*.*d|\n";
-	printf(s, 4, 0, -12);
-	ft_printf(s, 4, 0, -12);
+	char s[] = "| % d |\n";
+	printf(s, -1);
+	ft_printf(s, -1);
+	printf("sign : %d\n", g_p->sign);
 	return (0);
 }
 /*

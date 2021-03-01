@@ -6,7 +6,7 @@
 #    By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/01 11:08:25 by lmarzano          #+#    #+#              #
-#    Updated: 2021/03/01 13:58:38 by lmarzano         ###   ########.fr        #
+#    Updated: 2021/03/01 14:37:24 by lmarzano         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,4 +51,4 @@ fclean	:	clean
 
 re		:	fclean all
 
-.PHONY	:	all clean fclean re
+.PHONY	:	all clean fclean re bonus
