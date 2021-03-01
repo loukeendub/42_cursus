@@ -3,86 +3,82 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/01 11:09:18 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/17 16:27:40 by lmarzano         ###   ########.fr       */
+/*   Created: 2021/02/17 14:03:04 by lmarzano          #+#    #+#             */
+/*   Updated: 2021/03/01 12:15:29 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libftprintf.h"
 
+static void	struct_init(void)
+{
+	g_p->flags[0] = 0;
+	g_p->flags[1] = '\0';
+	g_p->flags[2] = '\0';
+	g_p->wd = 0;
+	g_p->pr = -1;
+	g_p->length[0] = '\0';
+	g_p->length[1] = '\0';
+	g_p->type = '\0';
+	g_p->sign = 0;
+}
+
 void		convert_input(void)
 {
-	char	*tmp;
-
-	tmp = 0;
-	if (g_c->type == 'c')
-		ft_putchar(va_arg(g_c->args, int));
-	if (g_c->type == 's')
-		ft_putstr(va_arg(g_c->args, char *));
-	else
-	{
-		if (g_c->type == 'd' || g_c->type == 'i')
-			tmp = d_manager(tmp);
-		if (g_c->type == 'u')
-			tmp = u_manager(tmp);
-		if (g_c->type == 'x' || g_c->type == 'X')
-			tmp = hex_manager(tmp);
-		if (g_c->type == 'p')
-			tmp = ptr_conv(va_arg(g_c->args, size_t));
-		ft_putstr(tmp);
-	}
+	if (g_p->type == 'd' || g_p->type == 'i')
+		convert_d();
+	else if (g_p->type == 'u')
+		convert_u();
+	else if (g_p->type == 'x' || g_p->type == 'X')
+		convert_x();
+	else if (g_p->type == 'c')
+		convert_c();
+	else if (g_p->type == 's')
+		convert_s();
+	else if (g_p->type == 'p')
+		convert_p();
+	else if (g_p->type == '%')
+		convert_c();
 }
 
-static void	init(void)
+void		print_output(char *format)
 {
-	g_c->flags[0] = 0;
-	g_c->flags[1] = '\0';
-	g_c->flags[2] = '\0';
-	g_c->wd = 0;
-	g_c->pr = -1;
-	g_c->length[0] = '\0';
-	g_c->length[1] = '\0';
-	g_c->type = '\0';
-	g_c->sign = 0;
-}
-
-void		print_output(char *fstr)
-{
-	while (*fstr)
+	while (*format)
 	{
-		if (*fstr != '%' && *fstr != g_c->type)
+		if (*format == '%')
 		{
-			ft_putchar(*fstr);
-			fstr++;
+			format++;
+			struct_init();
+			parse_flags(&format);
+			parse_width(&format);
+			parse_precision(&format);
+			parse_length(&format);
+			if (*format == 'd' || *format == 'i' || *format == 'u'\
+			|| *format == 'x' || *format == 'X' || *format == 'p'\
+			|| *format == 's' || *format == 'c' || *format == '%')
+			{
+				g_p->type = *format;
+				convert_input();
+			}
+			else
+				ft_putstr(--format);
 		}
-		else if (*fstr == '%')
-		{
-			fstr++;
-			init();
-			check_flags(&fstr);
-			check_width(&fstr);
-			check_precision(&fstr);
-			check_length(&fstr);
-			check_type(&fstr);
-		}
-		if (*fstr == g_c->type)
-		{
-			convert_input();
-			fstr++;
-		}
+		else
+			ft_putchar(*format);
+		format++;
 	}
 }
 
 int			ft_printf(const char *fstr, ...)
 {
-	if (!fstr || !*fstr)
+	if (!fstr)
+		return (0);
+	if (!(g_p = (t_format *)malloc(sizeof(t_format))))
 		return (-1);
-	if (!(g_c = (t_format *)malloc(sizeof(t_format))))
-		return (-1);
-	va_start(g_c->args, fstr);
-	g_c->count = 0;
+	va_start(g_p->args, fstr);
 	print_output((char *)fstr);
-	return (g_c->count);
+	va_end(g_p->args);
+	return (g_p->count);
 }

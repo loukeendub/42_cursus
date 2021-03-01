@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_struct.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/02/17 14:15:08 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/18 15:07:00 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/03/01 12:35:13 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,15 @@ void	parse_width(char **c)
 		(*c)++;
 	}
 	if (**c == '*')
+	{
 		g_p->wd = va_arg(g_p->args, int);
+		(*c)++;
+	}
+	if (g_p->wd < 0)
+	{
+		g_p->flags[0] = '-';
+		g_p->wd *= -1;
+	}
 }
 
 void	parse_precision(char **c)

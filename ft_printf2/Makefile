@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+         #
+#    By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/02/01 11:08:25 by lmarzano          #+#    #+#              #
-#    Updated: 2021/02/25 15:46:09 by lmarzano         ###   ########.fr        #
+#    Updated: 2021/03/01 12:49:50 by lmarzano         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,10 +22,15 @@ SRCS	=	ft_printf.c \
 			print_order_x.c \
 			types.c \
 			utils.c
+
 OBJS	=	${SRCS:.c=.o}
+
 CC		=	gcc
+
 CFLAGS	=	-Wall -Wextra -Werror
+
 NAME	=	libftprintf.a
+
 AR		=	ar -rcs
 
 %.o		: %.c
@@ -35,11 +40,6 @@ ${NAME}	:	${OBJS}
 			${AR} ${NAME} ${OBJS}
 
 all		:	${NAME}
-
-test	:	all
-			${CC} ${CFLAGS} ${NAME} main.c -o test
-			./test
-			rm test
 
 clean	:
 			rm -f ${OBJS}

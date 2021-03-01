@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tools.c                                            :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/02/03 14:03:45 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/02/16 17:09:00 by lmarzano         ###   ########.fr       */
+/*   Created: 2021/02/17 14:37:37 by lmarzano          #+#    #+#             */
+/*   Updated: 2021/02/26 11:59:27 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_putchar(int c)
 {
 	write(1, &c, 1);
-	g_c->count++;
+	g_p->count++;
 }
 
 size_t	ft_strlen(const char *s)
@@ -35,39 +35,4 @@ void	ft_putstr(char *s)
 		ft_putchar(*s);
 		s++;
 	}
-}
-
-char	*ft_strdup(const char *s1)
-{
-	size_t	len;
-	char	*s2;
-
-	len = ft_strlen(s1);
-	if (!(s2 = malloc(len + 1)))
-		return (NULL);
-	ft_strlcpy(s2, s1, len + 1);
-	return (s2);
-}
-
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
-{
-	size_t	len;
-	size_t	i;
-
-	len = 0;
-	i = 0;
-	if (!dst)
-		return (0);
-	while (src[len])
-		len++;
-	if (dstsize != 0)
-	{
-		while (src[i] && i < (dstsize - 1))
-		{
-			dst[i] = src[i];
-			i++;
-		}
-		dst[i] = '\0';
-	}
-	return (len);
 }
