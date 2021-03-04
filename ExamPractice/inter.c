@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 14:15:13 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/03/03 17:31:02 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/03/04 14:58:02 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	parse_char(char *s, int i)
 		if (s[i] == s[k])
 			k = 
 	}
-	return (k)
+	return (k);
 }
 
 int	main(int argc, char **argv)
