@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/05 13:11:48 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/03/05 13:39:41 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/03/05 14:53:33 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,4 +43,4 @@ int	main(int argc, char **argv)
 }
 
 // time	: 7m20s
-// error: 1. = line 30 "c = argv[shelf][item]"
+// error: 1. = line 30 "c = inventory[argv[shelf][item]]"

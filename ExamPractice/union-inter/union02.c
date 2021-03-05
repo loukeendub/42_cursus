@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   inter.c                                            :+:      :+:    :+:   */
+/*   union02.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/03/03 14:15:13 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/03/05 14:35:13 by lmarzano         ###   ########.fr       */
+/*   Created: 2021/03/05 17:19:28 by lmarzano          #+#    #+#             */
+/*   Updated: 2021/03/05 17:28:19 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,33 @@
 
 int	main(int argc, char **argv)
 {
-	char	inventory[256] = {0};
-	int		shelf;
-	int		item;
-	unsigned char c;
+	unsigned char	c;
+	char			inv[256] = {0};
+	int				sh;
+	int				itm;
 
 	if (argc == 3)
 	{
-		shelf = 2;
-		while (shelf > 0)
+		sh = 1;
+		while (sh < 3)
 		{
-			item = 0;
-			while (argv[shelf][item])
+			itm = 0;
+			while (argv[sh][itm])
 			{
-				c = argv[shelf][item];
-				if (shelf == 2 && !inventory[c])
-					inventory[c] = 1;
-				else if (shelf == 1 && inventory[c] == 1)
+				c = argv[sh][itm];
+				if (inv[c] == 0)
 				{
+					inv[c] = 1;
 					write(1, &c, 1);
-					inventory[c] = 2;
 				}
-				item++;
+				itm++;
 			}
-			shelf--;
+			sh++;
 		}
 	}
 	write(1, "\n", 1);
 	return (0);
 }
+
+// time		: 6min43sec;
+// error	: none!
