@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/03 14:15:13 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/03/05 14:35:13 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/03/05 17:38:57 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,29 +15,29 @@
 int	main(int argc, char **argv)
 {
 	char	inventory[256] = {0};
-	int		shelf;
-	int		item;
+	int		i;
+	int		j;
 	unsigned char c;
 
 	if (argc == 3)
 	{
-		shelf = 2;
-		while (shelf > 0)
+		i = 2;
+		while (i > 0)
 		{
-			item = 0;
-			while (argv[shelf][item])
+			j = 0;
+			while (argv[i][j])
 			{
-				c = argv[shelf][item];
-				if (shelf == 2 && !inventory[c])
+				c = argv[i][j];
+				if (i == 2 && !inventory[c])
 					inventory[c] = 1;
-				else if (shelf == 1 && inventory[c] == 1)
+				else if (i == 1 && inventory[c] == 1)
 				{
 					write(1, &c, 1);
 					inventory[c] = 2;
 				}
-				item++;
+				j++;
 			}
-			shelf--;
+			i--;
 		}
 	}
 	write(1, "\n", 1);
