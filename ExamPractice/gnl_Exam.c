@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-//#include "get_next_line.h"
+#include "get_next_line.h"
 
 int get_next_line(char **line)
 {
@@ -24,23 +24,20 @@ int get_next_line(char **line)
 	(*line)[len] = 0;
 	while ((ret = read(0 , &(*line)[i], 1)) == 1)
 	{
-		if ((*line)[i] != '\n')
-			i++;
-		else
+		if ((*line)[i] == '\n')
 		{
 			(*line)[i] = 0;
 			return (1);
 		}
+		i++;
 	}
 	(*line)[i] = 0;
 	return (ret);
 }
-​
 int main()
 {
 	int		r;
 	char	*line;
-​
 	line = NULL;
 	while ((r = get_next_line(&line) > 0))
 	{
