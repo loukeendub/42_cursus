@@ -6,10 +6,9 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 10:46:37 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/03/19 14:52:53 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/03/19 14:55:42 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "get_next_line.h"
 
@@ -53,11 +52,7 @@ char	*ft_realloc_finale(char **line)
 	int		i;
 
 	i = 0;
-<<<<<<< HEAD
-	if (!(new = malloc(ft_strlen(*line)+ 1)))
-=======
 	if (!(new = malloc(ft_strlen(*line) + 1)))
->>>>>>> origin/main
 		return (NULL);
 	if (*line)
 	{
