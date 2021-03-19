@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/18 16:36:36 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/03/18 19:01:31 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/03/19 14:41:28 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,144 +18,120 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
-size_t	ft_strlen(char *s)
+size_t	ft_strlen(const char *s)
 {
 	size_t	i;
 
 	i = 0;
-	if (!s)
-		return (0);
 	while (s[i])
 		i++;
 	return (i);
 }
 
-char	*ft_realloc(char **line)
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	char	*new;
-	int		i;
+	size_t	len;
+	size_t	i;
 
+	len = 0;
 	i = 0;
-	if (!(new = malloc(ft_strlen(*line) + 1 + 1)))
-		return (NULL);
-	if (*line)
-	{
-		while ((*line)[i])
-		{
-			new[i] = (*line)[i];
-			i++;
-		}
-		free(*line);
-		*line = NULL;
-	}
-	new[i] = '\0';
-	return (new);
-}
-
-char	*ft_realloc_finale(char **line)
-{
-	char	*new;
-	int		i;
-
-	i = 0;
-	if (!(new = malloc(ft_strlen(*line) + 1)))
-		return (NULL);
-	if (*line)
-	{
-		while ((*line)[i])
-		{
-			new[i] = (*line)[i];
-			i++;
-		}
-		free(*line);
-		*line = NULL;
-	}
-	new[i] = '\0';
-	return (new);
-}
-
-int	just_do_it(char **line, char *buffer)
-{
-	int	j;
-	int	i;
-	int len;
-
-	j = 0;
-	i = 0;
-	*line = ft_realloc(line);
-	len = ft_strlen(*line);
-	while (buffer[j] && buffer[j] != '\n')
-	{
-		(*line)[len + j] = buffer[j];
-		j++;
-	}
-	(*line)[len + j] = '\0';
-	if (!buffer[j])
-	{
-		buffer[0] = 0;
+	if (!dst)
 		return (0);
+	while (src[len])
+		len++;
+	if (dstsize != 0)
+	{
+		while (src[i] && i < (dstsize - 1))
+		{
+			dst[i] = src[i];
+			i++;
+		}
+		dst[i] = '\0';
 	}
-	j++;
-	while (buffer[j])
-		buffer[i++] = buffer[j++];
-	buffer[i] = '\0';
-	return (1);
+	return (len);
 }
 
-int	get_next_line(int fd, char **line)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	static char	buffer[4096][1 + 1];
-	int			i;
+	size_t i;
 
-	if (fd < 0 || fd > 255 || !line || 1 <= 0)
-		return (-1);
-	*line = NULL;
-	if (just_do_it(line, buffer[fd]))
+	i = 0;
+	while (*(dst + i) && i < dstsize)
+		++i;
+	while (*src && i + 1 < dstsize)
 	{
-		*line = ft_realloc_finale(line);
-		return (1);
+		*(dst + i) = *src;
+		++src;
+		++i;
 	}
-	while ((i = read(fd, buffer[fd], 1)) > 0)
-	{
-		buffer[fd][i] = '\0';
-		if (just_do_it(line, buffer[fd]))
-		{
-			*line = ft_realloc_finale(line);
-			return (1);
-		}
-	}
-	if (i < 0)
-		return (-1);
-	just_do_it(line, buffer[fd]);
-	*line = ft_realloc_finale(line);
+	if (i < dstsize)
+		*(dst + i) = 0;
+	while (*src++)
+		++i;
 	return (i);
 }
-/*
-** fin qui è GNL, da qui inizia il parsing della matrice dal file matrix.cub
-*/
-//void	map_init(void)
-//{
-//	
-//}
-/*
-** main
-*/
+
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	char	*s3;
+	size_t	len;
+
+	if (!s1 || !s2)
+		return (NULL);
+	len = ft_strlen(s1) + ft_strlen(s2);
+	if (!(s3 = malloc(len + 1)))
+		return (NULL);
+	ft_strlcpy(s3, s1, ft_strlen(s1) + 1);
+	ft_strlcat(s3, (char *)s2, len + 1);
+	return (s3);
+}
+
+int get_next_line(int fd, char **line)
+{
+	int ret = 0;
+	int len = 0;
+	int i = 0;
+	if(!line)
+		return(-1);
+	if (!(*line = malloc(256)))
+		return(-1);
+	(*line)[len] = 0;
+	while ((ret = read(fd , &(*line)[i], 1)) == 1)
+	{
+		if ((*line)[i] == '\n')
+		{
+			(*line)[i] = '\n';
+			(*line)[i + 1] = 0;
+			return (1);
+		}
+		i++;
+	}
+	(*line)[i] = 0;
+	return (ret);
+}
+
 int	main(void)
 {
 	char	**map;
 	char	**line;
-	int		fd_map;
+	const char	*newl;
+	int		fd;
 	int		i;
 	int		j;
 	int		rd;
 
-	fd_map = open("matrix.cub", O_RDONLY);
+	fd = open("matrix.cub", O_RDONLY);
 	i = 1;
-	j = -1;
-	//map_init();
+	j = 0;
 	while (i)
 	{
-		i = get_next_line(fd_map, line);
+		i = get_next_line(fd, line);
+		if (ft_strlen(newl) > 0)
+			newl = ft_strjoin(newl, (*line));
+		newl = ft_strjoin((*line), "\n");
+		printf("line : |%s|", newl);
+		j++;
 	}
+
 	return (0);
 }
