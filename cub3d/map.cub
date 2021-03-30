@@ -1,3 +1,6 @@
 R 1920 1080
-NG ./path_to_the_south_texture
-SN jihasidoaet
+NO ./path_to_the_north_texture
+SO ./path_to_the_south_texture
+WE ./path_to_the_west_texture
+EA ./path_to_the_east_texture
+S ./path_to_the_sprite_texture

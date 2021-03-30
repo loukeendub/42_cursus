@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 16:24:46 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/03/30 18:39:16 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/03/30 19:45:02 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,8 @@ int	main(int argc, char **argv)
 				return (-1);
 			}
 	}
+	free(line);
 	printf("|W : %d|\n|H : %d|\n", g_p.res_w, g_p.res_h);
+	printf("|NO : |%s|\n|SO : |%s|\n|WE : |%s|\n|EA : |%s|\n|S : |%s|\n", g_p.wall[0], g_p.wall[1], g_p.wall[2], g_p.wall[3], g_p.sprite);
 	return (0);
 }

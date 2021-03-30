@@ -6,11 +6,33 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 16:32:45 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/03/30 18:42:42 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/03/30 19:55:11 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+char	*ft_text_store(char **line)
+{
+	int		j;
+	char	*nwline;
+
+	j = 0;
+	while (**line != '.')
+		(*line)++;
+	if (**line == 0)
+		return (0);
+	else 
+	{
+		if (!(nwline = malloc(ft_strlen(*line) + 1)))
+			return (0);
+		while (**line && **line != ' ')
+			nwline[j++] = *((*line)++);
+		nwline[j] = 0;
+	}
+	///free(line); // mi dava errore, l'ho liberata nel main.
+	return (nwline);
+}
 
 int		ft_check_res(char **line)
 {
@@ -52,6 +74,23 @@ int		ft_check_res(char **line)
 	return (1);
 }
 
+int	ft_check_type2(char **line)
+{
+	printf("%c\n", **line);
+	if (**line == 'E' && *(++(*line)) == 'A')
+	{
+		if ((g_p.wall[3] = ft_text_store(line)) == 0)
+			return (-1);
+		g_check.ea++;
+	}
+	else if (**line == 'S')
+	{
+		if ((g_p.sprite = ft_text_store(line)) == 0)
+			return (-1);
+		g_check.s++;
+	}
+	return (1);
+}
 
 int	ft_check_type(char **line)
 {
@@ -62,13 +101,24 @@ int	ft_check_type(char **line)
 				return (-1);
 	}
 	else if (**line == 'N' && *(++(*line)) == 'O')
-		printf("%s\n", *line);// integrare NO al posto del printf
+	{
+		if ((g_p.wall[0] = ft_text_store(line)) == 0)
+			return (-1);
+		g_check.no++;
+	}
 	else if (**line == 'S' && *(++(*line)) == 'O')
-		printf("%s\n", *line);// integrare SO al posto del printf
+	{
+		if ((g_p.wall[1] = ft_text_store(line)) == 0)
+			return (-1);
+		g_check.so++;
+	}
 	else if (**line == 'W' && *(++(*line)) == 'E')
-		printf("%s\n", *line);// integrare WE al posto del printf
-	else if (**line == 'E' && *(++(*line)) == 'A')
-		printf("%s\n", *line);// integrare EA al posto del printf
+	{
+		if ((g_p.wall[2] = ft_text_store(line)) == 0)
+			return (-1);
+		g_check.we++;
+	}
+
 	return (1);
 }
 
@@ -84,6 +134,8 @@ int	ft_parse_line(char *line)
 		else
 		{
 			if (ft_check_type(&line) == -1)
+				return (-1);
+			if (ft_check_type2(&line) == -1)
 				return (-1);
 		}
 		line++;//da eliminare una volta parsati tutti
