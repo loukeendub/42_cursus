@@ -6,13 +6,13 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 16:24:46 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/03/30 17:35:42 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/03/30 18:39:16 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	check_init(void)
+void	ft_check_init(void)
 {
 	g_check.r = 0;
 	g_check.no = 0;
@@ -25,7 +25,7 @@ void	check_init(void)
 	g_check.mp = 0;	
 }
 
-void	ref_init(void)
+void	ft_ref_init(void)
 {
 	int	i;
 	int	j;
@@ -44,22 +44,10 @@ void	ref_init(void)
 	g_p.spawn = 0;
 }
 
-void	struct_init(void)
+void	ft_struct_init(void)
 {
 	g_p.res_w = 0;
 	g_p.res_h = 0;
-	g_p.n_wall[0] = -1;
-	g_p.n_wall[1] = -1;
-	g_p.n_wall[2] = -1;
-	g_p.s_wall[0] = -1;
-	g_p.s_wall[1] = -1;
-	g_p.s_wall[2] = -1;
-	g_p.w_wall[0] = -1;
-	g_p.w_wall[1] = -1;
-	g_p.w_wall[2] = -1;
-	g_p.e_wall[0] = -1;
-	g_p.e_wall[1] = -1;
-	g_p.e_wall[2] = -1;
 	g_p.sky[0] = -1;
 	g_p.sky[1] = -1;
 	g_p.sky[2] = -1;
@@ -69,15 +57,16 @@ void	struct_init(void)
 	g_p.ceiling[0] = -1;
 	g_p.ceiling[1] = -1;
 	g_p.ceiling[2] = -1;
-	ref_init();
-	check_init();
+	g_p.sprite = 0;
+	ft_ref_init();
+	ft_check_init();
 }
 
 int	main(int argc, char **argv)
 {
 	char	*line;
 	int		fd_map;
-	int		ret;
+	int		ret = 0;
 
 	if (argc != 2 && argc != 3)
 	{
@@ -85,12 +74,15 @@ int	main(int argc, char **argv)
 		return (0);
 	}
 	fd_map = open(argv[1], O_RDONLY);
-	struct_init();
+	ft_struct_init();
 	while ((ret = get_next_line(fd_map, &line)) == 1)
 	{
-		if (parse_line(line) == -1 || ret == -1)
-			return (-1);
+		if (ft_parse_line(line) == -1 || ret == -1)
+			{
+				puts("Fuck yea");
+				return (-1);
+			}
 	}
-
+	printf("|W : %d|\n|H : %d|\n", g_p.res_w, g_p.res_h);
 	return (0);
 }
