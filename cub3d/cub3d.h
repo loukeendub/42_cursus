@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 10:46:55 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/03/30 18:42:06 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/03/31 10:49:42 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,9 +43,8 @@ typedef	struct	s_parse
 	int		spawn;
 	int		map_h;
 }				t_parse;
-t_parse			g_p;
 
-typedef struct	s_checker
+typedef struct	s_check
 {
 	int		r;
 	int		no;
@@ -56,8 +55,13 @@ typedef struct	s_checker
 	int		f;
 	int		c;
 	int		mp;
-}				t_checker;
-t_checker		g_check;
+}				t_check;
+
+typedef struct	s_all
+{
+	t_parse	par;
+	t_check	chr;
+}				t_all;
 /*
 ** old functions
 */
@@ -77,7 +81,7 @@ char			*ft_realloc_finale(char **line);
 size_t			ft_strlcpy(char *dst, char *src, size_t dstsize);
 size_t			ft_strcount(char *str, char c);
 size_t			ft_strclen(char *s, char c);
-char			**ft_split(char *s, char c);
+char			**ft_split(char *s, char c, t_all all);
 size_t			ft_strlcat(char *dst, char *src, size_t dstsize);
 /*
 ** parsing [FULL]
@@ -112,8 +116,8 @@ int 			check_map(char **map);
 ** NEW functions
 ** parsing
 */
-int				ft_parse_line(char *line);
-int				ft_check_type(char **line);
-int				ft_check_res(char **line);
+int				ft_parse_line(char *line, t_all all);
+int				ft_check_type(char **line, t_all all);
+int				ft_check_res(char **line, t_all all);
 
 #endif

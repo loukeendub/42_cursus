@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 16:32:45 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/03/30 19:55:11 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/03/31 10:50:45 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char	*ft_text_store(char **line)
 	return (nwline);
 }
 
-int		ft_check_res(char **line)
+int		ft_check_res(char **line, t_all all)
 {
 	int	h;
 
@@ -50,7 +50,7 @@ int		ft_check_res(char **line)
 			{
 				while (ft_isdigit((**line)))
 				{
-					g_p.res_w = g_p.res_w * 10 + ((int)(**line) - 48);
+					all.par.res_w = all.par.res_w * 10 + ((int)(**line) - 48);
 					(*line)++;
 				}
 				h++;
@@ -59,7 +59,7 @@ int		ft_check_res(char **line)
 			{
 				while (ft_isdigit(**line))
 				{
-					g_p.res_h = g_p.res_h * 10 + ((int)(**line) - 48);
+					all.par.res_h = all.par.res_h * 10 + ((int)(**line) - 48);
 					(*line)++;
 				}
 				h++;
@@ -70,59 +70,56 @@ int		ft_check_res(char **line)
 		else
 			return (-1);
 	}
-	g_check.r++;
+	all.chr.r++;
 	return (1);
 }
 
-int	ft_check_type2(char **line)
+int	ft_check_type(char **line, t_all all)
 {
-	printf("%c\n", **line);
-	if (**line == 'E' && *(++(*line)) == 'A')
+	if (**line == 'R')
 	{
-		if ((g_p.wall[3] = ft_text_store(line)) == 0)
-			return (-1);
-		g_check.ea++;
+		if (ft_check_res(line, all) == -1)
+				return (-1);
 	}
 	else if (**line == 'S')
 	{
-		if ((g_p.sprite = ft_text_store(line)) == 0)
+		if ((all.par.sprite = ft_text_store(line)) == 0)
 			return (-1);
-		g_check.s++;
+		all.chr.s++;
 	}
 	return (1);
 }
 
-int	ft_check_type(char **line)
+int	ft_check_walls(char **line, t_all all)
 {
-	//printf("%c\n", **line);
-	if (**line == 'R')
+	if (**line == 'N' && *(++(*line)) == 'O')
 	{
-		if (ft_check_res(line) == -1)
-				return (-1);
-	}
-	else if (**line == 'N' && *(++(*line)) == 'O')
-	{
-		if ((g_p.wall[0] = ft_text_store(line)) == 0)
+		if ((all.par.wall[0] = ft_text_store(line)) == 0)
 			return (-1);
-		g_check.no++;
+		all.chr.no++;
 	}
 	else if (**line == 'S' && *(++(*line)) == 'O')
 	{
-		if ((g_p.wall[1] = ft_text_store(line)) == 0)
+		if ((all.par.wall[1] = ft_text_store(line)) == 0)
 			return (-1);
-		g_check.so++;
+		all.chr.so++;
 	}
 	else if (**line == 'W' && *(++(*line)) == 'E')
 	{
-		if ((g_p.wall[2] = ft_text_store(line)) == 0)
+		if ((all.par.wall[2] = ft_text_store(line)) == 0)
 			return (-1);
-		g_check.we++;
+		all.chr.we++;
 	}
-
+	else if (**line == 'E' && *(++(*line)) == 'A')
+	{
+		if ((all.par.wall[3] = ft_text_store(line)) == 0)
+			return (-1);
+		all.chr.ea++;
+	}
 	return (1);
 }
 
-int	ft_parse_line(char *line)
+int	ft_parse_line(char *line, t_all all)
 {
 	
 	if (!line)
@@ -133,15 +130,15 @@ int	ft_parse_line(char *line)
 			line++;
 		else
 		{
-			if (ft_check_type(&line) == -1)
+			if (ft_check_type(&line, all) == -1)
 				return (-1);
-			if (ft_check_type2(&line) == -1)
+			if (ft_check_walls(&line, all) == -1)
 				return (-1);
 		}
 		line++;//da eliminare una volta parsati tutti
 	}
-	//if (g_check.mp != 1 || g_check.r != 1 || g_check.no != 1 || g_check.so != 1 ||\
-	//g_check.we != 1 || g_check.ea != 1 || g_check.s != 1 || g_check.f != 1 || g_check.c != 1)
+	//if (all.chr.mp != 1 || all.chr.r != 1 || all.chr.no != 1 || all.chr.so != 1 ||\
+	//all.chr.we != 1 || all.chr.ea != 1 || all.chr.s != 1 || all.chr.f != 1 || all.chr.c != 1)
     //    return (-1);
 	return (1);
 }
