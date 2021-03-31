@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 10:46:55 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/03/31 16:16:30 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/03/31 17:35:52 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,8 +62,43 @@ typedef struct	s_all
 	t_parse	*par;
 	t_check	*chr;
 }				t_all;
+
 /*
-** old functions
+** init [FULL]
+*/
+void			ft_str_all_init(t_all *all);
+void			ft_struct_init(t_all *all);
+void			ft_tx_init(t_all *all);
+void			ft_ref_init(t_all *all);
+void			ft_check_init(t_all *all);
+/*
+** parsing 
+*/
+int				ft_parse_line(char *line, int fd, t_all *all);
+int				ft_check_walls(char **line, t_all *all);
+int				ft_check_type(char **line, t_all *all);
+char			*ft_text_store(char **line);
+/*
+** parsing2
+*/
+int				ft_parse_digit(char **line, t_all *all);
+int				ft_itoa(char **line, t_all *all, int h);
+/*
+** map_parsing 
+*/
+int				ft_map_parse(char **line, int fd, t_all *all);
+int				ft_check_rows(char *newl, t_all *all);
+int				ft_check_map(char **map, t_all *all);
+int				ft_check_updown(char *first, char *last, t_all *all);
+/*
+** map_parsing2
+*/
+int				ft_check_line(char **map, int y, t_all *all);
+int				ft_check_edges(char **map, int y);
+int				ft_check_previous(char **map, int y, int x, int previous);
+int				ft_check_current(char **map, int y, int x, int current);
+/*
+** GNL
 */
 int				get_next_line(int fd, char **line);
 int				just_do_it(char **line, char *buffer);
@@ -88,48 +123,4 @@ char			**ft_split(char *s, char c, t_all *all);
 */
 size_t			ft_strlcat(char *dst, char *src, size_t dstsize);
 
-
-
-/*
-** parsing [FULL]
-*/
-int				parsing(char **line, int fd);// 31 lines
-int				res_parse(char **line);// 27 lines
-int				rgb_parse(char **line, int rgb[3]);
-int				parse_wall(char **line, int j);
-int				parse_sfc(char **line, int j);
-/*
-** map_parsing [FULL]
-*/
-int				map_parse(char **line, int fd);
-char			*wall_store(char **line);
-char			*sfc_store(char **line);
-int				parse_tx(char **line, int j);
-int				sfc_tx(char **line, int j);
-/*
-** checker
-*/
-int				check_val(void);
-int 			check_rows(char *newl);
-/*
-** checker2
-*/
-int 			check_updown(char *first, char *last);
-int 			check_edges(char **map, int y);// 35 lines
-int 			check_line(char **map, int y);
-int 			check_map(char **map);
-
-/*
-** NEW functions
-** parsing 
-*/
-int				ft_parse_line(char *line, t_all *all);
-int				ft_check_walls(char **line, t_all *all);
-int				ft_check_type(char **line, t_all *all);
-char			*ft_text_store(char **line);
-/*
-** parsing
-*/
-int				ft_parse_digit(char **line, t_all *all);
-int				ft_itoa(char **line, t_all *all, int h);
 #endif

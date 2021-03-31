@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 14:27:00 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/03/31 12:52:34 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/03/31 18:42:37 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	ft_split_core(char *s, char **arr, char c, t_all *all)
 	i = 0;
 	while (*s)
 	{
-		if (s[i] != c)
+		if (*s != c)
 		{
 			len = ft_strclen(s, c);
 			arr[i] = malloc(len + 1);
@@ -85,7 +85,7 @@ int	ft_split_core(char *s, char **arr, char c, t_all *all)
 			all->par->map_h++;
 		}
 		else
-			i++;
+			s++;
 	}
 	return (i); 
 }
