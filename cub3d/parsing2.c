@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 16:09:10 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/03/31 16:10:06 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/03/31 16:16:04 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	ft_itoa(char **line, t_all *all, int h)
 	return (h);
 }
 
-int		ft_parse_digit(char **line, t_all *all)
+int	ft_parse_digit(char **line, t_all *all)
 {
 	int	h;
 

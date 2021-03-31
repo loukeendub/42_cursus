@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 16:32:45 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/03/31 16:10:11 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/03/31 16:17:08 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 char	*ft_text_store(char **line)
 {
-	printf("%s\n", (*line));// TODO: rimuovi sto printf!!!
 	int		j;
 	char	*nwline;
 
@@ -31,7 +30,6 @@ char	*ft_text_store(char **line)
 			nwline[j++] = *((*line)++);
 		nwline[j] = 0;
 	}
-	///free(line); // mi dava errore, l'ho liberata nel main.
 	return (nwline);
 }
 

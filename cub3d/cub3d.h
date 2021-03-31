@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 10:46:55 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/03/31 14:33:13 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/03/31 16:16:30 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,13 +121,15 @@ int 			check_map(char **map);
 
 /*
 ** NEW functions
-** parsing [FULL]++
+** parsing 
 */
 int				ft_parse_line(char *line, t_all *all);
 int				ft_check_walls(char **line, t_all *all);
 int				ft_check_type(char **line, t_all *all);
-int				ft_check_res(char **line, t_all *all);
-int				ft_parse_digit(char **line, t_all *all);
 char			*ft_text_store(char **line);
-
+/*
+** parsing
+*/
+int				ft_parse_digit(char **line, t_all *all);
+int				ft_itoa(char **line, t_all *all, int h);
 #endif
