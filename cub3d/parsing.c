@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 16:32:45 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/03/31 10:50:45 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/03/31 11:04:22 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 char	*ft_text_store(char **line)
 {
+	printf("%s\n", (*line));
 	int		j;
 	char	*nwline;
 
@@ -34,6 +35,31 @@ char	*ft_text_store(char **line)
 	return (nwline);
 }
 
+int		ft_parse_digit(char **line, t_all all, int h)
+{
+	if (h == 0)
+	{
+		while (ft_isdigit((**line)))
+		{
+			all.par.res_w = all.par.res_w * 10 + ((int)(**line) - 48);
+			(*line)++;
+		}
+		h++;
+	}
+	else if (h == 1)
+	{
+		while (ft_isdigit(**line))
+		{
+			all.par.res_h = all.par.res_h * 10 + ((int)(**line) - 48);
+			(*line)++;
+		}
+		h++;
+	}			
+	else 
+		return (-1);
+	return (1);
+}
+
 int		ft_check_res(char **line, t_all all)
 {
 	int	h;
@@ -45,28 +71,7 @@ int		ft_check_res(char **line, t_all all)
 		if (**line == ' ')
 			(*line)++;
 		else if (ft_isdigit(**line))
-		{
-			if (h == 0)
-			{
-				while (ft_isdigit((**line)))
-				{
-					all.par.res_w = all.par.res_w * 10 + ((int)(**line) - 48);
-					(*line)++;
-				}
-				h++;
-			}
-			else if (h == 1)
-			{
-				while (ft_isdigit(**line))
-				{
-					all.par.res_h = all.par.res_h * 10 + ((int)(**line) - 48);
-					(*line)++;
-				}
-				h++;
-			}			
-			else 
-				return (-1);
-		}
+			return (ft_parse_digit(line, all, h));
 		else
 			return (-1);
 	}
