@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 16:32:45 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/03/31 15:43:01 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/03/31 16:06:59 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,31 @@ char	*ft_text_store(char **line)
 	return (nwline);
 }
 
+int	ft_itoa(char **line, t_all *all, int h)
+{
+	if (h == 0)
+	{
+		while (ft_isdigit((**line)))
+		{
+			all->par->res_w = all->par->res_w * 10 + ((int)(**line) - 48);
+			(*line)++;
+		}
+		h++;
+	}
+	else if (h == 1)
+	{
+		while (ft_isdigit(**line))
+		{
+			all->par->res_h = all->par->res_h * 10 + ((int)(**line) - 48);
+			(*line)++;
+		}
+		h++;
+	}			
+	else 
+		return (-1);
+	return (h);
+}
+
 int		ft_parse_digit(char **line, t_all *all)
 {
 	int	h;
@@ -49,34 +74,14 @@ int		ft_parse_digit(char **line, t_all *all)
 		{
 			while (ft_isdigit((**line)))
 			{
-				if (**line == ' ')
-					(*line)++;
-				if (h == 0)
-				{
-					while (ft_isdigit((**line)))
-					{
-						all->par->res_w = all->par->res_w * 10 + ((int)(**line) - 48);
-						(*line)++;
-					}
-					h++;
-				}
-				else if (h == 1)
-				{
-					while (ft_isdigit(**line))
-					{
-						all->par->res_h = all->par->res_h * 10 + ((int)(**line) - 48);
-						(*line)++;
-					}
-					h++;
-				}			
-				else 
+				h = ft_itoa(line, all, h);
+				if (h == -1)
 					return (-1);
 			}
 		}
 		else
 			return (-1);
 	}
-
 	return (1);
 }		
 
