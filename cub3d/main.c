@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 16:24:46 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/01 10:58:03 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/01 13:55:31 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ int	main(int argc, char **argv)// 29 lines
 	int		fd_map;
 	int		ret = 0;
 
-	//if (argc != 2 && argc != 3)
-	//{
-	//	write(1, "Error\n", 6);
-	//	return (0);
-	//}
-	fd_map = open("map.cub", O_RDONLY);
+	if (argc != 2 && argc != 3)
+	{
+		write(1, "Error\n", 6);
+		return (0);
+	}
+	fd_map = open(argv[1], O_RDONLY);
 	ft_str_all_init(&all);
 	ret = 1;
 	while (ret == 1)
@@ -32,14 +32,14 @@ int	main(int argc, char **argv)// 29 lines
 		ret = get_next_line(fd_map, &line);
 		if (ft_parse_line(line, fd_map, &all) == -1 || ret == -1)
 		{
-			puts("Fuck yea");
+			write(1, "Error\n", 6);
 			return (-1);
 		}
 	}
 	if (all.chr->r != 1 || all.chr->no != 1 || all.chr->so != 1 || all.chr->we != 1\
 	|| all.chr->ea != 1 || all.chr->s != 1 || all.chr->f != 1 || all.chr->c != 1 || all.chr->mp != 1) 
 	{
-		puts("manca qualcosa stronzo");
+		write(1, "Error\n", 6);
 		return (0);
 	}
 	free(line);

@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 16:49:13 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/03/31 17:35:52 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/01 13:53:55 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int		ft_check_edges(char **map, int y)
 	int		ch;
 
 	x = 0;
+	ch = 0;
 	current = ft_strlen(map[y]) -1;
 	previous = ft_strlen (map[y - 1]) - 1;
 	if (current < previous)

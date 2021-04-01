@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 10:46:55 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/01 12:15:21 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/01 13:52:53 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,7 @@ int				ft_parse_digit2(char **line, t_all *all);
 int				ft_map_parse(char **line, int fd, t_all *all);
 int				ft_check_rows(char *newl, t_all *all);
 int				ft_check_map(char **map, t_all *all);
-int				ft_check_updown(char *first, char *last, t_all *all);
+int				ft_check_updown(char *first, char *last);
 /*
 ** map_parsing2
 */

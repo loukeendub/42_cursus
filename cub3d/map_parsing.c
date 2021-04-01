@@ -6,13 +6,13 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 16:29:10 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/01 12:45:24 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/01 13:53:05 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int		ft_check_updown(char *first, char *last, t_all *all)
+int		ft_check_updown(char *first, char *last)
 {
 	int		i = 0;
 	while (first[i])
@@ -35,12 +35,12 @@ int		ft_check_map(char **map, t_all *all)
 {
 	int		i = 1;
 	int		len;
-	if (ft_check_updown(map[0], map[all->par->map_h], all) == -1)
+	if (ft_check_updown(map[0], map[all->par->map_h]) == -1)
 		return (-1);
 	while (i < all->par->map_h)
 	{
 		len = ft_strlen(map[i]) - 1;
-		if ((map[i][0] != '1' || map[i][len] != '1') && (map[i][0] != ' ' || map[i][len] != ' '))
+		if ((map[i][0] != '1' && map[i][0] != ' ') || (map[i][len] != '1' && map[i][len] != ' '))
 			return (-1);
 		i++;
 	}
