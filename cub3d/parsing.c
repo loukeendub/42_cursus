@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 16:32:45 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/01 15:12:55 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/01 15:33:22 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,7 @@ int	ft_parse_line(char *line, int fd, t_all *all)
 				return (ft_map_parse(&line, fd, all));
 			}
 		}
+		line++;
 	}
 	return (1);
 }
