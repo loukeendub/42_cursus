@@ -45,12 +45,14 @@ int	ft_check_type(char **line, t_all *all)
 		if (ft_parse_digit(line, all) == -1 && all->chr->r == 0)
 				return (-1);
 		all->chr->r++;
+		return (1);
 	}
 	else if (**line == 'S' && *((*line) + 1) != 'O')
 	{
 		if ((all->par->sprite = ft_text_store(line)) == 0)
 			return (-1);
 		all->chr->s++;
+		return (1);
 	}
 	else if (**line == 'F')
 	{
@@ -58,6 +60,7 @@ int	ft_check_type(char **line, t_all *all)
 		if (ft_parse_digit2(line, all) == -1)
 				return (-1);
 		all->chr->f++;
+		return (1);
 	}
 	else if (**line == 'C')
 	{
@@ -65,8 +68,11 @@ int	ft_check_type(char **line, t_all *all)
 		if (ft_parse_digit2(line, all) == -1)
 				return (-1);
 		all->chr->c++;
+		return (1);
 	}
-	else if (ft_check_walls(line, all) == -1)
+	else if (ft_check_walls(line, all) == 1)
+		return (1);
+	else
 		return (-1);
 	return (1);
 }
@@ -78,24 +84,28 @@ int	ft_check_walls(char **line, t_all *all)
 		if ((all->par->wall[0] = ft_text_store(line)) == 0)
 			return (-1);
 		all->chr->no++;
+		return (1);
 	}
 	else if (**line == 'S' && *(++(*line)) == 'O')
 	{
 		if ((all->par->wall[1] = ft_text_store(line)) == 0)
 			return (-1);
 		all->chr->so++;
+		return (1);
 	}
 	else if (**line == 'W' && *(++(*line)) == 'E')
 	{
 		if ((all->par->wall[2] = ft_text_store(line)) == 0)
 			return (-1);
 		all->chr->we++;
+		return (1);
 	}
 	else if (**line == 'E' && *(++(*line)) == 'A')
 	{
 		if ((all->par->wall[3] = ft_text_store(line)) == 0)
 			return (-1);
 		all->chr->ea++;
+		return (1);
 	}
 	return (1);
 }
@@ -103,27 +113,36 @@ int	ft_check_walls(char **line, t_all *all)
 
 int	ft_parse_line(char *line, int fd, t_all *all)
 {
-	
+	int ret;
+
+	ret = 0;
+	int i = 0;
 	if (!line)
 		return (1);
-	while (*line)
+	while (line[i])
 	{
-		if (*line == ' ')
+		puts(line);
+		if (line[i] == ' ' && line[i])
 		{
-			all->chr->space++;
-			line++;
+			i++;
+		}
+		else if ((line[i]) == '1' && line[i])
+				return (ft_map_parse(&line, fd, all));
+		else if (!ft_isdigit(line[i]))//da rivedere
+		{
+			while (i-- && *line)
+				line++;
+			ret = ft_check_type(&line, all);
+			if (ret == -1)
+				return (-1);
+			else if (ret == 1)
+				return (1);
+			else 
+				return (-1);
 		}
 		else
-		{
-			if (ft_check_type(&line, all) == -1)
-				return (-1);
-			if ((*line) == '1')
-			{
-				line -= all->chr->space;
-				return (ft_map_parse(&line, fd, all));
-			}
-		}
-		line++;
+			return (-1);
+		i++;
 	}
 	return (1);
 }

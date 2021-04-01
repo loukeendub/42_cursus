@@ -51,6 +51,9 @@ int	main(int argc, char **argv)// 29 lines
 	//printf("ERR : %d\n", all.chr->no);
 	//printf("|W : %d|\n|H : %d|\n", all.par->res_w, all.par->res_h);
 	//printf("|NO : |%s|\n|SO : |%s|\n|WE : |%s|\n|EA : |%s|\n|S : |%s|\n", all.par->wall[0], all.par->wall[1], all.par->wall[2], all.par->wall[3], all.par->sprite);
+	int i = 0; 
+	while (all.par->map[i])
+	puts(all.par->map[i++]);
 	/*---end of debug---*/
 	return (0);
 }
