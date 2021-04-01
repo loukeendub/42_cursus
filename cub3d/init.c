@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 16:36:08 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/03/31 16:36:53 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/01 10:25:52 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	ft_ref_init(t_all *all)
 	all->par->reference[7] = 'W';
 	all->par->map_h = -1;
 	all->par->spawn = 0;
+	all->par->f = 'N';
 }
 
 void	ft_tx_init(t_all *all)
@@ -54,8 +55,8 @@ void	ft_tx_init(t_all *all)
 void	ft_struct_init(t_all *all)
 {
 	all->par = malloc(sizeof (t_parse));
-	all->par->res_w = 0;
-	all->par->res_h = 0;
+	all->par->res_w = -1;
+	all->par->res_h = -1;
 	all->par->sky[0] = -1;
 	all->par->sky[1] = -1;
 	all->par->sky[2] = -1;

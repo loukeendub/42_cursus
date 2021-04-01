@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 10:46:55 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/03/31 17:35:52 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/01 10:25:16 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef	struct	s_parse
 	char	reference[8];
 	int		spawn;
 	int		map_h;
+	char	f;
 }				t_parse;
 
 typedef struct	s_check
@@ -82,7 +83,7 @@ char			*ft_text_store(char **line);
 ** parsing2
 */
 int				ft_parse_digit(char **line, t_all *all);
-int				ft_itoa(char **line, t_all *all, int h);
+int				ft_parse_digit2(char **line, t_all *all);
 /*
 ** map_parsing 
 */
@@ -122,5 +123,8 @@ char			**ft_split(char *s, char c, t_all *all);
 ** utils_3
 */
 size_t			ft_strlcat(char *dst, char *src, size_t dstsize);
+int				ft_itoa(char **line, t_all *all, int h);
+int				ft_itoa2(char **line, t_all *all, int h);
+int				ft_itoa3(char **line, t_all *all, int h);
 
 #endif

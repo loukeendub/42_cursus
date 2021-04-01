@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 16:32:45 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/03/31 17:38:02 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/01 10:30:01 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,15 +95,11 @@ int	ft_parse_line(char *line, int fd, t_all *all)
 			line++;
 		else
 		{
-			//if (ft_check_type(&line, all) == -1)
-			//	return (-1);
+			if (ft_check_type(&line, all) == -1)
+				return (-1);
 			if ((*line) == '1')
 				return (ft_map_parse(&line, fd, all));
 		}
-		line++;//da eliminare una volta parsati tutti
 	}
-	//if (all->chr->mp != 1 || all->chr->r != 1 || all->chr->no != 1 || all->chr->so != 1\
-	//|| all->chr->we != 1 || all->chr->ea != 1 || all->chr->s != 1 || all->chr->f != 1 || all->chr->c != 1)
-    //    return (-1);
 	return (1);
 }
