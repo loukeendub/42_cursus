@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 12:05:43 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/01 14:55:47 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/01 15:01:14 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,7 +154,7 @@ int	check_val(t_all *all)
 	}
 	while (i < 3)
 	{
-		if (all->par->ceiling[i] == -1)
+		if (all->par->ceiling[i] < 0 || all->par->ceiling[i] > 255)
 		{
 			//puts("mario");
 			return (0);
@@ -164,7 +164,7 @@ int	check_val(t_all *all)
 	i = 0;
 	while (i < 3)
 	{
-		if (all->par->floor[i] == -1)
+		if (all->par->floor[i] < 0 || all->par->floor[i] > 255)
 		{
 			//puts("luigi");
 			return (0);
