@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 16:32:45 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/01 11:22:47 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/01 12:16:41 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,13 +104,19 @@ int	ft_parse_line(char *line, int fd, t_all *all)
 	while (*line)
 	{
 		if (*line == ' ')
+		{
+			all->chr->space++;
 			line++;
+		}
 		else
 		{
 			if (ft_check_type(&line, all) == -1)
 				return (-1);
 			if ((*line) == '1')
+			{
+				line -= all->chr->space;
 				return (ft_map_parse(&line, fd, all));
+			}
 		}
 	}
 	return (1);

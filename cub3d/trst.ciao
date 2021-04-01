@@ -1,0 +1,78 @@
+int         ft_countCol(char *map)
+{
+    int j;
+    j = 0;
+    while(map[j] != '\0')
+        j++;
+    return(j);
+}
+void        ft_checkErr(t_parse *g_p)
+{
+    int i;
+    int j;
+    int flag;
+    i = 0;
+    j = 0;
+    flag = 0;
+    while(i <= g_p->map_h)
+    {
+        while(j < ft_countCol(g_p->map[i]))
+        {
+            while(g_p->map[i][j] == '1')
+                j++;
+            if(g_p->map[i][j] == '2')
+            {
+                if(i == 0 && j == 0 && i == (g_p->map_h) &&
+                j == ft_countCol(g_p->map[i]) - 1)
+                {
+                    printf("Error: Mappa chiusa da sprite\n");
+                    exit(0);
+                }
+                j++;
+            }
+            if(g_p->map[i][j] == ' ')
+            {
+                if(i < g_p->map_h && (g_p->map[i + 1][j] == '0' || g_p->map[i][j - 1] == '0'))
+                {
+                    printf("Error: Mappa non chiusa\n");
+                    exit(0);
+                }
+                g_p->map[i][j] = '1';
+            }
+            if(g_p->map[i][j] == '0')
+            {
+                if(i == 0 || j == 0 || i == (g_p->map_h) ||
+                    j == ft_countCol(g_p->map[i]) - 1)
+                {
+                    printf("Error: Mappa non chiusa\n");
+                    exit(0);
+                }
+                if(g_p->map[i - 1][j] == ' ' || g_p->map[i + 1][j] == ' ' ||
+                    g_p->map[i][j - 1] == ' ' || g_p->map[i][j + 1] == ' ' ||
+                    j >= ft_countCol(g_p->map[i - 1]) || j >= ft_countCol(g_p->map[i + 1]))
+                {
+                    printf("Error: Vuoti nella mappa\n");
+                    exit(0);
+                }
+                j++;
+            }
+            if(ft_iscinstr(g_p->map[i][j], "NSWE", 4) && flag == 0)
+            {
+                flag++;
+                j++;
+            }
+            if(ft_iscinstr(g_p->map[i][j], "NSWE", 4) && flag == 1)
+            {
+                printf("Error: Troppi punti di spawn\n");
+                exit(0);
+            }
+        }
+        j = 0;
+        i++;
+    }
+    if(flag == 0)
+    {
+        printf("Error: Nessun punto di spawn\n");
+        exit(0);
+    }
+}

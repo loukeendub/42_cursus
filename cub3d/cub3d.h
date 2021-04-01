@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 10:46:55 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/01 10:25:16 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/01 12:15:21 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ typedef struct	s_check
 	int		f;
 	int		c;
 	int		mp;
+	int		space;
 }				t_check;
 
 typedef struct	s_all
