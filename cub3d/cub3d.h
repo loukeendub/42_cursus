@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 10:46:55 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/01 13:52:53 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/01 14:49:27 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,5 +127,5 @@ size_t			ft_strlcat(char *dst, char *src, size_t dstsize);
 int				ft_itoa(char **line, t_all *all, int h);
 int				ft_itoa2(char **line, t_all *all, int h);
 int				ft_itoa3(char **line, t_all *all, int h);
-
+int				check_val(t_all *all);
 #endif

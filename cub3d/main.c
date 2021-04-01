@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 16:24:46 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/01 13:55:31 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/01 14:55:50 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@ int	main(int argc, char **argv)// 29 lines
 		return (0);
 	}
 	fd_map = open(argv[1], O_RDONLY);
+
+	//fd_map = open("map.cub", O_RDONLY);
+
 	ft_str_all_init(&all);
 	ret = 1;
 	while (ret == 1)
@@ -32,21 +35,22 @@ int	main(int argc, char **argv)// 29 lines
 		ret = get_next_line(fd_map, &line);
 		if (ft_parse_line(line, fd_map, &all) == -1 || ret == -1)
 		{
+			//puts("Fuck yea");
 			write(1, "Error\n", 6);
 			return (-1);
 		}
 	}
-	if (all.chr->r != 1 || all.chr->no != 1 || all.chr->so != 1 || all.chr->we != 1\
-	|| all.chr->ea != 1 || all.chr->s != 1 || all.chr->f != 1 || all.chr->c != 1 || all.chr->mp != 1) 
-	{
-		write(1, "Error\n", 6);
-		return (0);
-	}
+	if (!check_val(&all))
+		{
+			//puts("invalid number");
+			write(1, "Error\n", 6);
+		}
+
 	free(line);
 	/*---DEBUG---*/
-	printf("ERR : %d\n", all.chr->no);
-	printf("|W : %d|\n|H : %d|\n", all.par->res_w, all.par->res_h);
-	printf("|NO : |%s|\n|SO : |%s|\n|WE : |%s|\n|EA : |%s|\n|S : |%s|\n", all.par->wall[0], all.par->wall[1], all.par->wall[2], all.par->wall[3], all.par->sprite);
+	//printf("ERR : %d\n", all.chr->no);
+	//printf("|W : %d|\n|H : %d|\n", all.par->res_w, all.par->res_h);
+	//printf("|NO : |%s|\n|SO : |%s|\n|WE : |%s|\n|EA : |%s|\n|S : |%s|\n", all.par->wall[0], all.par->wall[1], all.par->wall[2], all.par->wall[3], all.par->sprite);
 	/*---end of debug---*/
 	return (0);
 }

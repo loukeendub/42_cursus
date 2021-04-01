@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 12:05:43 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/01 11:14:38 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/01 14:55:47 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,4 +139,37 @@ int	ft_itoa3(char **line, t_all *all, int h)// 33 lines
 	else 
 		return (-1);
 	return (h);
+}
+
+int	check_val(t_all *all)
+{
+	int i;
+
+	i = 0;
+	if (all->chr->r != 1 || all->chr->no != 1 || all->chr->so != 1 || all->chr->we != 1\
+	|| all->chr->ea != 1 || all->chr->s != 1 || all->chr->f != 1 || all->chr->c != 1 || all->chr->mp != 1) 
+	{
+		//puts("bowser");
+		return (0);
+	}
+	while (i < 3)
+	{
+		if (all->par->ceiling[i] == -1)
+		{
+			//puts("mario");
+			return (0);
+		}
+		i++;
+	}
+	i = 0;
+	while (i < 3)
+	{
+		if (all->par->floor[i] == -1)
+		{
+			//puts("luigi");
+			return (0);
+		}
+		i++;
+	}
+	return (1);
 }

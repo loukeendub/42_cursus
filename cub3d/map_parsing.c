@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 16:29:10 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/01 13:53:05 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/01 14:54:17 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,11 +88,11 @@ int		ft_map_parse(char **line, int fd, t_all *all)
 		newl = ft_strjoin(newl, "X");
 	}
 	
-	all->par->map = ft_split(newl, 'X', all);//fin qui tutto ok
+	all->par->map = ft_split(newl, 'X', all);
 	if (ft_check_rows(newl, all) == -1 || ft_check_map(all->par->map, all) == -1)
 		return (-1);
 	else
-		all->chr->mp = 1;
+		all->chr->mp++;
 	free(newl);
 	return (1);
 }
