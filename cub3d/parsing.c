@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 16:32:45 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/01 10:30:01 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/01 11:22:47 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,21 @@ int	ft_check_type(char **line, t_all *all)
 			return (-1);
 		all->chr->s++;
 	}
-	else if (ft_check_walls(line, all) == 1)
-		return (1);
-	else
+	else if (**line == 'F')
+	{
+		all->par->f = 'F';
+		if (ft_parse_digit2(line, all) == -1)
+				return (-1);
+		all->chr->f++;
+	}
+	else if (**line == 'C')
+	{
+		all->par->f = 'C';
+		if (ft_parse_digit2(line, all) == -1)
+				return (-1);
+		all->chr->c++;
+	}
+	else if (ft_check_walls(line, all) == -1)
 		return (-1);
 	return (1);
 }

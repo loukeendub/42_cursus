@@ -6,7 +6,7 @@
 #    By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/29 12:33:59 by lmarzano          #+#    #+#              #
-#    Updated: 2021/03/31 16:49:50 by lmarzano         ###   ########.fr        #
+#    Updated: 2021/04/01 10:59:34 by lmarzano         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,12 +14,12 @@ SRCS	=	cub3d_utils.c\
 			cub3d_utils2.c\
 			cub3d_utils3.c\
 			get_next_line.c\
-			main.c\
 			init.c\
-			parsing.c\
-			parsing2.c\
+			main.c\
 			map_parsing.c\
-			map_parsing2.c
+			map_parsing2.c\
+			parsing.c\
+			parsing2.c
 			
 OBJS	=	${SRCS:.c=.o}
 BOBJS	=	${BSRCS:.c=.o}

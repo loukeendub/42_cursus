@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 16:24:46 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/01 10:30:01 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/01 10:58:03 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	main(int argc, char **argv)// 29 lines
 		}
 	}
 	if (all.chr->r != 1 || all.chr->no != 1 || all.chr->so != 1 || all.chr->we != 1\
-	|| all.chr->ea != 1 || all.chr->s != 1 || all.chr->f != 1 || all.chr->c != 1 || all->chr->mp != 1) 
+	|| all.chr->ea != 1 || all.chr->s != 1 || all.chr->f != 1 || all.chr->c != 1 || all.chr->mp != 1) 
 	{
 		puts("manca qualcosa stronzo");
 		return (0);
