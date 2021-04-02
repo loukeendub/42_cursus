@@ -1,4 +1,4 @@
-#include "../cub3d.h"
+#include "cub3d.h"
 
 #define texWidth 64
 #define texHeight 64

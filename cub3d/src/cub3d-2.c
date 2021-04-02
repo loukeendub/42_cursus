@@ -6,18 +6,19 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 14:43:02 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/02 14:49:22 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/02 16:15:55 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "cub3d.h"
 
 #define texWidth 64
 #define texHeight 64
 
-int	ft_exit(int keycode, t_vars *vars)
+int	ft_exit(t_vars *vars)
 {
 	/*dont forget to free all mallocs*/
+	(void)vars;
 	system("killall afplay");
 	exit(0);
 }

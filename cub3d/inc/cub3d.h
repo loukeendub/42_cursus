@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 10:46:55 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/02 15:31:14 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/02 16:15:03 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
-# include "mlx/mlx.h"
+# include "mlx.h"
 # include <stdio.h>
 # include <stdlib.h>
 # include <math.h>
@@ -297,7 +297,7 @@ int 			render_next_frame(t_vars *vars);
 /*
 ** cub3d-2 [FULL]
 */
-int				ft_exit(int keycode, t_vars *vars);
+int				ft_exit(t_vars *vars);
 int				ft_gettexnum(t_vars *vars);
 void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int				ft_keys(t_vars *vars);

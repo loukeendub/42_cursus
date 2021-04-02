@@ -6,11 +6,11 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 14:49:37 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/02 14:58:50 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/02 16:02:58 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cub3d.h"
+#include "cub3d.h"
 
 #define texWidth 64
 #define texHeight 64
