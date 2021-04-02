@@ -5,7 +5,7 @@ EA ./textures/greystone.xpm
 WE ./textures/greystone.xpm
 S ./textures/greystone.xpm
 C ./textures/greystone.xpm
-F ./textures/greystone.xpm
+F 255,255,255
 
         1111111111111111111111111
         1000000000110000000000001

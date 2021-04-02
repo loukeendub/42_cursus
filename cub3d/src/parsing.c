@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 16:32:45 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/02 17:17:46 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/02 20:02:46 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,42 @@ char	*ft_text_store(char **line)
 	return (nwline);
 }
 
+int	ft_floor(char **line, t_all *all)
+{
+	int	g;
+
+	g = 0;
+	all->chr->f++;
+	all->par->f = 'F';
+	while ((*line)[g] != '.' || !(ft_isdigit((*line)[g])))// da sistemare
+		g++;
+	if ((*line)[g] == '.')
+		all->par->sfc[1] = ft_text_store(line);
+	else if (ft_isdigit((*line)[g]))
+		return (ft_type_core(line, all, &all->chr->f, &all->par->f));
+	else
+		return (-1);
+	return (1);
+}
+
+int	ft_ceiling(char **line, t_all *all)
+{
+	int	g;
+
+	g = 0;
+	all->chr->c++;
+	all->par->f = 'C';
+	while ((*line)[g] != '.' || !(ft_isdigit((*line)[g])))// da sistemare
+		g++;
+	if ((*line)[g] == '.')
+		all->par->sfc[2] = ft_text_store(line);
+	else if (ft_isdigit((*line)[g]))
+		return (ft_type_core(line, all, &all->chr->c, &all->par->f));
+	else
+		return (-1);
+	return (1);
+}
+
 int	ft_check_type(char **line, t_all *all)
 {
 	if (**line == 'R')
@@ -53,21 +89,9 @@ int	ft_check_type(char **line, t_all *all)
 		return (1);
 	}
 	else if (**line == 'F')
-	{
-		all->chr->f++;
-		all->par->f = 'F';
-		all->par->sfc[1] = ft_text_store(line);
-		//return (ft_type_core(line, all, &all->chr->f, &all->par->f));
-		return (-1);
-	}
+		return (ft_floor(line, all));
 	else if (**line == 'C')
-	{
-		all->chr->c++;
-		all->par->f = 'C';
-		all->par->sfc[2] = ft_text_store(line);
-		return (1);
-		//ft_type_core(line, all, &all->chr->c, &all->par->f));
-	}
+		return (ft_ceiling(line, all));
 	else if (ft_check_walls(line, all) == 1)
 		return (1);
 	else
