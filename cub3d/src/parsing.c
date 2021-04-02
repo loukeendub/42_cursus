@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 16:32:45 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/02 18:32:08 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/02 17:17:46 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,14 +35,16 @@ char	*ft_text_store(char **line)
 			nwline[j++] = *((*line)++);
 		nwline[j] = 0;
 	}
-	printf("-->%s\n", nwline);
 	return (nwline);
 }
 
 int	ft_check_type(char **line, t_all *all)
 {
 	if (**line == 'R')
-		return (ft_type_core(line, all, &all->chr->r, &all->par->f));
+		{
+			all->chr->r++;
+			return (ft_type_core(line, all, &all->chr->r, &all->par->f));
+		}
 	else if (**line == 'S' && *((*line) + 1) != 'O')
 	{
 		if ((all->par->sprite = ft_text_store(line)) == 0)
@@ -52,13 +54,19 @@ int	ft_check_type(char **line, t_all *all)
 	}
 	else if (**line == 'F')
 	{
+		all->chr->f++;
 		all->par->f = 'F';
-		return (ft_type_core(line, all, &all->chr->f, &all->par->f));
+		all->par->sfc[1] = ft_text_store(line);
+		//return (ft_type_core(line, all, &all->chr->f, &all->par->f));
+		return (-1);
 	}
 	else if (**line == 'C')
 	{
+		all->chr->c++;
 		all->par->f = 'C';
-		return (ft_type_core(line, all, &all->chr->c, &all->par->f));
+		all->par->sfc[2] = ft_text_store(line);
+		return (1);
+		//ft_type_core(line, all, &all->chr->c, &all->par->f));
 	}
 	else if (ft_check_walls(line, all) == 1)
 		return (1);

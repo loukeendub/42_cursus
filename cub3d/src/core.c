@@ -33,7 +33,7 @@ int	ft_wall_core(char **line, char **wall, int *chr)
 	*wall = ft_text_store(line);
 	if (*wall == 0)
 		return (-1);
-	chr++;
+	*chr += 1;
 	return (1);
 }
 

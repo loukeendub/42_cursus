@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 10:46:55 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/02 17:46:59 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/02 16:15:03 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -293,7 +293,7 @@ int				ft_split_core(char *s, char **arr, char c, t_all *all);
 void			ft_main_parsing(char *path, t_all *all);
 void			ft_init_vars(t_vars *vars, t_all *all);
 void			ft_spritecasting(t_vars *vars, t_data *img, double *buffer);
-int 			render_next_frame(t_vars *vars, t_all *all);
+int 			render_next_frame(t_vars *vars);
 /*
 ** cub3d-2 [FULL]
 */
@@ -305,7 +305,7 @@ int 			ft_keys2(t_vars *vars);
 /*
 ** cub3d-3 [FULL]
 */
-void			ft_gettextures(t_vars *vars, t_all *all);
+void			ft_gettextures(t_vars *vars);
 int				key_hook(int keycode, t_vars *vars);
 int 			ft_release(int keycode, t_vars *vars);
 void			ft_getcoordinates(t_vars *vars, t_sprite *sprite);

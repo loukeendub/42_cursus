@@ -40,9 +40,9 @@ int	ft_parse_digit(char **line, t_all *all)
 int		ft_treatfc(char **line, t_all *all, int h)
 {
 	if (all->par->f == 'C')
-		h = ft_itoa2(line, all, h);
+			h = ft_itoa2(line, all, h);
 	else if (all->par->f == 'F')
-		h = ft_itoa3(line, all, h);
+			h = ft_itoa3(line, all, h);
 	return (h);
 }
 
