@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 14:27:00 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/03/31 18:42:37 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/02 12:48:30 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,31 +63,6 @@ size_t	ft_strclen(char *s, char c)
 			i++;
 	}
 	return (i);
-}
-
-int	ft_split_core(char *s, char **arr, char c, t_all *all)
-{
-	size_t	len;
-	int		i;
-
-	i = 0;
-	while (*s)
-	{
-		if (*s != c)
-		{
-			len = ft_strclen(s, c);
-			arr[i] = malloc(len + 1);
-			if (!arr[i])
-				return (0);
-			ft_strlcpy(arr[i], s, len + 1);
-			s += len;
-			i++;
-			all->par->map_h++;
-		}
-		else
-			s++;
-	}
-	return (i); 
 }
 
 char	**ft_split(char *s, char c, t_all *all)

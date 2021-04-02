@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 16:32:45 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/02 12:18:41 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/02 12:48:33 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,10 @@ char	*ft_text_store(char **line)
 	return (nwline);
 }
 
-int	ft_check_type(char **line, t_all *all)// 35 lines
+int	ft_check_type(char **line, t_all *all)
 {
 	if (**line == 'R')
-	{
-		if (ft_parse_digit(line, all) == -1 && all->chr->r == 0)
-				return (-1);
-		all->chr->r++;
-		return (1);
-	}
+		return (ft_type_core(line, all, &all->chr->r, &all->par->f));
 	else if (**line == 'S' && *((*line) + 1) != 'O')
 	{
 		if ((all->par->sprite = ft_text_store(line)) == 0)
@@ -57,33 +52,17 @@ int	ft_check_type(char **line, t_all *all)// 35 lines
 	else if (**line == 'F')
 	{
 		all->par->f = 'F';
-		if (ft_parse_digit2(line, all) == -1)
-				return (-1);
-		all->chr->f++;
-		return (1);
+		return (ft_type_core(line, all, &all->chr->f, &all->par->f));
 	}
 	else if (**line == 'C')
 	{
 		all->par->f = 'C';
-		if (ft_parse_digit2(line, all) == -1)
-				return (-1);
-		all->chr->c++;
-		return (1);
+		return (ft_type_core(line, all, &all->chr->c, &all->par->f));
 	}
 	else if (ft_check_walls(line, all) == 1)
 		return (1);
 	else
 		return (-1);
-	return (1);
-}
-
-int	ft_wall_core(char **line, char **wall, int *chr)
-{
-	puts(*line);
-	*wall = ft_text_store(line);
-	if (*wall == 0)
-		return (-1);
-	chr++;
 	return (1);
 }
 

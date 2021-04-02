@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 10:46:55 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/02 12:04:54 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/02 12:49:11 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,19 +116,25 @@ char			*ft_strjoin(char *s1, char *s2);
 char			*ft_realloc(char **line);
 char			*ft_realloc_finale(char **line);
 /*
-** utils_2 [FULL]
+** utils_2
 */
 size_t			ft_strlcpy(char *dst, char *src, size_t dstsize);
 size_t			ft_strcount(char *str, char c);
 size_t			ft_strclen(char *s, char c);
-int				ft_split_core(char *s, char **arr, char c, t_all *all);
 char			**ft_split(char *s, char c, t_all *all);
 /*
 ** utils_3
 */
 size_t			ft_strlcat(char *dst, char *src, size_t dstsize);
-void			ft_itoa_core(char **line, int *all);
 int				ft_itoa(char **line, t_all *all, int h);
 int				ft_itoa2(char **line, t_all *all, int h);
 int				ft_itoa3(char **line, t_all *all, int h);
+/*
+** core
+*/
+int				ft_type_core(char **line, t_all *all, int *chr, char *f);
+int				ft_wall_core(char **line, char **wall, int *chr);
+void			ft_itoa_core(char **line, int *all);
+int				ft_split_core(char *s, char **arr, char c, t_all *all);
+
 #endif

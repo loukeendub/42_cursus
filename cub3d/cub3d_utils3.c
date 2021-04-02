@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 12:05:43 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/02 11:20:10 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/02 12:48:35 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,17 +30,6 @@ size_t	ft_strlcat(char *dst, char *src, size_t dstsize)
 	while (*src++)
 		++i;
 	return (i);
-}
-
-void	ft_itoa_core(char **line, int *all)
-{
-	while (ft_isdigit((**line)))
-	{
-		if (*all == -1)
-			*all = 0;
-		*all = *all * 10 + ((**line) - 48);
-		(*line)++;
-	}
 }
 
 int	ft_itoa(char **line, t_all *all, int h)

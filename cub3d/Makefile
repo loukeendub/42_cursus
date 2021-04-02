@@ -6,11 +6,12 @@
 #    By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/29 12:33:59 by lmarzano          #+#    #+#              #
-#    Updated: 2021/04/02 12:00:22 by lmarzano         ###   ########.fr        #
+#    Updated: 2021/04/02 12:43:50 by lmarzano         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS	=	cub3d_utils.c\
+SRCS	=	core.c\
+			cub3d_utils.c\
 			cub3d_utils2.c\
 			cub3d_utils3.c\
 			get_next_line.c\
