@@ -1,16 +1,21 @@
 #include "../cub3d.h"
 
-int        main(int argc, char **argv)
+int        main(int argc, char **argv)//26 lines
 {
+    t_all	all;
     void    *mlx_ptr;
     void    *mlx_win;
-    t_parse parse;
     t_vars vars;
     vars.time = 0;
     vars.oldTime = 0;
 
-    map_parsing(argv[1], &parse);
-    ft_init_vars(&vars, &parse);
+    if (argc != 2 && argc != 3)
+	{
+		write(1, "Error\n", 6);
+		return (0);
+	}
+    ft_main_parsing(argv[1], &all);
+    ft_init_vars(&vars, &all);
     mlx_ptr = mlx_init();
     mlx_win = mlx_new_window(mlx_ptr, vars.ScreenWidth, vars.ScreenHeight, "Cub3V");
     vars.mlx = mlx_ptr;
@@ -21,6 +26,5 @@ int        main(int argc, char **argv)
     mlx_hook(vars.win, 3, 1L<<1, ft_release, &vars);
     mlx_hook(vars.win, 17, 1L<<5, ft_exit, &vars);
 	mlx_loop_hook(mlx_ptr, render_next_frame, &vars);
-
     mlx_loop(mlx_ptr);
 }

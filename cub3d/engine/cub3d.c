@@ -3,232 +3,35 @@
 #define texWidth 64
 #define texHeight 64
 
-int	ft_exit(int keycode, t_vars *vars)
-{
-	/*dont forget to free all mallocs*/
-	system("killall afplay");
-	exit(0);
-}
 
-int		ft_gettexnum(t_vars *vars)
-{
-	if (vars->side == 0)
-	{
-		if (vars->rayDirX > 0)
-			return(0);
-		else
-			return(1);
-	}
-	else
-	{
-		if (vars->rayDirY < 0)
-			return(2);
-		else
-			return(3);
-	}
-}
-
-void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
-{
-    char    *dst;
-
-    dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
-    *(unsigned int*)dst = color;
-}
-
-int		ft_keys(t_vars *vars)
-{  
-	if(vars->keyUp == 1)//w
-	{
-		
-	  if(ft_iscinstr(vars->map[(int)(vars->posX + vars->dirX * 0.4)][(int)(vars->posY)], "0NSWE", 5))
-		vars->posX = vars->posX + vars->dirX * vars->moveSpeed;
-	  if(ft_iscinstr(vars->map[(int)(vars->posX)][(int)(vars->posY + vars->dirY * 0.4)], "0NSWE", 5))
-		vars->posY = vars->posY + vars->dirY * vars->moveSpeed;
-	}
-	if(vars->keyDown == 1)//s
-	{
-	  if(ft_iscinstr(vars->map[(int)(vars->posX - vars->dirX * 0.4)][(int)(vars->posY)], "0NSWE", 5))
-		vars->posX -= vars->dirX * vars->moveSpeed;
-	  if(ft_iscinstr(vars->map[(int)(vars->posX)][(int)(vars->posY - vars->dirY * 0.4)], "0NSWE", 5))
-		vars->posY -= vars->dirY * vars->moveSpeed;
-	}
-	if(vars->keyLeftView == 1)//rot sx
-	{
-	  vars->oldDirX = vars->dirX;
-	  vars->dirX = vars->dirX * cos(vars->rotSpeed) - vars->dirY * sin(vars->rotSpeed);
-	  vars->dirY = vars->oldDirX * sin(vars->rotSpeed) + vars->dirY * cos(vars->rotSpeed);
-	  vars->oldPlaneX = vars->planeX;
-	  vars->planeX = vars->planeX * cos(vars->rotSpeed) - vars->planeY * sin(vars->rotSpeed);
-	  vars->planeY = vars->oldPlaneX * sin(vars->rotSpeed) + vars->planeY * cos(vars->rotSpeed);
-	}
-	return (0);
-}
-
-int 	ft_keys2(t_vars *vars)
-{
-	if(vars->keyRightView == 1)//rot dx
-	{
-	  vars->oldDirX = vars->dirX;
-	  vars->dirX = vars->dirX * cos(-vars->rotSpeed) - vars->dirY * sin(-vars->rotSpeed);
-	  vars->dirY = vars->oldDirX * sin(-vars->rotSpeed) + vars->dirY * cos(-vars->rotSpeed);
-	  vars->oldPlaneX = vars->planeX;
-	  vars->planeX = vars->planeX * cos(-vars->rotSpeed) - vars->planeY * sin(-vars->rotSpeed);
-	  vars->planeY = vars->oldPlaneX * sin(-vars->rotSpeed) + vars->planeY * cos(-vars->rotSpeed);
-	}
-	if (vars->keyLeft == 1)//d
-	{
-	  if(ft_iscinstr(vars->map[(int)(vars->posX + vars->planeX * 0.4)][(int)(vars->posY)], "0NSWE", 5))
-		vars->posX = vars->posX + vars->planeX * vars->moveSpeed;
-	  if(ft_iscinstr(vars->map[(int)(vars->posX)][(int)(vars->posY + vars->planeY * 0.4)], "0NSWE", 5))
-		vars->posY = vars->posY + vars->planeY * vars->moveSpeed;
-	}
-	if (vars->keyRight == 1)//a
-	{
-	  if(ft_iscinstr(vars->map[(int)(vars->posX - vars->planeX * 0.4)][(int)(vars->posY)], "0NSWE", 5))
-		vars->posX -= vars->planeX * vars->moveSpeed;
-	  if(ft_iscinstr(vars->map[(int)(vars->posX)][(int)(vars->posY - vars->planeY * 0.4)], "0NSWE", 5))
-		vars->posY -= vars->planeY * vars->moveSpeed;
-	}
-	return(0);
-}
-
-void	ft_gettextures(t_vars *vars)
-{
-	vars->texture[0].img = mlx_xpm_file_to_image(vars->mlx, vars->texture[0].path, &vars->texture[0].width, &vars->texture[0].height);
-	vars->texture[0].addr = mlx_get_data_addr(vars->texture[0].img, &vars->texture[0].bits_per_pixel, &vars->texture[0].line_length, &vars->texture[0].endian);
-	vars->texture[0].colors = (int *)mlx_get_data_addr(vars->texture[0].img, &vars->texture[0].bits_per_pixel, &vars->texture[0].line_length, &vars->texture[0].endian);
-	vars->texture[1].img = mlx_xpm_file_to_image(vars->mlx, vars->texture[1].path, &vars->texture[1].width, &vars->texture[1].height);
-	vars->texture[1].addr = mlx_get_data_addr(vars->texture[1].img, &vars->texture[1].bits_per_pixel, &vars->texture[1].line_length, &vars->texture[1].endian);
-	vars->texture[1].colors = (int *)mlx_get_data_addr(vars->texture[1].img, &vars->texture[1].bits_per_pixel, &vars->texture[1].line_length, &vars->texture[1].endian);
-	vars->texture[2].img = mlx_xpm_file_to_image(vars->mlx, vars->texture[2].path, &vars->texture[2].width, &vars->texture[2].height);
-	vars->texture[2].addr = mlx_get_data_addr(vars->texture[2].img, &vars->texture[2].bits_per_pixel, &vars->texture[2].line_length, &vars->texture[2].endian);
-	vars->texture[2].colors = (int *)mlx_get_data_addr(vars->texture[2].img, &vars->texture[2].bits_per_pixel, &vars->texture[2].line_length, &vars->texture[2].endian);
-	vars->texture[3].img = mlx_xpm_file_to_image(vars->mlx, vars->texture[3].path, &vars->texture[3].width, &vars->texture[3].height);
-	vars->texture[3].addr = mlx_get_data_addr(vars->texture[3].img, &vars->texture[3].bits_per_pixel, &vars->texture[3].line_length, &vars->texture[3].endian);
-	vars->texture[3].colors = (int *)mlx_get_data_addr(vars->texture[3].img, &vars->texture[3].bits_per_pixel, &vars->texture[3].line_length, &vars->texture[3].endian);
-	vars->texture[4].img = mlx_xpm_file_to_image(vars->mlx, vars->texture[4].path, &vars->texture[4].width, &vars->texture[4].height);
-	vars->texture[4].addr = mlx_get_data_addr(vars->texture[4].img, &vars->texture[4].bits_per_pixel, &vars->texture[4].line_length, &vars->texture[4].endian);
-	vars->texture[4].colors = (int *)mlx_get_data_addr(vars->texture[4].img, &vars->texture[4].bits_per_pixel, &vars->texture[4].line_length, &vars->texture[4].endian);
-	vars->texture[5].img = mlx_xpm_file_to_image(vars->mlx, vars->texture[5].path, &vars->texture[5].width, &vars->texture[5].height);
-	vars->texture[5].addr = mlx_get_data_addr(vars->texture[5].img, &vars->texture[5].bits_per_pixel, &vars->texture[5].line_length, &vars->texture[5].endian);
-	vars->texture[5].colors = (int *)mlx_get_data_addr(vars->texture[5].img, &vars->texture[5].bits_per_pixel, &vars->texture[5].line_length, &vars->texture[5].endian);
-	vars->texture[6].img = mlx_xpm_file_to_image(vars->mlx, "./textures/duckwithknife.xpm", &vars->texture[6].width, &vars->texture[6].height);
-	vars->texture[6].addr = mlx_get_data_addr(vars->texture[6].img, &vars->texture[6].bits_per_pixel, &vars->texture[6].line_length, &vars->texture[6].endian);
-	vars->texture[6].colors = (int *)mlx_get_data_addr(vars->texture[6].img, &vars->texture[6].bits_per_pixel, &vars->texture[6].line_length, &vars->texture[6].endian);
-}
-
-int	key_hook(int keycode, t_vars *vars)
-{
-  keycode == 13 ? vars->keyUp = 1 : 0;
-  keycode == 1 ? vars->keyDown = 1 : 0;
-  keycode == 123 ? vars->keyLeftView = 1 : 0;
-  keycode == 124 ? vars->keyRightView = 1 : 0;
-  keycode == 0 ? vars->keyRight = 1 : 0;
-  keycode == 2 ? vars->keyLeft = 1 : 0;
- /*dont forget to free all mallocs*/
-	if(keycode == 53)
-	{
-		mlx_destroy_window(vars->mlx, vars->win);
-		system("killall afplay");
-		exit(0);
-	}
-	/*change the return value*/
-	return (0);
-}
-
-int ft_release(int keycode, t_vars *vars)
-{
-  keycode == 13 ? vars->keyUp = 0 : 1;
-  keycode == 1 ? vars->keyDown = 0 : 1;
-  keycode == 123 ? vars->keyLeftView = 0 : 1;
-  keycode == 124 ? vars->keyRightView = 0 : 1;
-  keycode == 0 ? vars->keyRight = 0 : 1;
-  keycode == 2 ? vars->keyLeft = 0 : 1;
-  return 0;
-}
-
-void	check_init(void)
-{
-	g_check.r = 0;
-	g_check.no = 0;
-	g_check.so = 0;
-	g_check.we = 0;
-	g_check.ea = 0;
-	g_check.s = 0;
-	g_check.f = 0;
-	g_check.c = 0;
-	g_check.err = 1;
-	
-}
-
-void	ref_init(t_parse *g_p)
-{
-	g_p->reference[0] = ' ';
-	g_p->reference[1] = '0';
-	g_p->reference[2] = '1';
-	g_p->reference[3] = '2';
-	g_p->reference[4] = 'N';
-	g_p->reference[5] = 'S';
-	g_p->reference[6] = 'E';
-	g_p->reference[7] = 'W';
-	g_p->map_h = -1;
-}
-
-
-void	struct_init(t_parse *g_p)
-{
-	//system("afplay sesso.mp3 &");
-	g_p->res_w = 0;
-	g_p->res_h = 0;
-	g_p->n_wall[0] = 0;
-	g_p->n_wall[1] = 0;
-	g_p->n_wall[2] = 0;
-	g_p->s_wall[0] = 0;
-	g_p->s_wall[1] = 0;
-	g_p->s_wall[2] = 0;
-	g_p->w_wall[0] = 0;
-	g_p->w_wall[1] = 0;
-	g_p->w_wall[2] = 0;
-	g_p->e_wall[0] = 0;
-	g_p->e_wall[1] = 0;
-	g_p->e_wall[2] = 0;
-	g_p->sky[0] = 0;
-	g_p->sky[1] = 0;
-	g_p->sky[2] = 0;
-	g_p->floor[0] = 0;
-	g_p->floor[1] = 0;
-	g_p->floor[2] = 0;
-	g_p->ceiling[0] = 0;
-	g_p->ceiling[1] = 0;
-	g_p->ceiling[2] = 0;
-	ref_init(g_p);
-	check_init();
-}
-
-void	map_parsing(char *path, t_parse *g_p)
+void	ft_main_parsing(char *path, t_all *all)
 {
 	char	*line;
-	int		fd;
-	int		i;
+	int		fd_map;
+	int		ret = 0;
 
-	i = 1;
-	fd = open(path, O_RDONLY);
-	struct_init(g_p);
-	while(i)
+	fd_map = open(path, O_RDONLY);
+	ft_str_all_init(all);
+	ret = 1;
+	while (ret == 1)
 	{
-		i = get_next_line(fd, &line);
-		if (i == 1)
-			i = parsing(&line, fd, g_p);
-		else if (i == -1)
+		ret = get_next_line(fd_map, &line);
+		if (ft_parse_line(line, fd_map, all) == -1 || ret == -1)
 		{
-			printf("Error\n");
-			exit(0);
+			//puts("Fuck yea");
+			write(1, "Error\n", 6);
 		}
 	}
+	if (!check_val(all))
+		{
+			//puts("invalid number");
+			write(1, "Error\n", 6);
+		}
+
+	free(line);
 }
 
-void       ft_init_vars(t_vars *vars, t_parse *g_p)
+void       ft_init_vars(t_vars *vars, t_all *all)// 65 lines
 {
     int i;
     int j;
@@ -236,29 +39,29 @@ void       ft_init_vars(t_vars *vars, t_parse *g_p)
     i = 1;
     j = 1;
 
-    vars->ScreenHeight = g_p->res_h;
-    vars->ScreenWidth = g_p->res_w;
-    vars->map = g_p->map;
-    vars->mapHeight = g_p->map_h;
-    vars->texture[0].path = g_p->wall[0];
-	vars->texture[1].path = g_p->wall[1];
-	vars->texture[2].path = g_p->wall[2];
-	vars->texture[3].path = g_p->wall[3];
-	vars->texture[4].path = g_p->sfc[1]; //floor
-	vars->texture[5].path = g_p->sfc[2]; //ceiling
-	vars->texture[6].path = g_p->sfc[0];
+    vars->ScreenHeight = all->par->res_h;
+    vars->ScreenWidth = all->par->res_w;
+    vars->map = all->par->map;
+    vars->mapHeight = all->par->map_h;
+    vars->texture[0].path = all->par->wall[0];
+	vars->texture[1].path = all->par->wall[1];
+	vars->texture[2].path = all->par->wall[2];
+	vars->texture[3].path = all->par->wall[3];
+	vars->texture[4].path = all->par->sfc[1]; //floor
+	vars->texture[5].path = all->par->sfc[2]; //ceiling
+	vars->texture[6].path = all->par->sfc[0];
 
     while (i < vars->mapHeight)
     {
-        while(g_p->map[i][j])
+        while(all->par->map[i][j])
         {
-            if (g_p->map[i][j] == '2')
+            if (all->par->map[i][j] == '2')
                 vars->nSprites++;
-            if (ft_iscinstr(g_p->map[i][j], "NWSE", ft_strlen(g_p->map[i])))
+            if (ft_iscinstr(all->par->map[i][j], "NWSE", ft_strlen(all->par->map[i])))
             {
                 vars->posX = i + 0.5;
                 vars->posY = j + 0.5;
-                vars->dir = g_p->map[i][j];
+                vars->dir = all->par->map[i][j];
                 break ;
             }
             j++;
@@ -296,60 +99,7 @@ void       ft_init_vars(t_vars *vars, t_parse *g_p)
 	}
 }
 
-void	ft_getcoordinates(t_vars *vars, t_sprite *sprite)
-{
-	int	x;
-	int y;
-	int i;
-
-	x = 0;
-	y = 0;
-	i = 0;
-	while(x < vars->mapHeight)
-	{
-		while(vars->map[x][y])
-		{
-			if (vars->map[x][y] == '2')
-			{
-				sprite[i].x = x + 0.5;
-				sprite[i].y = y + 0.5;
-				i++;
-			}
-			y++;
-		}
-		y = 0;
-		x++;
-	}
-}
-void	ft_sortsprites(int *order, double *distance, int n)
-{
-	int	i;
-	int j;
-	double checkd;
-	int checko;
-
-	i = 0;
-	while(i < n)
-	{
-		j = i + 1;
-		while (j < n)
-		{
-			if (distance[i] < distance[j])
-			{
-				checkd = distance[i];
-				checko = order[i];
-				distance[i] = distance[j];
-				order[i] = order[j];
-				distance[j] = checkd;
-				order[j] = checko;
-			}
-			j++;
-		}
-		i++;
-	}
-}
-
-void	ft_spritecasting(t_vars *vars, t_data *img, double *buffer)
+void	ft_spritecasting(t_vars *vars, t_data *img, double *buffer)// 65 lines
 {
 	t_sprite	*sprite;
 	int			spriteOrder[vars->nSprites];
@@ -417,18 +167,7 @@ void	ft_spritecasting(t_vars *vars, t_data *img, double *buffer)
 	free(sprite);
 }
 
-void	ft_destroytextures(t_vars *vars)
-{
-	mlx_destroy_image(vars->mlx, vars->texture[0].img);
-	mlx_destroy_image(vars->mlx, vars->texture[1].img);
-	mlx_destroy_image(vars->mlx, vars->texture[2].img);
-	mlx_destroy_image(vars->mlx, vars->texture[3].img);
-	mlx_destroy_image(vars->mlx, vars->texture[4].img);
-	mlx_destroy_image(vars->mlx, vars->texture[5].img);
-	mlx_destroy_image(vars->mlx, vars->texture[6].img);
-}
-
-int render_next_frame(t_vars *vars)
+int render_next_frame(t_vars *vars)// 157 lines
 {
     int w = vars->ScreenWidth;
     int h = vars->ScreenHeight;
