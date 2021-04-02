@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 16:32:45 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/01 15:33:22 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/02 12:18:41 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ char	*ft_text_store(char **line)
 	return (nwline);
 }
 
-int	ft_check_type(char **line, t_all *all)
+int	ft_check_type(char **line, t_all *all)// 35 lines
 {
 	if (**line == 'R')
 	{
@@ -77,41 +77,54 @@ int	ft_check_type(char **line, t_all *all)
 	return (1);
 }
 
+int	ft_wall_core(char **line, char **wall, int *chr)
+{
+	puts(*line);
+	*wall = ft_text_store(line);
+	if (*wall == 0)
+		return (-1);
+	chr++;
+	return (1);
+}
+
 int	ft_check_walls(char **line, t_all *all)
 {
 	if (**line == 'N' && *(++(*line)) == 'O')
-	{
-		if ((all->par->wall[0] = ft_text_store(line)) == 0)
-			return (-1);
-		all->chr->no++;
-		return (1);
-	}
+		return (ft_wall_core(line, &all->par->wall[0], &all->chr->no));
 	else if (**line == 'S' && *(++(*line)) == 'O')
-	{
-		if ((all->par->wall[1] = ft_text_store(line)) == 0)
-			return (-1);
-		all->chr->so++;
-		return (1);
-	}
+		return (ft_wall_core(line, &all->par->wall[1], &all->chr->so));
 	else if (**line == 'W' && *(++(*line)) == 'E')
-	{
-		if ((all->par->wall[2] = ft_text_store(line)) == 0)
-			return (-1);
-		all->chr->we++;
-		return (1);
-	}
+		return (ft_wall_core(line, &all->par->wall[2], &all->chr->we));
 	else if (**line == 'E' && *(++(*line)) == 'A')
+		return (ft_wall_core(line, &all->par->wall[3], &all->chr->ea));
+	return (1);
+}
+
+int	check_val(t_all *all)
+{
+	int i;
+
+	i = 0;
+	if (all->chr->r != 1 || all->chr->no != 1 || all->chr->so != 1 || all->chr->we != 1\
+	|| all->chr->ea != 1 || all->chr->s != 1 || all->chr->f != 1 || all->chr->c != 1 || all->chr->mp != 1) 
+		return (0);
+	while (i < 3)
 	{
-		if ((all->par->wall[3] = ft_text_store(line)) == 0)
-			return (-1);
-		all->chr->ea++;
-		return (1);
+		if (all->par->ceiling[i] < 0 || all->par->ceiling[i] > 255)
+			return (0);
+		i++;
+	}
+	i = 0;
+	while (i < 3)
+	{
+		if (all->par->floor[i] < 0 || all->par->floor[i] > 255)
+			return (0);
+		i++;
 	}
 	return (1);
 }
 
-
-int	ft_parse_line(char *line, int fd, t_all *all)
+int	ft_parse_line(char *line, int fd, t_all *all)// >30 lines
 {
 	int ret;
 
@@ -121,7 +134,7 @@ int	ft_parse_line(char *line, int fd, t_all *all)
 		return (1);
 	while (line[i])
 	{
-		puts(line);
+		//puts(line);
 		if (line[i] == ' ' && line[i])
 		{
 			i++;

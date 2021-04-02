@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 16:24:46 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/01 14:55:50 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/02 12:01:06 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,11 +49,13 @@ int	main(int argc, char **argv)// 29 lines
 	free(line);
 	/*---DEBUG---*/
 	//printf("ERR : %d\n", all.chr->no);
-	//printf("|W : %d|\n|H : %d|\n", all.par->res_w, all.par->res_h);
-	//printf("|NO : |%s|\n|SO : |%s|\n|WE : |%s|\n|EA : |%s|\n|S : |%s|\n", all.par->wall[0], all.par->wall[1], all.par->wall[2], all.par->wall[3], all.par->sprite);
-	int i = 0; 
-	while (all.par->map[i])
-	puts(all.par->map[i++]);
+	printf("|W : %d|\n|H : %d|\n", all.par->res_w, all.par->res_h);
+	printf("|NO : |%s|\n|SO : |%s|\n|WE : |%s|\n|EA : |%s|\n|S : |%s|\n", all.par->wall[0], all.par->wall[1], all.par->wall[2], all.par->wall[3], all.par->sprite);
+	//int i = 0;
+	printf("C : |%d| |%d| |%d|\n", all.par->ceiling[0], all.par->ceiling[1], all.par->ceiling[2]);
+	printf("F : |%d| |%d| |%d|\n", all.par->floor[0], all.par->floor[1], all.par->floor[2]);
+	//while (all.par->map[i])
+	//	puts(all.par->map[i++]);
 	/*---end of debug---*/
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 10:46:55 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/01 14:49:27 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/02 12:04:54 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,9 @@ void			ft_tx_init(t_all *all);
 void			ft_ref_init(t_all *all);
 void			ft_check_init(t_all *all);
 /*
-** parsing 
+** parsing [FULL]
 */
+int				check_val(t_all *all);
 int				ft_parse_line(char *line, int fd, t_all *all);
 int				ft_check_walls(char **line, t_all *all);
 int				ft_check_type(char **line, t_all *all);
@@ -85,6 +86,8 @@ char			*ft_text_store(char **line);
 */
 int				ft_parse_digit(char **line, t_all *all);
 int				ft_parse_digit2(char **line, t_all *all);
+int				ft_digit_core(char **line, t_all *all, int h, int count);
+int				ft_treatfc(char **line, t_all *all, int h);
 /*
 ** map_parsing 
 */
@@ -124,8 +127,8 @@ char			**ft_split(char *s, char c, t_all *all);
 ** utils_3
 */
 size_t			ft_strlcat(char *dst, char *src, size_t dstsize);
+void			ft_itoa_core(char **line, int *all);
 int				ft_itoa(char **line, t_all *all, int h);
 int				ft_itoa2(char **line, t_all *all, int h);
 int				ft_itoa3(char **line, t_all *all, int h);
-int				check_val(t_all *all);
 #endif

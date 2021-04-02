@@ -6,7 +6,7 @@
 #    By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/29 12:33:59 by lmarzano          #+#    #+#              #
-#    Updated: 2021/04/01 10:59:34 by lmarzano         ###   ########.fr        #
+#    Updated: 2021/04/02 12:00:22 by lmarzano         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ SRCS	=	cub3d_utils.c\
 OBJS	=	${SRCS:.c=.o}
 BOBJS	=	${BSRCS:.c=.o}
 CC		=	gcc
-CFLAGS	=	-Wall -Wextra -Werror
+CFLAGS	=	-Wall -Wextra -Werror -g
 NAME	=	cub3D
 
 all		:	$(NAME)
