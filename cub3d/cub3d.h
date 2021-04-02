@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 10:46:55 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/02 12:49:11 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/02 14:16:54 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,18 +16,43 @@
 #  define BUFFER_SIZE 32
 # endif
 
-# include <stdlib.h>
 # include <string.h>
-# include <unistd.h>
-# include <stdio.h>
-
 # include <sys/types.h>
 # include <sys/stat.h>
+# include <fcntl.h>
+# include "mlx/mlx.h"
+# include <stdio.h>
+# include <stdlib.h>
+# include <math.h>
+# include <stdbool.h>
+# include <time.h>
+# include <mlx.h>
+# include <unistd.h>
 # include <fcntl.h>
 
 /*
 ** structure
 */
+typedef struct  s_data {
+	void        *img;
+	char        *addr;
+	int         bits_per_pixel;
+	int         line_length;
+	int         endian;
+}               t_data;
+
+typedef struct  s_tex   {
+	char    *path;
+	void    *img;
+	char    *addr;
+	int     *colors;
+	int     width;
+	int     height;
+	int     bits_per_pixel;
+	int     line_length;
+	int     endian;
+}               t_tex;
+
 typedef	struct	s_parse
 {
 	int		res_w;
@@ -59,10 +84,136 @@ typedef struct	s_check
 	int		space;
 }				t_check;
 
+typedef struct s_keys
+{
+  int  keyUp;
+  int  keyDown;
+  int  keyLeftView;
+  int  keyRightView;
+  int  keyLeft;
+  int  keyRight;
+}             t_keys;
+
+typedef struct  s_sprite
+{
+	double  x;
+	double  y;
+}               t_sprite;
+
+typedef struct  s_vars 
+{
+	void        *towD_win;
+	void        *mlx;
+	void        *win;
+	int         x;
+	int         y;
+	double      posX;
+	double      posY;  //x and y start position
+	double      dirX;
+	double      dirY; //initial direction vector
+	double      planeX;
+	double      planeY; //the 2d raycaster version of camera plane
+	double      time; //time of current frame
+	double      oldTime; //time of previous frame
+	double      camX;
+	double      camY;
+	double      cameraX; //x-coordinate in camera space
+	double      rayDirX;
+	double      rayDirY;
+	double      rayDirX0;
+	double      rayDirX1;
+	double      rayDirY0;
+	double      rayDirY1;
+	int         p;
+	float       posZ;
+	float       rowDistance;
+	float       floorStepX;
+	float       floorStepY;
+	float       floorX;
+	float       floorY;
+	int         cellX;
+	int         cellY;
+	int         tx;
+	int         ty;
+	//which box of the map we're in
+	int         mapX;
+	int         mapY;
+
+	//length of ray from current position to next x or y-side
+	double      sideDistX;
+	double      sideDistY;
+
+	//length of ray from one x or y-side to next x or y-side
+	double      deltaDistX;
+	double      deltaDistY;
+	double      perpWallDist;
+
+	//what direction to step in x or y-direction (either +1 or -1)
+	int         stepX;
+	int         stepY;
+
+	int         hit; //was there a wall hit?
+	int         side; //was a NS or a EW wall hit?
+	//calculate step and initial sideDist
+	int         lineHeight;
+
+	  //calculate lowest and highest pixel to fill in current stripe
+	int         drawStart;
+	int         drawEnd;
+	double      frameTime;
+	double      moveSpeed; //the constant value is in squares/second
+	double      rotSpeed;
+	double      oldDirX;
+	double      oldPlaneX;
+	t_tex       texture[7];
+	int         textNum;
+	double      wallX;
+	int         texX;
+	int         texY;
+	double      step;
+	double      texPos;
+	int         color;
+	//keys
+	int  keyUp;
+	int  keyDown;
+	int  keyLeftView;
+	int  keyRightView;
+	int  keyLeft;
+	int  keyRight;
+	int  ScreenHeight;
+	int  ScreenWidth;
+	char    **map;
+	int     mapHeight;
+	int     mapWidth;
+	int     nSprites;
+	char    dir;
+ //sprite
+	double      spriteX;
+	double      spriteY;
+	double      invDet;
+	double      transformX;
+	double      transformY;
+	int         spriteScreenX;
+	int         spriteHeight;
+	int         drawStartY;
+	int         drawEndY;
+	int         spriteWidth;
+	int         drawStartX;
+	int         drawEndX;
+	int         stripe;
+	int         d;
+}               t_vars;
+/*
+** Struct pointers
+*/
 typedef struct	s_all
 {
-	t_parse	*par;
-	t_check	*chr;
+	t_parse		*par;
+	t_check		*chr;
+	t_data		*data;
+	t_tex		*tex;
+	t_sprite	*spr;
+	t_vars		*vars;
 }				t_all;
 
 /*
@@ -136,5 +287,13 @@ int				ft_type_core(char **line, t_all *all, int *chr, char *f);
 int				ft_wall_core(char **line, char **wall, int *chr);
 void			ft_itoa_core(char **line, int *all);
 int				ft_split_core(char *s, char **arr, char c, t_all *all);
+/*
+** minilibx
+*/
+int 			render_next_frame(t_vars *vars);
+int 			ft_release(int keycode, t_vars *vars);
+int				ft_exit(int keycode, t_vars *vars);
+int				key_hook(int keycode, t_vars *vars);
+void			ft_init_vars(t_vars *vars, t_parse *g_p);
 
 #endif
