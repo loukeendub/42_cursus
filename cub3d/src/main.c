@@ -16,7 +16,6 @@ int        main(int argc, char **argv)//26 lines
 	}
     ft_main_parsing(argv[1], &all);
     ft_init_vars(&vars, &all);
-    printf("%s\n", vars.texture[0].path);
     mlx_ptr = mlx_init();
     mlx_win = mlx_new_window(mlx_ptr, vars.ScreenWidth, vars.ScreenHeight, "Cub3V");
     vars.mlx = mlx_ptr;

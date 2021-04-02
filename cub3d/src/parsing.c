@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 16:32:45 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/02 17:17:46 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/02 18:32:08 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ char	*ft_text_store(char **line)
 			nwline[j++] = *((*line)++);
 		nwline[j] = 0;
 	}
+	printf("-->%s\n", nwline);
 	return (nwline);
 }
 
