@@ -3,19 +3,20 @@
 int        main(int argc, char **argv)//26 lines
 {
     t_all	all;
+    t_vars vars;
     void    *mlx_ptr;
     void    *mlx_win;
-    t_vars vars;
     vars.time = 0;
     vars.oldTime = 0;
 
     if (argc != 2 && argc != 3)
 	{
-		write(1, "Error\n", 6);
+		write(1, "ErroG\n", 6);
 		return (0);
 	}
     ft_main_parsing(argv[1], &all);
     ft_init_vars(&vars, &all);
+    printf("%s\n", vars.texture[0].path);
     mlx_ptr = mlx_init();
     mlx_win = mlx_new_window(mlx_ptr, vars.ScreenWidth, vars.ScreenHeight, "Cub3V");
     vars.mlx = mlx_ptr;

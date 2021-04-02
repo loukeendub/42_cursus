@@ -3,13 +3,8 @@
         {
             "type": "shell",
             "label": "build",
-            "command": "/usr/bin/gcc",
-            "args": [
-                "-g",
-                "*.c",
-                "-o",
-                "${workspaceFolder}/a.out"
-            ],
+            "command": "/usr/bin/make",
+            "args": [],
             "options": {
                 "cwd": "${workspaceFolder}"
             },
