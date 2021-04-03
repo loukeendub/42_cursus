@@ -16,14 +16,14 @@ void	ft_main_parsing(char *path, t_all *all)
 	while (ret == 1)
 	{
 		ret = get_next_line(fd_map, &line);
-		puts(line);
+		//puts(line);
 		if (ft_parse_line(line, fd_map, all) == -1 || ret == -1)
 		{
 			puts("Mario");
 			//write(1, "Error\n", 6);
 		}
 	}
-	printf("no : |%d|\nso : |%d|\nwe : |%d|\nea : |%d|\nr : |%d|\ns : |%d|\nf : |%d|\nc : |%d|\nmp : |%d|\n", all->chr->no, all->chr->so, all->chr->we, all->chr->ea, all->chr->r, all->chr->s, all->chr->f, all->chr->c, all->chr->mp);
+	//printf("no : |%d|\nso : |%d|\nwe : |%d|\nea : |%d|\nr : |%d|\ns : |%d|\nf : |%d|\nc : |%d|\nmp : |%d|\n", all->chr->no, all->chr->so, all->chr->we, all->chr->ea, all->chr->r, all->chr->s, all->chr->f, all->chr->c, all->chr->mp);
 	/*---DEBUG---*/
 	/*printf("|W : %d|\n|H : %d|\n", all->par->res_w, all->par->res_h);
 	printf("|NO : |%s|\n|SO : |%s|\n|WE : |%s|\n|EA : |%s|\n|S : |%s|\n", all->par->wall[0], all->par->wall[1], all->par->wall[2], all->par->wall[3], all->par->sprite);
@@ -60,7 +60,7 @@ void       ft_init_vars(t_vars *vars, t_all *all)// 65 lines
 	vars->texture[3].path = all->par->wall[3];
 	vars->texture[4].path = all->par->sfc[1]; //floor
 	vars->texture[5].path = all->par->sfc[2]; //ceiling
-	vars->texture[6].path = all->par->sfc[0];
+	vars->texture[6].path = all->par->sprite;
 
     while (i < vars->mapHeight)
     {
@@ -110,7 +110,7 @@ void       ft_init_vars(t_vars *vars, t_all *all)// 65 lines
 	}
 }
 
-void	ft_spritecasting(t_vars *vars, t_data *img, double *buffer)// 65 lines
+void	ft_spritecasting(t_vars *vars, t_data *img, double *buffer)// 65 lines  // <----------------------------------------il segfault avviene qui dentro
 {
 	t_sprite	*sprite;
 	int			spriteOrder[vars->nSprites];
@@ -176,6 +176,7 @@ void	ft_spritecasting(t_vars *vars, t_data *img, double *buffer)// 65 lines
 		i++;
 	}
 	free(sprite);
+	puts("sprites done");
 }
 
 int render_next_frame(t_vars *vars)// 157 lines
@@ -187,8 +188,7 @@ int render_next_frame(t_vars *vars)// 157 lines
     t_data img;
     img.img = mlx_new_image(vars->mlx, w, h);
     img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
-    ft_gettextures(vars);
-//floor and ceiling
+
     vars->x = 1;
     vars->y = 0;
     while (vars->y < h)
@@ -337,12 +337,10 @@ int render_next_frame(t_vars *vars)// 157 lines
       //ft_drawline(img, vars);
       //verLine(vars->x, vars->drawStart, vars->drawEnd);
     }
-
-	
-	ft_spritecasting(vars, &img, zbuffer);
+	// ft_spritecasting(vars, &img, zbuffer);// <----------------------------------------il segfault avviene qui dentro
     mlx_put_image_to_window(vars->mlx, vars->win, img.img, 0, 0);
     mlx_destroy_image(vars->mlx, img.img);
-	ft_destroytextures(vars);
+	// ft_destroytextures(vars);
     ft_keys(vars);
 	ft_keys2(vars);
     return (0);

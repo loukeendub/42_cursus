@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 15:00:40 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/02 16:02:58 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/03 15:51:42 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,41 @@ int		ft_iscinstr(char c, char const *str, size_t len)
 		i++;
 	}
 	return (0);
+}
+
+int	ft_floor(char **line, t_all *all)
+{
+	
+	all->chr->f++;
+	all->par->f = 'F';
+	while (ft_isdigit(**line) == 0 && **line != '.')
+		(*line)++;
+	if (**line == '.')
+	{
+		(*line)--;
+		all->par->sfc[1] = ft_text_store(line);
+	}
+	else if (ft_isdigit(**line))
+		return (ft_type_core(line, all, &all->chr->f, &all->par->f));
+	else
+		return (-1);
+	return (1);
+}
+
+int	ft_ceiling(char **line, t_all *all)
+{
+	all->chr->c++;
+	all->par->f = 'C';
+	while (ft_isdigit(**line) == 0 && **line != '.')
+		(*line)++;
+	if (**line == '.')
+	{
+		(*line)--;
+		all->par->sfc[2] = ft_text_store(line);
+	}
+	else if (ft_isdigit(**line))
+		return (ft_type_core(line, all, &all->chr->c, &all->par->f));
+	else
+		return (-1);
+	return (1);
 }

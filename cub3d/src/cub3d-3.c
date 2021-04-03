@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 14:49:37 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/02 17:01:27 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/03 15:25:13 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@
 void	ft_gettextures(t_vars *vars)
 {
 	vars->texture[0].img = mlx_xpm_file_to_image(vars->mlx, vars->texture[0].path, &vars->texture[0].width, &vars->texture[0].height);
+	printf("|%s|\n", vars->texture[0].path);
 	vars->texture[0].addr = mlx_get_data_addr(vars->texture[0].img, &vars->texture[0].bits_per_pixel, &vars->texture[0].line_length, &vars->texture[0].endian);
+	printf("|%s|\n", vars->texture[0].img);
 	vars->texture[0].colors = (int *)mlx_get_data_addr(vars->texture[0].img, &vars->texture[0].bits_per_pixel, &vars->texture[0].line_length, &vars->texture[0].endian);
 	vars->texture[1].img = mlx_xpm_file_to_image(vars->mlx, vars->texture[1].path, &vars->texture[1].width, &vars->texture[1].height);
 	vars->texture[1].addr = mlx_get_data_addr(vars->texture[1].img, &vars->texture[1].bits_per_pixel, &vars->texture[1].line_length, &vars->texture[1].endian);
@@ -35,10 +37,9 @@ void	ft_gettextures(t_vars *vars)
 	vars->texture[5].img = mlx_xpm_file_to_image(vars->mlx, vars->texture[5].path, &vars->texture[5].width, &vars->texture[5].height);
 	vars->texture[5].addr = mlx_get_data_addr(vars->texture[5].img, &vars->texture[5].bits_per_pixel, &vars->texture[5].line_length, &vars->texture[5].endian);
 	vars->texture[5].colors = (int *)mlx_get_data_addr(vars->texture[5].img, &vars->texture[5].bits_per_pixel, &vars->texture[5].line_length, &vars->texture[5].endian);
-	vars->texture[6].img = mlx_xpm_file_to_image(vars->mlx, "./textures/duckwithknife.xpm", &vars->texture[6].width, &vars->texture[6].height);
+	vars->texture[6].img = mlx_xpm_file_to_image(vars->mlx, vars->texture[6].path, &vars->texture[6].width, &vars->texture[6].height);
 	vars->texture[6].addr = mlx_get_data_addr(vars->texture[6].img, &vars->texture[6].bits_per_pixel, &vars->texture[6].line_length, &vars->texture[6].endian);
 	vars->texture[6].colors = (int *)mlx_get_data_addr(vars->texture[6].img, &vars->texture[6].bits_per_pixel, &vars->texture[6].line_length, &vars->texture[6].endian);
-	printf("--->%s\n", vars->texture[0].path);
 }
 
 int		key_hook(int keycode, t_vars *vars)

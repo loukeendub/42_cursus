@@ -1,11 +1,11 @@
 R 1080 720
-NO ./textures/greystone.xpm
-SO ./textures/greystone.xpm
-EA ./textures/greystone.xpm
-WE ./textures/greystone.xpm
-S ./textures/greystone.xpm
-C ./textures/greystone.xpm
-F 255,255,255
+NO ./textures/a.xpm
+SO ./textures/b.xpm
+EA ./textures/c.xpm
+WE ./textures/d.xpm
+S ./textures/e.xpm
+C ./textures/f.xpm
+F ./textures/f.xpm
 
         1111111111111111111111111
         1000000000110000000000001

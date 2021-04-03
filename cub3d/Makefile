@@ -6,7 +6,7 @@
 #    By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/29 12:33:59 by lmarzano          #+#    #+#              #
-#    Updated: 2021/04/02 16:18:46 by lmarzano         ###   ########.fr        #
+#    Updated: 2021/04/03 15:43:14 by lmarzano         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -62,3 +62,6 @@ fclean	:	clean
 re		:	fclean all
 
 .PHONY	:	all clean fclean re
+
+test	:	all
+	./cub3D map.cub

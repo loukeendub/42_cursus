@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 16:36:08 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/01 12:15:18 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/03 14:46:35 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	ft_tx_init(t_all *all)
 	all->par->wall[1] = 0;
 	all->par->wall[2] = 0;
 	all->par->wall[3] = 0;
-	all->par->sfc[0] = 0;
+	all->par->sprite = 0;
 	all->par->sfc[1] = 0;
 	all->par->sfc[2] = 0;
 }

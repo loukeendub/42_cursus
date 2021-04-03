@@ -6,13 +6,13 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 17:20:53 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/03/31 11:43:51 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/03 13:47:01 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	ft_isdigit(int c)
+int	ft_isdigit(char c)
 {
 	if (c < '0' || c > '9')
 		return (0);

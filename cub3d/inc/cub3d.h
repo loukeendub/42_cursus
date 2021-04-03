@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 10:46:55 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/02 16:15:03 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/03 15:50:51 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -261,7 +261,7 @@ int				just_do_it(char **line, char *buffer);
 /*
 ** utils [FULL]
 */
-int				ft_isdigit(int c);
+int				ft_isdigit(char c);
 size_t			ft_strlen(char *s);
 char			*ft_strjoin(char *s1, char *s2);
 char			*ft_realloc(char **line);
@@ -315,6 +315,8 @@ void			ft_sortsprites(int *order, double *distance, int n);
 */
 void			ft_destroytextures(t_vars *vars);
 int				ft_iscinstr(char c, char const *str, size_t len);
+int				ft_floor(char **line, t_all *all);
+int				ft_ceiling(char **line, t_all *all);
 
 
 

@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 16:32:45 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/02 20:02:46 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/03 15:51:55 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,42 +36,6 @@ char	*ft_text_store(char **line)
 		nwline[j] = 0;
 	}
 	return (nwline);
-}
-
-int	ft_floor(char **line, t_all *all)
-{
-	int	g;
-
-	g = 0;
-	all->chr->f++;
-	all->par->f = 'F';
-	while ((*line)[g] != '.' || !(ft_isdigit((*line)[g])))// da sistemare
-		g++;
-	if ((*line)[g] == '.')
-		all->par->sfc[1] = ft_text_store(line);
-	else if (ft_isdigit((*line)[g]))
-		return (ft_type_core(line, all, &all->chr->f, &all->par->f));
-	else
-		return (-1);
-	return (1);
-}
-
-int	ft_ceiling(char **line, t_all *all)
-{
-	int	g;
-
-	g = 0;
-	all->chr->c++;
-	all->par->f = 'C';
-	while ((*line)[g] != '.' || !(ft_isdigit((*line)[g])))// da sistemare
-		g++;
-	if ((*line)[g] == '.')
-		all->par->sfc[2] = ft_text_store(line);
-	else if (ft_isdigit((*line)[g]))
-		return (ft_type_core(line, all, &all->chr->c, &all->par->f));
-	else
-		return (-1);
-	return (1);
 }
 
 int	ft_check_type(char **line, t_all *all)
@@ -147,7 +111,6 @@ int	ft_parse_line(char *line, int fd, t_all *all)// >30 lines
 		return (1);
 	while (line[i])
 	{
-		//puts(line);
 		if (line[i] == ' ' && line[i])
 		{
 			i++;
