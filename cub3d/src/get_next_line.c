@@ -6,17 +6,17 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 17:19:12 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/03/17 14:27:12 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/06 12:37:38 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	just_do_it(char **line, char *buffer)
+int	ft_just_do_it(char **line, char *buffer)
 {
 	int	j;
 	int	i;
-	int len;
+	int	len;
 
 	j = 0;
 	i = 0;
@@ -39,6 +39,11 @@ int	just_do_it(char **line, char *buffer)
 	buffer[i] = '\0';
 	return (1);
 }
+int	ft_taccone_gnl(char **line)
+{
+	*line = ft_realloc_finale(line);
+	return (1);
+}
 
 int	get_next_line(int fd, char **line)
 {
@@ -48,23 +53,18 @@ int	get_next_line(int fd, char **line)
 	if (fd < 0 || fd > 255 || !line || BUFFER_SIZE <= 0)
 		return (-1);
 	*line = NULL;
-	if (just_do_it(line, buffer[fd]))
-	{
-		*line = ft_realloc_finale(line);
-		return (1);
-	}
-	while ((i = read(fd, buffer[fd], BUFFER_SIZE)) > 0)
+	if (ft_just_do_it(line, buffer[fd]))
+		return (ft_taccone_gnl(line));
+	i = read(fd, buffer[fd], BUFFER_SIZE);
+	while (i > 0)
 	{
 		buffer[fd][i] = '\0';
-		if (just_do_it(line, buffer[fd]))
-		{
-			*line = ft_realloc_finale(line);
-			return (1);
-		}
+		if (ft_just_do_it(line, buffer[fd]))
+			return (ft_taccone_gnl(line));
 	}
 	if (i < 0)
 		return (-1);
-	just_do_it(line, buffer[fd]);
+	ft_just_do_it(line, buffer[fd]);
 	*line = ft_realloc_finale(line);
 	return (i);
 }

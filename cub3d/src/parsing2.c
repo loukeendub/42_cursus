@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 16:09:10 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/02 10:47:36 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/06 11:47:54 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@ int	ft_parse_digit(char **line, t_all *all)
 	return (1);
 }
 
-int		ft_treatfc(char **line, t_all *all, int h)
+int	ft_treatfc(char **line, t_all *all, int h)
 {
 	if (all->par->f == 'C')
-			h = ft_itoa2(line, all, h);
+		h = ft_itoa2(line, all, h);
 	else if (all->par->f == 'F')
-			h = ft_itoa3(line, all, h);
+		h = ft_itoa3(line, all, h);
 	return (h);
 }
 
@@ -75,7 +75,7 @@ int	ft_digit_core(char **line, t_all *all, int h, int count)
 int	ft_parse_digit2(char **line, t_all *all)
 {
 	int	h;
-	int count;
+	int	count;
 
 	count = 0;
 	h = 0;

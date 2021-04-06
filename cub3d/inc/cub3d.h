@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 10:46:55 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/06 10:35:52 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/06 12:41:38 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -215,7 +215,7 @@ typedef struct	s_all
 }				t_all;
 
 /*
-** init [FULL]
+** init [FULL] [NORMA V3 OK]
 */
 void			ft_str_all_init(t_all *all);
 void			ft_struct_init(t_all *all);
@@ -223,7 +223,7 @@ void			ft_tx_init(t_all *all);
 void			ft_ref_init(t_all *all);
 void			ft_check_init(t_all *all);
 /*
-** parsing [FULL]
+** parsing [FULL] [NORMA V3 OK]
 */
 int				check_val(t_all *all);
 int				ft_parse_line(char *line, int fd, t_all *all);
@@ -231,21 +231,21 @@ int				ft_check_walls(char **line, t_all *all);
 int				ft_check_type(char **line, t_all *all);
 char			*ft_text_store(char **line);
 /*
-** parsing2
+** parsing2 [NORMA V3 OK]
 */
 int				ft_parse_digit(char **line, t_all *all);
 int				ft_parse_digit2(char **line, t_all *all);
 int				ft_digit_core(char **line, t_all *all, int h, int count);
 int				ft_treatfc(char **line, t_all *all, int h);
 /*
-** map_parsing 
+** map_parsing [NORMA V3 OK]
 */
 int				ft_map_parse(char **line, int fd, t_all *all);
 int				ft_check_rows(char *newl, t_all *all);
 int				ft_check_map(char **map, t_all *all);
 int				ft_check_updown(char *first, char *last);
 /*
-** map_parsing2
+** map_parsing2 [NORMA V3 OK]
 */
 int				ft_check_line(char **map, int y, t_all *all);
 int				ft_check_edges(char **map, int y);
@@ -255,7 +255,8 @@ int				ft_check_current(char **map, int y, int x, int current);
 ** GNL
 */
 int				get_next_line(int fd, char **line);
-int				just_do_it(char **line, char *buffer);
+int				ft_taccone_gnl(char **line);
+int				ft_just_do_it(char **line, char *buffer);
 /*
 ** utils [FULL]
 */
@@ -285,6 +286,7 @@ int				ft_type_core(char **line, t_all *all, int *chr, char *f);
 int				ft_wall_core(char **line, char **wall, int *chr);
 void			ft_itoa_core(char **line, int *all);
 int				ft_split_core(char *s, char **arr, char c, t_all *all);
+int				ft_parse_line_core(char *line, int i, int ret, t_all *all);
 /*
 ** cub3d
 */
@@ -315,9 +317,5 @@ void			ft_destroytextures(t_vars *vars);
 int				ft_iscinstr(char c, char const *str, size_t len);
 int				ft_floor(char **line, t_all *all);
 int				ft_ceiling(char **line, t_all *all);
-
-
-
-
 
 #endif

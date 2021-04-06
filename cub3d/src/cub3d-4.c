@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 15:00:40 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/03 15:51:42 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/06 11:02:28 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 void	ft_destroytextures(t_vars *vars)
 {
-	mlx_destroy_image(vars->mlx, vars->texture[0].img);
+	mlx_destroy_image(vars->mlx, vars->texture[0].img);// <----------------------------------------il segfault avviene qui dentro
 	mlx_destroy_image(vars->mlx, vars->texture[1].img);
 	mlx_destroy_image(vars->mlx, vars->texture[2].img);
 	mlx_destroy_image(vars->mlx, vars->texture[3].img);
