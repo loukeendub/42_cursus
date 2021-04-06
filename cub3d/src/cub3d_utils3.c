@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 12:05:43 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/02 12:48:35 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/06 14:00:04 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 size_t	ft_strlcat(char *dst, char *src, size_t dstsize)
 {
-	size_t i;
+	size_t	i;
 
 	i = 0;
 	while (*(dst + i) && i < dstsize)
@@ -46,7 +46,7 @@ int	ft_itoa(char **line, t_all *all, int h)
 			ft_itoa_core(line, &all->par->res_h);
 		h++;
 	}			
-	else 
+	else
 		return (-1);
 	return (h);
 }
@@ -71,7 +71,7 @@ int	ft_itoa2(char **line, t_all *all, int h)
 			ft_itoa_core(line, &all->par->ceiling[2]);
 		h++;
 	}		
-	else 
+	else
 		return (-1);
 	return (h);
 }
@@ -96,7 +96,7 @@ int	ft_itoa3(char **line, t_all *all, int h)
 			ft_itoa_core(line, &all->par->floor[2]);
 		h++;
 	}		
-	else 
+	else
 		return (-1);
 	return (h);
 }

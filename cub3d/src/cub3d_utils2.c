@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 14:27:00 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/02 12:48:30 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/06 13:57:29 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,4 +79,3 @@ char	**ft_split(char *s, char c, t_all *all)
 	arr[i] = NULL;
 	return (arr);
 }
-

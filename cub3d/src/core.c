@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 12:45:22 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/06 11:44:13 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/06 14:00:53 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	ft_type_core(char **line, t_all *all, int *chr, char *f)
 	else
 	{
 		if (ft_parse_digit(line, all) == -1 && chr == 0)
-				return (-1);
+			return (-1);
 	}
 	chr++;
 	return (1);
@@ -70,7 +70,7 @@ int	ft_split_core(char *s, char **arr, char c, t_all *all)
 		else
 			s++;
 	}
-	return (i); 
+	return (i);
 }
 
 int	ft_parse_line_core(char *line, int i, int ret, t_all *all)

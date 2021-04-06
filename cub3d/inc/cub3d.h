@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 10:46:55 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/06 12:41:38 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/06 14:36:11 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -252,13 +252,13 @@ int				ft_check_edges(char **map, int y);
 int				ft_check_previous(char **map, int y, int x, int previous);
 int				ft_check_current(char **map, int y, int x, int current);
 /*
-** GNL
+** GNL [NORMA V3 OK]
 */
 int				get_next_line(int fd, char **line);
 int				ft_taccone_gnl(char **line);
 int				ft_just_do_it(char **line, char *buffer);
 /*
-** utils [FULL]
+** utils [FULL] [NORMA V3 OK]
 */
 int				ft_isdigit(char c);
 size_t			ft_strlen(char *s);
@@ -266,21 +266,21 @@ char			*ft_strjoin(char *s1, char *s2);
 char			*ft_realloc(char **line);
 char			*ft_realloc_finale(char **line);
 /*
-** utils_2
+** utils_2 [NORMA V3 OK]
 */
 size_t			ft_strlcpy(char *dst, char *src, size_t dstsize);
 size_t			ft_strcount(char *str, char c);
 size_t			ft_strclen(char *s, char c);
 char			**ft_split(char *s, char c, t_all *all);
 /*
-** utils_3
+** utils_3 [NORMA V3 OK]
 */
 size_t			ft_strlcat(char *dst, char *src, size_t dstsize);
 int				ft_itoa(char **line, t_all *all, int h);
 int				ft_itoa2(char **line, t_all *all, int h);
 int				ft_itoa3(char **line, t_all *all, int h);
 /*
-** core
+** core [NORMA V3 OK]
 */
 int				ft_type_core(char **line, t_all *all, int *chr, char *f);
 int				ft_wall_core(char **line, char **wall, int *chr);
@@ -288,14 +288,14 @@ void			ft_itoa_core(char **line, int *all);
 int				ft_split_core(char *s, char **arr, char c, t_all *all);
 int				ft_parse_line_core(char *line, int i, int ret, t_all *all);
 /*
-** cub3d
+** cub3d [TOFIX && TOSPLIT_FUNCS && TONORME]
 */
 void			ft_main_parsing(char *path, t_all *all);
 void			ft_init_vars(t_vars *vars, t_all *all);
 void			ft_spritecasting(t_vars *vars, t_data *img, double *buffer);
 int 			render_next_frame(t_vars *vars);
 /*
-** cub3d-2 [FULL]
+** cub3d-2 [FULL] [NORMA V3 - remove comments & sort out line 15 and line 16]
 */
 int				ft_exit(t_vars *vars);
 int				ft_gettexnum(t_vars *vars);
@@ -303,7 +303,7 @@ void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int				ft_keys(t_vars *vars);
 int 			ft_keys2(t_vars *vars);
 /*
-** cub3d-3 [FULL]
+** cub3d-3 [FULL] [TONORME]
 */
 void			ft_gettextures(t_vars *vars);
 int				key_hook(int keycode, t_vars *vars);
@@ -311,7 +311,7 @@ int 			ft_release(int keycode, t_vars *vars);
 void			ft_getcoordinates(t_vars *vars, t_sprite *sprite);
 void			ft_sortsprites(int *order, double *distance, int n);
 /*
-** cub3d-4
+** cub3d-4 [TONORME]
 */
 void			ft_destroytextures(t_vars *vars);
 int				ft_iscinstr(char c, char const *str, size_t len);

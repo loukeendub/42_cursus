@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 14:49:37 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/06 09:56:10 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/06 14:10:46 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int		key_hook(int keycode, t_vars *vars)
   keycode == 0 ? vars->keyRight = 1 : 0;
   keycode == 2 ? vars->keyLeft = 1 : 0;
  /*dont forget to free all mallocs*/
-	if(keycode == 53)
+	if (keycode == 53)
 	{
 		mlx_destroy_window(vars->mlx, vars->win);
 		system("killall afplay");

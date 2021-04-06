@@ -246,7 +246,7 @@ int render_next_frame(t_vars *vars)// 157 lines
       //what direction to step in x or y-direction (either +1 or -1)
       vars->hit = 0; //was there a wall vars.hit?
       //calculate step and initial sideDist
-      if(vars->rayDirX < 0)
+      if (vars->rayDirX < 0)
       {
         vars->stepX = -1;
         vars->sideDistX = (vars->posX - vars->mapX) * vars->deltaDistX;
@@ -256,7 +256,7 @@ int render_next_frame(t_vars *vars)// 157 lines
         vars->stepX = 1;
         vars->sideDistX = (vars->mapX + 1.0 - vars->posX) * vars->deltaDistX;
       }
-      if(vars->rayDirY < 0)
+      if (vars->rayDirY < 0)
       {
         vars->stepY = -1;
         vars->sideDistY = (vars->posY - vars->mapY) * vars->deltaDistY;
@@ -270,7 +270,7 @@ int render_next_frame(t_vars *vars)// 157 lines
       while (vars->hit == 0)
     	{
         //jump to next map square, OR in x-direction, OR in y-direction
-        if(vars->sideDistX < vars->sideDistY)
+        if (vars->sideDistX < vars->sideDistY)
         {
           vars->sideDistX += vars->deltaDistX;
           vars->mapX += vars->stepX;
@@ -283,13 +283,13 @@ int render_next_frame(t_vars *vars)// 157 lines
           vars->side = 1;
         }
         //Check if ray has vars.hit a wall
-        if(vars->map[vars->mapX][vars->mapY] == '1') 
+        if (vars->map[vars->mapX][vars->mapY] == '1') 
         {
         	vars->hit = 1;
         }
     }
       //Calculate distance projected on camera direction (Euclidean distance will give fisheye effect!)
-    	if(vars->side == 0)
+    	if (vars->side == 0)
         	{vars->perpWallDist = (vars->mapX - vars->posX + (1 - vars->stepX) / 2) / vars->rayDirX;}
     	else
        		{vars->perpWallDist = (vars->mapY - vars->posY + (1 - vars->stepY) / 2) / vars->rayDirY;}
@@ -299,12 +299,12 @@ int render_next_frame(t_vars *vars)// 157 lines
 
       //calculate lowest and highest pixel to fill in current stripe
       	vars->drawStart = -vars->lineHeight / 2 + h / 2;
-      	if(vars->drawStart < 0)
+      	if (vars->drawStart < 0)
       	{
         	vars->drawStart = 0;
       	}
       	vars->drawEnd = vars->lineHeight / 2 + h / 2;
-      	if(vars->drawEnd >= h)
+      	if (vars->drawEnd >= h)
       	{
         vars->drawEnd = h - 1;
       	}
