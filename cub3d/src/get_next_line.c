@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/15 17:19:12 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/06 12:37:38 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/06 12:45:50 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ int	ft_just_do_it(char **line, char *buffer)
 	buffer[i] = '\0';
 	return (1);
 }
+
 int	ft_taccone_gnl(char **line)
 {
 	*line = ft_realloc_finale(line);
