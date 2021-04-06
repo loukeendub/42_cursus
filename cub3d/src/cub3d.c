@@ -118,7 +118,7 @@ void	ft_spritecasting(t_vars *vars, t_data *img, double *buffer)// 65 lines  // 
 	int			i;
 
 	i = 0;
-	sprite = malloc(sizeof(t_sprite) * vars->nSprites);
+	sprite = malloc(sizeof(t_sprite) * vars->nSprites);// <----- debugger si inchioda qui... (il malloc non malloca?!?)
 	if (!sprite)
 	{
 		printf("Error\n");

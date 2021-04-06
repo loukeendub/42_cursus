@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 10:46:55 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/06 09:35:42 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/06 09:53:10 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,7 +184,7 @@ typedef struct  s_vars
 	char    **map;
 	int     mapHeight;
 	int     mapWidth;
-	int     nSprites;
+	int     nSprites;// <--------- dove viene inizializzata questa?!?
 	char    dir;
  //sprite
 	double      spriteX;
