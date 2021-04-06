@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 10:46:55 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/06 14:36:11 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/06 14:51:06 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -295,7 +295,7 @@ void			ft_init_vars(t_vars *vars, t_all *all);
 void			ft_spritecasting(t_vars *vars, t_data *img, double *buffer);
 int 			render_next_frame(t_vars *vars);
 /*
-** cub3d-2 [FULL] [NORMA V3 - remove comments & sort out line 15 and line 16]
+** cub3d-2 [FULL] [NORMA V3 OK (remove comments)]
 */
 int				ft_exit(t_vars *vars);
 int				ft_gettexnum(t_vars *vars);

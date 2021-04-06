@@ -1,7 +1,7 @@
 #include "cub3d.h"
 
-#define texWidth 64
-#define texHeight 64
+#define TEXWIDTH 64
+#define TEXHEIGHT 64
 
 
 void	ft_main_parsing(char *path, t_all *all)
@@ -59,9 +59,9 @@ void       ft_init_vars(t_vars *vars, t_all *all)// 65 lines
 	vars->texture[1].path = all->par->wall[1];
 	vars->texture[2].path = all->par->wall[2];
 	vars->texture[3].path = all->par->wall[3];
+	vars->texture[6].path = all->par->sfc[0];// sprite
 	vars->texture[4].path = all->par->sfc[1];// floor
 	vars->texture[5].path = all->par->sfc[2];// ceiling
-	vars->texture[6].path = all->par->sfc[0];// sprite
 
     while (i < vars->mapHeight)
     {
