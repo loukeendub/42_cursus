@@ -54,6 +54,7 @@ void       ft_init_vars(t_vars *vars, t_all *all)// 65 lines
     vars->ScreenWidth = all->par->res_w;
     vars->map = all->par->map;
     vars->mapHeight = all->par->map_h;
+	vars->nSprites = 0;
     vars->texture[0].path = all->par->wall[0];
 	vars->texture[1].path = all->par->wall[1];
 	vars->texture[2].path = all->par->wall[2];
@@ -110,7 +111,7 @@ void       ft_init_vars(t_vars *vars, t_all *all)// 65 lines
 	}
 }
 
-void	ft_spritecasting(t_vars *vars, t_data *img, double *buffer)// 65 lines  // <----------------------------------------il segfault avviene qui dentro
+void	ft_spritecasting(t_vars *vars, t_data *img, double *buffer)// 65 lines
 {
 	t_sprite	*sprite;
 	int			spriteOrder[vars->nSprites];
@@ -118,7 +119,7 @@ void	ft_spritecasting(t_vars *vars, t_data *img, double *buffer)// 65 lines  // 
 	int			i;
 
 	i = 0;
-	sprite = malloc(sizeof(t_sprite) * vars->nSprites);// <----- debugger si inchioda qui... (il malloc non malloca?!?)
+	sprite = malloc(sizeof(t_sprite) * vars->nSprites);
 	if (!sprite)
 	{
 		printf("Error\n");
@@ -177,7 +178,6 @@ void	ft_spritecasting(t_vars *vars, t_data *img, double *buffer)// 65 lines  // 
 		i++;
 	}
 	free(sprite);
-	puts("sprites done");
 }
 
 int render_next_frame(t_vars *vars)// 157 lines
@@ -338,10 +338,10 @@ int render_next_frame(t_vars *vars)// 157 lines
       //ft_drawline(img, vars);
       //verLine(vars->x, vars->drawStart, vars->drawEnd);
     }
-	ft_spritecasting(vars, &img, zbuffer);// <----------------------------------------il segfault avviene qui dentro
+	ft_spritecasting(vars, &img, zbuffer);
     mlx_put_image_to_window(vars->mlx, vars->win, img.img, 0, 0);
-    mlx_destroy_image(vars->mlx, img.img);
-	// ft_destroytextures(vars);
+    mlx_destroy_image(vars->mlx, img.img);// <----------------------------------------il segfault avviene qui dentro
+	ft_destroytextures(vars);
     ft_keys(vars);
 	ft_keys2(vars);
     return (0);
