@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 16:36:08 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/03 14:46:35 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/06 09:37:56 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	ft_tx_init(t_all *all)
 	all->par->wall[1] = 0;
 	all->par->wall[2] = 0;
 	all->par->wall[3] = 0;
-	all->par->sprite = 0;
+	all->par->sfc[0] = 0;
 	all->par->sfc[1] = 0;
 	all->par->sfc[2] = 0;
 }
@@ -67,7 +67,6 @@ void	ft_struct_init(t_all *all)
 	all->par->ceiling[0] = -1;
 	all->par->ceiling[1] = -1;
 	all->par->ceiling[2] = -1;
-	all->par->sprite = 0;
 	ft_tx_init(all);
 	ft_ref_init(all);
 	ft_check_init(all);

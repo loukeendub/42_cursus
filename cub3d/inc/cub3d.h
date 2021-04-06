@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 10:46:55 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/03 15:50:51 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/06 09:35:42 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ typedef	struct	s_parse
 	int		ceiling[3];
 	char	*wall[4];
 	char	*sfc[3];
-	char	*sprite;
 	char	**map;
 	char	reference[8];
 	int		spawn;
@@ -213,7 +212,6 @@ typedef struct	s_all
 	t_data		*data;
 	t_tex		*tex;
 	t_sprite	*spr;
-	t_vars		*vars;
 }				t_all;
 
 /*

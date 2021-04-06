@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 16:32:45 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/03 15:51:55 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/06 09:06:58 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ int	ft_check_type(char **line, t_all *all)
 		}
 	else if (**line == 'S' && *((*line) + 1) != 'O')
 	{
-		if ((all->par->sprite = ft_text_store(line)) == 0)
+		if ((all->par->sfc[0] = ft_text_store(line)) == 0)
 			return (-1);
 		all->chr->s++;
 		return (1);
