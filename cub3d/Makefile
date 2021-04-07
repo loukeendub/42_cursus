@@ -6,7 +6,7 @@
 #    By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/29 12:33:59 by lmarzano          #+#    #+#              #
-#    Updated: 2021/04/03 15:43:14 by lmarzano         ###   ########.fr        #
+#    Updated: 2021/04/07 15:26:07 by lmarzano         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,7 @@ MLX			=	libmlx.dylib
 all		:	$(NAME)
 
 $(NAME)	:	$(MLX) $(OBJ)
-	$(CC) $(CFLAGS) $(FFLAGS) -o $@ $^
+	$(CC) $(CFLAGS) $(FFLAGS) $^ -o $@
 
 $(MLX)	:
 	@make -C mlx

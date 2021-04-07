@@ -1,4 +1,5 @@
 #include "cub3d.h"
+#include <string.h>
 
 int        main(int argc, char **argv)//26 lines
 {
@@ -12,6 +13,7 @@ int        main(int argc, char **argv)//26 lines
 		write(1, "ErroG\n", 6);
 		return (0);
 	}
+    bzero(&vars, sizeof(t_vars));
     ft_main_parsing(argv[1], &all);
     ft_init_vars(&vars, &all);
     vars.mlx = mlx_init();

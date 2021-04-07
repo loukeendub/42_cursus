@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/31 16:36:08 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/06 11:45:52 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/07 16:52:59 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,8 @@ void	ft_ref_init(t_all *all)
 
 void	ft_tx_init(t_all *all)
 {
+	all->par->wall = malloc(4 * sizeof(char**));
+	all->par->sfc = malloc(3 * sizeof(char**));
 	all->par->wall[0] = 0;
 	all->par->wall[1] = 0;
 	all->par->wall[2] = 0;
