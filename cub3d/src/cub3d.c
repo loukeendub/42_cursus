@@ -386,7 +386,6 @@ int render_next_frame(t_vars *vars)// 157 lines
     }
 	ft_spritecasting(vars, &img, zbuffer);
     mlx_put_image_to_window(vars->mlx, vars->win, img.img, 0, 0);// <----------------------------------------il segfault avviene qui dentro
-	//ft_destroytextures(vars);
     mlx_destroy_image(vars->mlx, img.img);
     ft_keys(vars);
 	ft_keys2(vars);

@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 10:46:55 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/07 16:53:29 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/07 17:53:10 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -268,6 +268,7 @@ char			*ft_realloc_finale(char **line);
 /*
 ** utils_2 [NORMA V3 OK]
 */
+void			ft_bzero(void *str, size_t n);
 size_t			ft_strlcpy(char *dst, char *src, size_t dstsize);
 size_t			ft_strcount(char *str, char c);
 size_t			ft_strclen(char *s, char c);
@@ -280,7 +281,7 @@ int				ft_itoa(char **line, t_all *all, int h);
 int				ft_itoa2(char **line, t_all *all, int h);
 int				ft_itoa3(char **line, t_all *all, int h);
 /*
-** core [NORMA V3 OK]
+** core [FULL] [NORMA V3 OK]
 */
 int				ft_type_core(char **line, t_all *all, int *chr, char *f);
 int				ft_wall_core(char **line, char **wall, int *chr);
@@ -292,6 +293,7 @@ int				ft_parse_line_core(char *line, int i, int ret, t_all *all);
 */
 void			ft_main_parsing(char *path, t_all *all);
 void			ft_init_vars(t_vars *vars, t_all *all);
+void			ft_gettextures(t_vars *vars);
 void			ft_spritecasting(t_vars *vars, t_data *img, double *buffer);
 int 			render_next_frame(t_vars *vars);
 /*
@@ -311,12 +313,11 @@ int 			ft_release(int keycode, t_vars *vars);
 void			ft_getcoordinates(t_vars *vars, t_sprite *sprite);
 void			ft_sortsprites(int *order, double *distance, int n);
 /*
-** cub3d-4 [FULL] [NORMA V3 OK (remove comment)]
+** cub3d-4 [NORMA V3 OK]
 */
 void			ft_destroytextures(t_vars *vars);
 int				ft_iscinstr(char c, char const *str, size_t len);
 int				ft_floor(char **line, t_all *all);
 int				ft_ceiling(char **line, t_all *all);
-void			ft_gettextures(t_vars *vars);
 
 #endif

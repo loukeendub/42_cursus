@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 14:43:02 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/07 14:26:49 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/07 17:08:32 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 int	ft_exit(t_vars *vars)
 {
 	/*dont forget to free all mallocs*/
+	ft_destroytextures(vars);
 	(void)vars;
 	system("killall afplay");
 	exit(0);

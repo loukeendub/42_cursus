@@ -6,11 +6,24 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/17 14:27:00 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/06 13:57:29 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/07 17:20:56 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	ft_bzero(void *str, size_t n)
+{
+	unsigned char	*ptr;
+
+	ptr = (unsigned char *)str;
+	while (n > 0)
+	{
+		*ptr = '\0';
+		ptr++;
+		n--;
+	}
+}
 
 size_t	ft_strlcpy(char *dst, char *src, size_t dstsize)
 {
