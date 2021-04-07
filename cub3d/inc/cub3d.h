@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 10:46:55 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/07 17:53:10 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/07 18:27:29 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -299,7 +299,7 @@ int 			render_next_frame(t_vars *vars);
 /*
 ** cub3d-2 [FULL] [NORMA V3 OK (remove comments)]
 */
-int				ft_exit(t_vars *vars);
+int				ft_exit(t_vars *vars, t_all *all);
 int				ft_gettexnum(t_vars *vars);
 void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int				ft_keys(t_vars *vars);

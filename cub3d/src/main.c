@@ -20,6 +20,7 @@ int main(int argc, char **argv)//26 lines
 	vars.moveSpeed = 0.11;
 	vars.rotSpeed = 0.07;
 	ft_gettextures(&vars);
+	mlx_put_image_to_window(vars.mlx, vars.win, all.data->img, 0, 0);
 	mlx_hook(vars.win, 2, 1L<<0, key_hook, &vars);
 	mlx_hook(vars.win, 3, 1L<<1, ft_release, &vars);
 	mlx_hook(vars.win, 17, 1L<<5, ft_exit, &vars);
