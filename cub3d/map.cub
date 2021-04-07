@@ -1,6 +1,6 @@
 R 1080 720
-NO 
-SO ./textures/b.xpm./textures/a.xpm
+NO ./textures/a.xpm
+SO ./textures/b.xpm
 EA ./textures/c.xpm
 WE ./textures/d.xpm
 S ./textures/e.xpm
