@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 10:46:55 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/06 14:51:06 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/07 10:20:33 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -303,19 +303,20 @@ void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int				ft_keys(t_vars *vars);
 int 			ft_keys2(t_vars *vars);
 /*
-** cub3d-3 [FULL] [TONORME]
+** cub3d-3 [FULL] [NORMA V3 OK (remove comment)]
 */
-void			ft_gettextures(t_vars *vars);
+void			ft_keycode_fill(int keycode, t_vars *vars);
 int				key_hook(int keycode, t_vars *vars);
 int 			ft_release(int keycode, t_vars *vars);
 void			ft_getcoordinates(t_vars *vars, t_sprite *sprite);
 void			ft_sortsprites(int *order, double *distance, int n);
 /*
-** cub3d-4 [TONORME]
+** cub3d-4 [FULL] [NORMA V3 OK (remove comment)]
 */
 void			ft_destroytextures(t_vars *vars);
 int				ft_iscinstr(char c, char const *str, size_t len);
 int				ft_floor(char **line, t_all *all);
 int				ft_ceiling(char **line, t_all *all);
+void			ft_gettextures(t_vars *vars);
 
 #endif
