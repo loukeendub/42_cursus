@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 10:46:55 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/08 14:20:56 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/08 16:40:53 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,9 @@
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 32
 # endif
+
+#define TEXWIDTH 64
+#define TEXHEIGHT 64
 
 # include <string.h>
 # include <sys/types.h>
@@ -291,8 +294,7 @@ int				ft_parse_line_core(char *line, int i, int ret, t_all *all);
 /*
 ** cub3d [TOFIX && TOSPLIT_FUNCS && TONORME]
 */
-void			ft_main_parsing(char *path, t_all *all);
-void			ft_init_vars(t_vars *vars, t_all *all);
+void			ft_main_parsing(char *path, t_all *all, t_vars *vars);
 int				ft_gettextures(t_vars *vars);
 void			ft_spritecasting(t_vars *vars, t_data *img, double *buffer);
 int 			render_next_frame(t_vars *vars);
@@ -319,5 +321,14 @@ void			ft_destroytextures(t_vars *vars);
 int				ft_iscinstr(char c, char const *str, size_t len);
 int				ft_floor(char **line, t_all *all);
 int				ft_ceiling(char **line, t_all *all);
+/*
+** vars_init [FULL] [NORMA V3 OK]
+*/
+void			ft_init_tex(t_vars *vars, t_all *all);
+void			ft_rc_init(t_vars *vars, t_all *all, int i);
+void			ft_spawnNS_init(t_vars *vars);
+void			ft_spawnEW_init(t_vars *vars);
+void			ft_init_vars(t_vars *vars, t_all *all);
+
 
 #endif

@@ -6,14 +6,11 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 14:49:37 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/08 13:59:02 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/08 16:15:16 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-#define TEXWIDTH 64
-#define TEXHEIGHT 64
 
 void	ft_keycode_fill(int keycode, t_vars *vars)
 {

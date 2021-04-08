@@ -6,14 +6,11 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 14:43:02 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/07 18:31:29 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/08 16:15:28 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-#define TEXWIDTH 64
-#define TEXHEIGHT 64
 
 int	ft_exit(t_vars *vars, t_all *all)
 {

@@ -6,14 +6,11 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 15:00:40 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/08 15:17:44 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/08 16:15:08 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-#define TEXWIDTH 64
-#define TEXHEIGHT 64
 
 void	ft_destroytextures(t_vars *vars)
 {

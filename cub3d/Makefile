@@ -6,7 +6,7 @@
 #    By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/03/29 12:33:59 by lmarzano          #+#    #+#              #
-#    Updated: 2021/04/07 15:26:07 by lmarzano         ###   ########.fr        #
+#    Updated: 2021/04/08 16:09:36 by lmarzano         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,7 +33,8 @@ FILES		=	cub3d.c\
 				map_parsing.c\
 				map_parsing2.c\
 				parsing.c\
-				parsing2.c
+				parsing2.c\
+				vars_init.c
 SRC			=	$(addprefix $(SRCDIR), $(FILES))
 OBJ			=	$(SRC:.c=.o)
 

@@ -1,10 +1,6 @@
 #include "cub3d.h"
 
-#define TEXWIDTH 64
-#define TEXHEIGHT 64
-
-
-void	ft_main_parsing(char *path, t_all *all)
+void	ft_main_parsing(char *path, t_all *all, t_vars *vars)
 {
 	char	*line;
 	int		fd_map;
@@ -16,104 +12,20 @@ void	ft_main_parsing(char *path, t_all *all)
 	while (ret == 1)
 	{
 		ret = get_next_line(fd_map, &line);
-		//puts(line);
 		if (ft_parse_line(line, fd_map, all) == -1 || ret == -1)
 		{
-			puts("Mario");
-			//write(1, "Error\n", 6);
+			write(1, "Error\n", 6);
+			ft_exit(vars, all);
 		}
 	}
-	printf("no : |%d|\nso : |%d|\nwe : |%d|\nea : |%d|\nr : |%d|\ns : |%d|\nf : |%d|\nc : |%d|\nmp : |%d|\n", all->chr->no, all->chr->so, all->chr->we, all->chr->ea, all->chr->r, all->chr->s, all->chr->f, all->chr->c, all->chr->mp);
-	/*---DEBUG---*/
-	//printf("|W : %d|\n|H : %d|\n", all->par->res_w, all->par->res_h);
-	printf("|NO : |%s|\n|SO : |%s|\n|WE : |%s|\n|EA : |%s|\n|S : |%s|\n", all->par->wall[0], all->par->wall[1], all->par->wall[2], all->par->wall[3], all->par->sfc[0]);
-	//int i = 0;
-	printf("|C : |%d| |%d| |%d|\n", all->par->ceiling[0], all->par->ceiling[1], all->par->ceiling[2]);
-	printf("|F : |%d| |%d| |%d|\n", all->par->floor[0], all->par->floor[1], all->par->floor[2]);
-	//while (all->par->map[i])
-	//	puts(all->par->map[i++]);
-	/*---end of debug---*/
-		if (!check_val(all))
-		{
-			puts("Luigi");
-			//write(1, "Error\n", 6);
-		}
-
+	if (!check_val(all))
+	{
+		write(1, "Error\n", 6);
+		ft_exit(vars, all);
+	}
 	free(line);
 }
 
-void       ft_init_vars(t_vars *vars, t_all *all)// 65 lines
-{
-    int i;
-    int j;
-
-    i = 1;
-    j = 1;
-
-    vars->ScreenHeight = all->par->res_h;
-    vars->ScreenWidth = all->par->res_w;
-    vars->map = all->par->map;
-    vars->mapHeight = all->par->map_h;
-	vars->nSprites = 0;
-    vars->texture[0].path = all->par->wall[0];
-	//puts(vars->texture[0].path);
-	//puts(all->par->wall[0]);
-	vars->texture[1].path = all->par->wall[1];
-	vars->texture[2].path = all->par->wall[2];
-	vars->texture[3].path = all->par->wall[3];
-	vars->texture[6].path = all->par->sfc[0];// sprite
-	vars->texture[4].path = all->par->sfc[1];// floor
-	vars->texture[5].path = all->par->sfc[2];// ceiling
-
-    while (all->par->map[i])
-    {
-		puts(all->par->map[i]);
-		j = 1;
-        while(all->par->map[i][j])
-        {
-            if (all->par->map[i][j] == '2')
-                vars->nSprites++;
-			if (all->par->map[i][j] == 'N' || all->par->map[i][j] == 'S' || all->par->map[i][j] == 'O' || all->par->map[i][j] == 'W')
-//            if (ft_iscinstr(all->par->map[i][j], "NWSE", 4))
-            {
-                vars->posX = i + 0.5;
-                vars->posY = j + 0.5;
-                vars->dir = all->par->map[i][j];
-				write(1, "codio\n", 6);
-            }
-			j++;
-		}
-        i++;
-    }
-    if (vars->dir == 'N')
-	{
-		vars->dirX = -1;
-		vars->dirY = 0;
-		vars->planeX = 0;
-		vars->planeY = 0.66;
-	}
-	else if (vars->dir  == 'S')
-	{
-		vars->dirX = 1;
-		vars->dirY = 0;
-		vars->planeX = 0;
-		vars->planeY = -0.66;
-	}
-	else if (vars->dir  == 'E')
-	{
-		vars->dirX = 0;
-		vars->dirY = 1;
-		vars->planeX = 0.66;
-		vars->planeY = 0;
-	}
-	else if (vars->dir  == 'W')
-	{
-		vars->dirX = 0;
-		vars->dirY = -1;
-		vars->planeX = -0.66;
-		vars->planeY = 0;
-	}
-}
 int		ft_gettextures(t_vars *vars) // <----------------segfault qui (non trova più i pathfiles)
 {
 	vars->texture[0].img = mlx_xpm_file_to_image(vars->mlx, vars->texture[0].path, \
@@ -184,7 +96,7 @@ void	ft_spritecasting(t_vars *vars, t_data *img, double *buffer)// 65 lines
 		exit(0);
 	}
 	ft_getcoordinates(vars, sprite);
-	while(i < vars->nSprites)
+	while (i < vars->nSprites)
 	{
 		spriteOrder[i] = i;
 		spriteDistance[i] = (vars->posX - sprite[i].x) * (vars->posX - sprite[i].x) +(vars->posY - sprite[i].y) * (vars->posY - sprite[i].y);
@@ -192,7 +104,7 @@ void	ft_spritecasting(t_vars *vars, t_data *img, double *buffer)// 65 lines
 	}
 	ft_sortsprites(spriteOrder, spriteDistance, vars->nSprites);
 	i = 0;
-	while(i < vars->nSprites)
+	while (i < vars->nSprites)
 	{
 		vars->spriteX = sprite[spriteOrder[i]].x - vars->posX;
 		vars->spriteY = sprite[spriteOrder[i]].y - vars->posY;
@@ -215,7 +127,7 @@ void	ft_spritecasting(t_vars *vars, t_data *img, double *buffer)// 65 lines
 		if (vars->drawEndX >= vars->ScreenWidth)
 			vars->drawEndX = vars->ScreenWidth - 1;
 		vars->stripe = vars->drawStartX;
-		while(vars->stripe < vars->drawEndX)
+		while (vars->stripe < vars->drawEndX)
 		{
 			vars->texX = (int)(256 * (vars->stripe - (-vars->spriteWidth / 2 + vars->spriteScreenX)) * TEXWIDTH /vars->spriteWidth) / 256;
 			if (vars->transformY > 0 && vars->stripe > 0 && vars->stripe < vars->ScreenWidth && vars->transformY < buffer[vars->stripe])
@@ -240,140 +152,140 @@ void	ft_spritecasting(t_vars *vars, t_data *img, double *buffer)// 65 lines
 
 int render_next_frame(t_vars *vars)// 157 lines
 {
-    int w = vars->ScreenWidth;
-    int h = vars->ScreenHeight;
+	int w = vars->ScreenWidth;
+	int h = vars->ScreenHeight;
 	double	zbuffer[vars->ScreenWidth];
 
-    t_data img;
-    img.img = mlx_new_image(vars->mlx, w, h);
-    img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
+	t_data img;
+	img.img = mlx_new_image(vars->mlx, w, h);
+	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
 
-    vars->x = 1;
-    vars->y = 0;
+	vars->x = 1;
+	vars->y = 0;
 	while (vars->y < h)
-    {
-      vars->rayDirX0 = vars->dirX - vars->planeX;
-      vars->rayDirY0 = vars->dirY - vars->planeY;
-      vars->rayDirX1 = vars->dirX + vars->planeX;
-      vars->rayDirY1 = vars->dirY + vars->planeY;
+	{
+	  vars->rayDirX0 = vars->dirX - vars->planeX;
+	  vars->rayDirY0 = vars->dirY - vars->planeY;
+	  vars->rayDirX1 = vars->dirX + vars->planeX;
+	  vars->rayDirY1 = vars->dirY + vars->planeY;
 
-      vars->p = vars->y - h / 2;
-      vars->posZ = 0.5 * h;
-      vars->rowDistance = vars->posZ / vars->p;
-      vars->floorStepX = vars->rowDistance * (vars->rayDirX1 - vars->rayDirX0) / w;
-      vars->floorStepY = vars->rowDistance * (vars->rayDirY1 - vars->rayDirY0) / w;
-      vars->floorX = vars->posX + vars->rowDistance * vars->rayDirX0;
-      vars->floorY = vars->posY + vars->rowDistance * vars->rayDirY0;
+	  vars->p = vars->y - h / 2;
+	  vars->posZ = 0.5 * h;
+	  vars->rowDistance = vars->posZ / vars->p;
+	  vars->floorStepX = vars->rowDistance * (vars->rayDirX1 - vars->rayDirX0) / w;
+	  vars->floorStepY = vars->rowDistance * (vars->rayDirY1 - vars->rayDirY0) / w;
+	  vars->floorX = vars->posX + vars->rowDistance * vars->rayDirX0;
+	  vars->floorY = vars->posY + vars->rowDistance * vars->rayDirY0;
 
-      while (vars->x < w)
-      {
-        vars->cellX = (int)(vars->floorX);
-        vars->cellY = (int)(vars->floorY);
-        vars->tx = (int)(TEXWIDTH * (vars->floorX - vars->cellX )) & (TEXWIDTH - 1);
-        vars->ty = (int)(TEXHEIGHT * (vars->floorY - vars->cellY )) & (TEXHEIGHT - 1);
-        vars->floorX += vars->floorStepX;
-        vars->floorY += vars->floorStepY;
-        vars->color = vars->texture[4].colors[vars->texture[4].width * vars->ty + vars->tx];
+	  while (vars->x < w)
+	  {
+		vars->cellX = (int)(vars->floorX);
+		vars->cellY = (int)(vars->floorY);
+		vars->tx = (int)(TEXWIDTH * (vars->floorX - vars->cellX )) & (TEXWIDTH - 1);
+		vars->ty = (int)(TEXHEIGHT * (vars->floorY - vars->cellY )) & (TEXHEIGHT - 1);
+		vars->floorX += vars->floorStepX;
+		vars->floorY += vars->floorStepY;
+		vars->color = vars->texture[4].colors[vars->texture[4].width * vars->ty + vars->tx];
 			  my_mlx_pixel_put(&img, vars->x, vars->y, vars->color);
-      	vars->color = vars->texture[5].colors[vars->texture[5].width * vars->ty + vars->tx];
+	  	vars->color = vars->texture[5].colors[vars->texture[5].width * vars->ty + vars->tx];
 			  my_mlx_pixel_put(&img, vars->x, h - vars->y - 1, vars->color);
-        vars->x++;
-      }
-      vars->x = 1;
-      vars->y++;
-    }
+		vars->x++;
+	  }
+	  vars->x = 1;
+	  vars->y++;
+	}
 	vars->x = 0;
-    vars->y = 0;
-    while(vars->x < w)
-    {
-      //calculate ray position and direction
-      vars->cameraX = 2 * vars->x / (double)w - 1; //x-coordinate in camera space
-      vars->rayDirX = vars->dirX + vars->planeX * vars->cameraX;
-      vars->rayDirY = vars->dirY + vars->planeY * vars->cameraX;
-      //which box of the map we're in
-      vars->mapX = vars->posX;
-      vars->mapY = vars->posY;
+	vars->y = 0;
+	while (vars->x < w)
+	{
+	  //calculate ray position and direction
+	  vars->cameraX = 2 * vars->x / (double)w - 1; //x-coordinate in camera space
+	  vars->rayDirX = vars->dirX + vars->planeX * vars->cameraX;
+	  vars->rayDirY = vars->dirY + vars->planeY * vars->cameraX;
+	  //which box of the map we're in
+	  vars->mapX = vars->posX;
+	  vars->mapY = vars->posY;
 
-      //length of ray from current position to next x or y-side
+	  //length of ray from current position to next x or y-side
 
-       //length of ray from one x or y-side to next x or y-side
-      // Alternative code for deltaDist in case division through zero is not supported
-      vars->deltaDistX = (vars->rayDirY == 0) ? 0 : ((vars->rayDirX == 0) ? 1 : fabs(1 / vars->rayDirX));
-      vars->deltaDistY = (vars->rayDirX == 0) ? 0 : ((vars->rayDirY == 0) ? 1 : fabs(1 / vars->rayDirY));
+	   //length of ray from one x or y-side to next x or y-side
+	  // Alternative code for deltaDist in case division through zero is not supported
+	  vars->deltaDistX = (vars->rayDirY == 0) ? 0 : ((vars->rayDirX == 0) ? 1 : fabs(1 / vars->rayDirX));
+	  vars->deltaDistY = (vars->rayDirX == 0) ? 0 : ((vars->rayDirY == 0) ? 1 : fabs(1 / vars->rayDirY));
 
-      //what direction to step in x or y-direction (either +1 or -1)
-      vars->hit = 0; //was there a wall vars.hit?
-      //calculate step and initial sideDist
-      if (vars->rayDirX < 0)
-      {
-        vars->stepX = -1;
-        vars->sideDistX = (vars->posX - vars->mapX) * vars->deltaDistX;
-      }
-      else
-      {
-        vars->stepX = 1;
-        vars->sideDistX = (vars->mapX + 1.0 - vars->posX) * vars->deltaDistX;
-      }
-      if (vars->rayDirY < 0)
-      {
-        vars->stepY = -1;
-        vars->sideDistY = (vars->posY - vars->mapY) * vars->deltaDistY;
-      }
-      else
-      {
-        vars->stepY = 1;
-        vars->sideDistY = (vars->mapY + 1.0 - vars->posY) * vars->deltaDistY;
-      }
-      //perform DDA
+	  //what direction to step in x or y-direction (either +1 or -1)
+	  vars->hit = 0; //was there a wall vars.hit?
+	  //calculate step and initial sideDist
+	  if (vars->rayDirX < 0)
+	  {
+		vars->stepX = -1;
+		vars->sideDistX = (vars->posX - vars->mapX) * vars->deltaDistX;
+	  }
+	  else
+	  {
+		vars->stepX = 1;
+		vars->sideDistX = (vars->mapX + 1.0 - vars->posX) * vars->deltaDistX;
+	  }
+	  if (vars->rayDirY < 0)
+	  {
+		vars->stepY = -1;
+		vars->sideDistY = (vars->posY - vars->mapY) * vars->deltaDistY;
+	  }
+	  else
+	  {
+		vars->stepY = 1;
+		vars->sideDistY = (vars->mapY + 1.0 - vars->posY) * vars->deltaDistY;
+	  }
+	  //perform DDA
 //	  write(1, "loser2\n", 7);
-      while (vars->hit == 0)
-    	{
-        //jump to next map square, OR in x-direction, OR in y-direction
-        if (vars->sideDistX < vars->sideDistY)
-        {
-          vars->sideDistX += vars->deltaDistX;
-          vars->mapX += vars->stepX;
-          vars->side = 0;
-        }
-        else
-        {
-          vars->sideDistY += vars->deltaDistY;
-          vars->mapY += vars->stepY;
-          vars->side = 1;
-        }
-        //Check if ray has vars.hit a wall
-        if (vars->map[vars->mapX][vars->mapY] == '1') 
-        {
-        	vars->hit = 1;
-        }
-    }
-      //Calculate distance projected on camera direction (Euclidean distance will give fisheye effect!)
-    	if (vars->side == 0)
-        	{vars->perpWallDist = (vars->mapX - vars->posX + (1 - vars->stepX) / 2) / vars->rayDirX;}
-    	else
-       		{vars->perpWallDist = (vars->mapY - vars->posY + (1 - vars->stepY) / 2) / vars->rayDirY;}
+	  while (vars->hit == 0)
+		{
+		//jump to next map square, OR in x-direction, OR in y-direction
+		if (vars->sideDistX < vars->sideDistY)
+		{
+		  vars->sideDistX += vars->deltaDistX;
+		  vars->mapX += vars->stepX;
+		  vars->side = 0;
+		}
+		else
+		{
+		  vars->sideDistY += vars->deltaDistY;
+		  vars->mapY += vars->stepY;
+		  vars->side = 1;
+		}
+		//Check if ray has vars.hit a wall
+		if (vars->map[vars->mapX][vars->mapY] == '1') 
+		{
+			vars->hit = 1;
+		}
+	}
+	  //Calculate distance projected on camera direction (Euclidean distance will give fisheye effect!)
+		if (vars->side == 0)
+			{vars->perpWallDist = (vars->mapX - vars->posX + (1 - vars->stepX) / 2) / vars->rayDirX;}
+		else
+	   		{vars->perpWallDist = (vars->mapY - vars->posY + (1 - vars->stepY) / 2) / vars->rayDirY;}
 
-      //Calculate height of line to draw on screen
-      	vars->lineHeight = (h / vars->perpWallDist);
+	  //Calculate height of line to draw on screen
+	  	vars->lineHeight = (h / vars->perpWallDist);
 
-      //calculate lowest and highest pixel to fill in current stripe
-      	vars->drawStart = -vars->lineHeight / 2 + h / 2;
-      	if (vars->drawStart < 0)
-      	{
-        	vars->drawStart = 0;
-      	}
-      	vars->drawEnd = vars->lineHeight / 2 + h / 2;
-      	if (vars->drawEnd >= h)
-      	{
-        vars->drawEnd = h - 1;
-      	}
-      //ft_drawline(img, vars);
-    	if (vars->side == 0)
+	  //calculate lowest and highest pixel to fill in current stripe
+	  	vars->drawStart = -vars->lineHeight / 2 + h / 2;
+	  	if (vars->drawStart < 0)
+	  	{
+			vars->drawStart = 0;
+	  	}
+	  	vars->drawEnd = vars->lineHeight / 2 + h / 2;
+	  	if (vars->drawEnd >= h)
+	  	{
+		vars->drawEnd = h - 1;
+	  	}
+	  //ft_drawline(img, vars);
+		if (vars->side == 0)
 			vars->wallX = vars->posY + vars->perpWallDist * vars->rayDirY;
 
 		else
 			vars->wallX = vars->posX + vars->perpWallDist * vars->rayDirX;
-    	vars->textNum = ft_gettexnum(vars);
+		vars->textNum = ft_gettexnum(vars);
 		vars->wallX -= floor(vars->wallX);
 		vars->texX = (int)(vars->wallX * (double)TEXWIDTH);
 		if (vars->side == 0 && vars->rayDirX > 0)
@@ -396,40 +308,40 @@ int render_next_frame(t_vars *vars)// 157 lines
 		}
 		zbuffer[vars->x] = vars->perpWallDist;
 		vars->x++;
-      //draw the pixels of the stripe as a vertical line
-      //ft_drawline(img, vars);
-      //verLine(vars->x, vars->drawStart, vars->drawEnd);
-    }
+	  //draw the pixels of the stripe as a vertical line
+	  //ft_drawline(img, vars);
+	  //verLine(vars->x, vars->drawStart, vars->drawEnd);
+	}
 	ft_spritecasting(vars, &img, zbuffer);
-    mlx_put_image_to_window(vars->mlx, vars->win, img.img, 0, 0);
-    ft_keys(vars);
+	mlx_put_image_to_window(vars->mlx, vars->win, img.img, 0, 0);
+	ft_keys(vars);
 	ft_keys2(vars);
-    return (0);
+	return (0);
 }
 
 /*
 int        main(int argc, char **argv)
 {
-    void    *mlx_ptr;
-    void    *mlx_win;
-    t_parse parse;
-    t_vars vars;
-    vars.time = 0;
-    vars.oldTime = 0;
+	void    *mlx_ptr;
+	void    *mlx_win;
+	t_parse parse;
+	t_vars vars;
+	vars.time = 0;
+	vars.oldTime = 0;
 
-    map_parsing(argv[1], &parse);
-    ft_init_vars(&vars, &parse);
-    mlx_ptr = mlx_init();
-    mlx_win = mlx_new_window(mlx_ptr, vars.ScreenWidth, vars.ScreenHeight, "Cub3V");
-    vars.mlx = mlx_ptr;
-    vars.win = mlx_win;
-    vars.moveSpeed = 0.11;
-    vars.rotSpeed = 0.07;
-    mlx_hook(vars.win, 2, 1L<<0, key_hook, &vars);
-    mlx_hook(vars.win, 3, 1L<<1, ft_release, &vars);
-    mlx_hook(vars.win, 17, 1L<<5, ft_exit, &vars);
+	map_parsing(argv[1], &parse);
+	ft_init_vars(&vars, &parse);
+	mlx_ptr = mlx_init();
+	mlx_win = mlx_new_window(mlx_ptr, vars.ScreenWidth, vars.ScreenHeight, "Cub3V");
+	vars.mlx = mlx_ptr;
+	vars.win = mlx_win;
+	vars.moveSpeed = 0.11;
+	vars.rotSpeed = 0.07;
+	mlx_hook(vars.win, 2, 1L<<0, key_hook, &vars);
+	mlx_hook(vars.win, 3, 1L<<1, ft_release, &vars);
+	mlx_hook(vars.win, 17, 1L<<5, ft_exit, &vars);
 	mlx_loop_hook(mlx_ptr, render_next_frame, &vars);
 
-    mlx_loop(mlx_ptr);
+	mlx_loop(mlx_ptr);
 }
 */
