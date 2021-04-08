@@ -26,7 +26,7 @@ void	ft_main_parsing(char *path, t_all *all)
 	printf("no : |%d|\nso : |%d|\nwe : |%d|\nea : |%d|\nr : |%d|\ns : |%d|\nf : |%d|\nc : |%d|\nmp : |%d|\n", all->chr->no, all->chr->so, all->chr->we, all->chr->ea, all->chr->r, all->chr->s, all->chr->f, all->chr->c, all->chr->mp);
 	/*---DEBUG---*/
 	//printf("|W : %d|\n|H : %d|\n", all->par->res_w, all->par->res_h);
-	//printf("|NO : |%s|\n|SO : |%s|\n|WE : |%s|\n|EA : |%s|\n|S : |%s|\n", all->par->wall[0], all->par->wall[1], all->par->wall[2], all->par->wall[3], all->par->sfc[0]);
+	printf("|NO : |%s|\n|SO : |%s|\n|WE : |%s|\n|EA : |%s|\n|S : |%s|\n", all->par->wall[0], all->par->wall[1], all->par->wall[2], all->par->wall[3], all->par->sfc[0]);
 	//int i = 0;
 	printf("|C : |%d| |%d| |%d|\n", all->par->ceiling[0], all->par->ceiling[1], all->par->ceiling[2]);
 	printf("|F : |%d| |%d| |%d|\n", all->par->floor[0], all->par->floor[1], all->par->floor[2]);
@@ -65,22 +65,24 @@ void       ft_init_vars(t_vars *vars, t_all *all)// 65 lines
 	vars->texture[4].path = all->par->sfc[1];// floor
 	vars->texture[5].path = all->par->sfc[2];// ceiling
 
-    while (i < vars->mapHeight)
+    while (all->par->map[i])
     {
+		puts(all->par->map[i]);
+		j = 1;
         while(all->par->map[i][j])
         {
             if (all->par->map[i][j] == '2')
                 vars->nSprites++;
-            if (ft_iscinstr(all->par->map[i][j], "NWSE", ft_strlen(all->par->map[i])))
+			if (all->par->map[i][j] == 'N' || all->par->map[i][j] == 'S' || all->par->map[i][j] == 'O' || all->par->map[i][j] == 'W')
+//            if (ft_iscinstr(all->par->map[i][j], "NWSE", 4))
             {
                 vars->posX = i + 0.5;
                 vars->posY = j + 0.5;
                 vars->dir = all->par->map[i][j];
-                break ;
+				write(1, "codio\n", 6);
             }
-            j++;
-        }
-        j = 1;
+			j++;
+		}
         i++;
     }
     if (vars->dir == 'N')
@@ -112,15 +114,21 @@ void       ft_init_vars(t_vars *vars, t_all *all)// 65 lines
 		vars->planeY = 0;
 	}
 }
-void	ft_gettextures(t_vars *vars) // <----------------segfault qui (non trova più i pathfiles)
+int		ft_gettextures(t_vars *vars) // <----------------segfault qui (non trova più i pathfiles)
 {
 	vars->texture[0].img = mlx_xpm_file_to_image(vars->mlx, vars->texture[0].path, \
 	 &vars->texture[0].width, &vars->texture[0].height);
+//	vars->texture[0].img = mlx_xpm_file_to_image(vars->mlx, "./textures/a.xpm", \
+//	 &vars->texture[0].width, &vars->texture[0].height);
 	//puts(vars->texture[0].path);
+	//./textures/a.xpm
+	if (!vars->texture[0].img)
+		return (0);
 	vars->texture[0].addr = mlx_get_data_addr(vars->texture[0].img, &vars->texture[0].bits_per_pixel, \
 	 &vars->texture[0].line_length, &vars->texture[0].endian);
-	vars->texture[0].colors = (int *)mlx_get_data_addr(vars->texture[0].img, &vars->texture[0].bits_per_pixel, \
-	 &vars->texture[0].line_length, &vars->texture[0].endian);
+	vars->texture[0].colors = (int *)vars->texture[0].addr;
+//	vars->texture[0].colors = (int *)mlx_get_data_addr(vars->texture[0].img, &vars->texture[0].bits_per_pixel, \
+//	 &vars->texture[0].line_length, &vars->texture[0].endian);
 	vars->texture[1].img = mlx_xpm_file_to_image(vars->mlx, vars->texture[1].path, \
 	 &vars->texture[1].width, &vars->texture[1].height);
 	vars->texture[1].addr = mlx_get_data_addr(vars->texture[1].img, &vars->texture[1].bits_per_pixel, \
@@ -157,6 +165,7 @@ void	ft_gettextures(t_vars *vars) // <----------------segfault qui (non trova pi
 	 &vars->texture[6].line_length, &vars->texture[6].endian);
 	vars->texture[6].colors = (int *)mlx_get_data_addr(vars->texture[6].img, &vars->texture[6].bits_per_pixel, \
 	 &vars->texture[6].line_length, &vars->texture[6].endian);
+	return(1);
 }
 
 
@@ -241,7 +250,7 @@ int render_next_frame(t_vars *vars)// 157 lines
 
     vars->x = 1;
     vars->y = 0;
-    while (vars->y < h)
+	while (vars->y < h)
     {
       vars->rayDirX0 = vars->dirX - vars->planeX;
       vars->rayDirY0 = vars->dirY - vars->planeY;
@@ -273,8 +282,8 @@ int render_next_frame(t_vars *vars)// 157 lines
       vars->x = 1;
       vars->y++;
     }
-     vars->x = 0;
-     vars->y = 0;
+	vars->x = 0;
+    vars->y = 0;
     while(vars->x < w)
     {
       //calculate ray position and direction
@@ -316,6 +325,7 @@ int render_next_frame(t_vars *vars)// 157 lines
         vars->sideDistY = (vars->mapY + 1.0 - vars->posY) * vars->deltaDistY;
       }
       //perform DDA
+//	  write(1, "loser2\n", 7);
       while (vars->hit == 0)
     	{
         //jump to next map square, OR in x-direction, OR in y-direction
@@ -373,10 +383,13 @@ int render_next_frame(t_vars *vars)// 157 lines
 		vars->step = 1.0 * TEXHEIGHT / vars->lineHeight;
 		vars->texPos = (vars->drawStart - h / 2 + vars->lineHeight / 2) * vars->step;
 		vars->y = vars->drawStart;
+//		write(1, "loser3\n", 7);
 		while (vars->y < vars->drawEnd)
 		{
+//			write(1, "loser4\n", 7);
 			vars->texY = (int)vars->texPos & (vars->texture[vars->textNum].height - 1);
 			vars->texPos += vars->step;
+//			vars->color = 0x00FF0000;
 			vars->color = vars->texture[vars->textNum].colors[vars->texture[vars->textNum].width * vars->texY + vars->texX];
 			my_mlx_pixel_put(&img, vars->x, vars->y, vars->color);
 			vars->y++;
@@ -388,7 +401,7 @@ int render_next_frame(t_vars *vars)// 157 lines
       //verLine(vars->x, vars->drawStart, vars->drawEnd);
     }
 	ft_spritecasting(vars, &img, zbuffer);
-    //mlx_put_image_to_window(vars->mlx, vars->win, img.img, 0, 0);
+    mlx_put_image_to_window(vars->mlx, vars->win, img.img, 0, 0);
     ft_keys(vars);
 	ft_keys2(vars);
     return (0);

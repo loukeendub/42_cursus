@@ -1,11 +1,11 @@
 R 1080 720
 NO ./textures/a.xpm
-SO ./textures/b.xpm
+SO ./textures/a.xpm
 EA ./textures/c.xpm
-WE ./textures/d.xpm
+WE ./textures/c.xpm
 S ./textures/e.xpm
 C ./textures/f.xpm
-F ./textures/f.xpm
+F ./textures/b.xpm
 
         1111111111111111111111111
         1000000000110000000000001

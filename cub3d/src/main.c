@@ -9,7 +9,7 @@ int main(int argc, char **argv)//26 lines
 	vars.oldTime = 0;
 	if (argc != 2 && argc != 3)
 	{
-		write(1, "Error\n", 6);
+		write(2, "Error\n", 6);
 		return (0);
 	}
 	ft_bzero(&vars, sizeof(t_vars));
@@ -19,8 +19,12 @@ int main(int argc, char **argv)//26 lines
 	vars.win = mlx_new_window(vars.mlx, vars.ScreenWidth, vars.ScreenHeight, "cub3D");
 	vars.moveSpeed = 0.11;
 	vars.rotSpeed = 0.07;
-	ft_gettextures(&vars);
-	mlx_put_image_to_window(vars.mlx, vars.win, all.data->img, 0, 0);
+	if (!(ft_gettextures(&vars)))
+	{
+		write(1, "loser\n", 6);
+		ft_exit(&vars, &all);
+	}
+	//mlx_put_image_to_window(vars.mlx, vars.win, all.data->img, 0, 0);
 	mlx_hook(vars.win, 2, 1L<<0, key_hook, &vars);
 	mlx_hook(vars.win, 3, 1L<<1, ft_release, &vars);
 	mlx_hook(vars.win, 17, 1L<<5, ft_exit, &vars);

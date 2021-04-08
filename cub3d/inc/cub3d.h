@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 10:46:55 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/08 09:29:41 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/08 14:20:56 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -293,7 +293,7 @@ int				ft_parse_line_core(char *line, int i, int ret, t_all *all);
 */
 void			ft_main_parsing(char *path, t_all *all);
 void			ft_init_vars(t_vars *vars, t_all *all);
-void			ft_gettextures(t_vars *vars);
+int				ft_gettextures(t_vars *vars);
 void			ft_spritecasting(t_vars *vars, t_data *img, double *buffer);
 int 			render_next_frame(t_vars *vars);
 /*

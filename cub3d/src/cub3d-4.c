@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 15:00:40 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/08 09:42:50 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/08 15:17:44 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	ft_iscinstr(char c, char const *str, size_t len)
 	size_t	i;
 
 	i = 0;
-	while (i < len)
+	while (i < len && str[i])
 	{
 		if (str[i] == c)
 			return (1);
