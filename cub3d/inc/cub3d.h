@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 10:46:55 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/07 18:27:29 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/08 09:29:41 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -305,7 +305,7 @@ void			my_mlx_pixel_put(t_data *data, int x, int y, int color);
 int				ft_keys(t_vars *vars);
 int 			ft_keys2(t_vars *vars);
 /*
-** cub3d-3 [FULL] [NORMA V3 OK (remove comment)]
+** cub3d-3 [FULL] [NORMA V3 OK]
 */
 void			ft_keycode_fill(int keycode, t_vars *vars);
 int				key_hook(int keycode, t_vars *vars);

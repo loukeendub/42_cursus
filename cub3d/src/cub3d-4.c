@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 15:00:40 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/07 17:52:50 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/08 09:42:50 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,9 @@ int	ft_floor(char **line, t_all *all)
 	{
 		(*line)--;
 		all->par->sfc[1] = ft_text_store(line);
+		all->par->floor[0] = 0;
+		all->par->floor[1] = 0;
+		all->par->floor[2] = 0;
 	}
 	else if (ft_isdigit(**line))
 		return (ft_type_core(line, all, &all->chr->f, &all->par->f));
@@ -68,6 +71,9 @@ int	ft_ceiling(char **line, t_all *all)
 	{
 		(*line)--;
 		all->par->sfc[2] = ft_text_store(line);
+		all->par->ceiling[0] = 0;
+		all->par->ceiling[1] = 0;
+		all->par->ceiling[2] = 0;
 	}
 	else if (ft_isdigit(**line))
 		return (ft_type_core(line, all, &all->chr->c, &all->par->f));

@@ -23,15 +23,15 @@ void	ft_main_parsing(char *path, t_all *all)
 			//write(1, "Error\n", 6);
 		}
 	}
-	//printf("no : |%d|\nso : |%d|\nwe : |%d|\nea : |%d|\nr : |%d|\ns : |%d|\nf : |%d|\nc : |%d|\nmp : |%d|\n", all->chr->no, all->chr->so, all->chr->we, all->chr->ea, all->chr->r, all->chr->s, all->chr->f, all->chr->c, all->chr->mp);
+	printf("no : |%d|\nso : |%d|\nwe : |%d|\nea : |%d|\nr : |%d|\ns : |%d|\nf : |%d|\nc : |%d|\nmp : |%d|\n", all->chr->no, all->chr->so, all->chr->we, all->chr->ea, all->chr->r, all->chr->s, all->chr->f, all->chr->c, all->chr->mp);
 	/*---DEBUG---*/
-	printf("|W : %d|\n|H : %d|\n", all->par->res_w, all->par->res_h);
-	printf("|NO : |%s|\n|SO : |%s|\n|WE : |%s|\n|EA : |%s|\n|S : |%s|\n", all->par->wall[0], all->par->wall[1], all->par->wall[2], all->par->wall[3], all->par->sfc[0]);
-	int i = 0;
+	//printf("|W : %d|\n|H : %d|\n", all->par->res_w, all->par->res_h);
+	//printf("|NO : |%s|\n|SO : |%s|\n|WE : |%s|\n|EA : |%s|\n|S : |%s|\n", all->par->wall[0], all->par->wall[1], all->par->wall[2], all->par->wall[3], all->par->sfc[0]);
+	//int i = 0;
 	printf("|C : |%d| |%d| |%d|\n", all->par->ceiling[0], all->par->ceiling[1], all->par->ceiling[2]);
 	printf("|F : |%d| |%d| |%d|\n", all->par->floor[0], all->par->floor[1], all->par->floor[2]);
-	while (all->par->map[i])
-		puts(all->par->map[i++]);
+	//while (all->par->map[i])
+	//	puts(all->par->map[i++]);
 	/*---end of debug---*/
 		if (!check_val(all))
 		{

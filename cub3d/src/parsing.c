@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/03/30 16:32:45 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/06 11:44:51 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/08 09:38:26 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,14 +87,14 @@ int	check_val(t_all *all)
 	 || all->chr->ea != 1 || all->chr->s != 1 || all->chr->f != 1 \
 	 || all->chr->c != 1 || all->chr->mp != 1)
 		return (0);
-	while (i < 3)
+	while (i < 3 && all->chr->c == 1)
 	{
 		if (all->par->ceiling[i] < 0 || all->par->ceiling[i] > 255)
 			return (0);
 		i++;
 	}
 	i = 0;
-	while (i < 3)
+	while (i < 3 && all->chr->f == 1)
 	{
 		if (all->par->floor[i] < 0 || all->par->floor[i] > 255)
 			return (0);

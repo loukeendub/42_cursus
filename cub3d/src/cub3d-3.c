@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 14:49:37 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/08 09:16:43 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/08 09:29:24 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	key_hook(int keycode, t_vars *vars)
 		mlx_destroy_window(vars->mlx, vars->win);
 		system("killall afplay");
 		exit(0);
-	} //change the return value
+	}
 	return (0);
 }
 
