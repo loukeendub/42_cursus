@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/02 14:49:37 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/07 14:26:49 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/08 09:16:43 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,27 +19,27 @@ void	ft_keycode_fill(int keycode, t_vars *vars)
 {
 	if (keycode == 13)
 		vars->keyUp = 1;
-	else
+	else if (keycode != 13)
 		vars->keyUp = 0;
 	if (keycode == 1)
 		vars->keyDown = 1;
-	else
+	else if (keycode != 1)
 		vars->keyDown = 0;
 	if (keycode == 123)
 		vars->keyLeftView = 1;
-	else
+	else if (keycode != 123)
 		vars->keyLeftView = 0;
 	if (keycode == 124)
 		vars->keyRightView = 1;
-	else
+	else if (keycode != 124)
 		vars->keyRightView = 0;
 	if (keycode == 0)
 		vars->keyRight = 1;
-	else
+	else if (keycode != 0)
 		vars->keyRight = 0;
 	if (keycode == 2)
 		vars->keyLeft = 1;
-	else
+	else if (keycode != 2)
 		vars->keyLeft = 0;
 }
 
@@ -59,27 +59,27 @@ int	ft_release(int keycode, t_vars *vars)
 {
 	if (keycode == 13)
 		vars->keyUp = 0;
-	else
+	else if (keycode != 13)
 		vars->keyUp = 1;
 	if (keycode == 1)
 		vars->keyDown = 0;
-	else
+	else if (keycode != 1)
 		vars->keyDown = 1;
 	if (keycode == 123)
 		vars->keyLeftView = 0;
-	else
+	else if (keycode != 123)
 		vars->keyLeftView = 1;
 	if (keycode == 124)
 		vars->keyRightView = 0;
-	else
+	else if (keycode != 124)
 		vars->keyRightView = 1;
 	if (keycode == 0)
 		vars->keyRight = 0;
-	else
+	else if (keycode != 0)
 		vars->keyRight = 1;
 	if (keycode == 2)
 		vars->keyLeft = 0;
-	else
+	else if (keycode != 2)
 		vars->keyLeft = 1;
 	return (0);
 }
