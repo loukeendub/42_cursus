@@ -5,65 +5,113 @@
 #                                                     +:+ +:+         +:+      #
 #    By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2021/03/29 12:33:59 by lmarzano          #+#    #+#              #
-#    Updated: 2021/04/12 10:03:11 by lmarzano         ###   ########.fr        #
+#    Created: 2021/04/12 11:19:51 by lmarzano          #+#    #+#              #
+#    Updated: 2021/04/12 11:19:53 by lmarzano         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME		=	cub3D
+NAME = libcub.a
 
-CC			=	gcc
-CFLAGS		=	-Wall -Wextra -Werror -Imlx -Iinc -g
-FFLAGS		=	-framework OpenGL -framework AppKit
-RM			=	rm -f
+CC = gcc
 
-SRCDIR		=	src/
+CFLAGS = -Wall -Wextra -Werror -c
 
-FILES		=	cub3d.c\
-				core.c\
-				cub3d-2.c\
-				cub3d-3.c\
-				cub3d-4.c\
-				cub3d_utils.c\
-				cub3d_utils2.c\
-				cub3d_utils3.c\
-				get_next_line.c\
-				init.c\
-				main.c\
-				map_parsing.c\
-				map_parsing2.c\
-				parsing.c\
-				parsing2.c\
-				vars_init.c\
-				spritecasting.c
-SRC			=	$(addprefix $(SRCDIR), $(FILES))
-OBJ			=	$(SRC:.c=.o)
+CMLXFLAGS = -Werror -Wextra -Wall -lmlx -framework OpenGL -framework AppKit
 
-MLX			=	libmlx.dylib
+AR = ar -rc
 
-all		:	$(NAME)
+RAN = ranlib
 
-$(NAME)	:	$(MLX) $(OBJ)
-	$(CC) $(CFLAGS) $(FFLAGS) $^ -o $@
+SEPARATOR = "---------------------------------------------------------------"
 
-$(MLX)	:
-	@make -C mlx
-	@cp mlx/$(MLX) . 
+CUB_DIR = cub/
 
-$(SRCDIR)/%.o	:	$(SRCDIR)%.c
-	$(CC) $(CFLAGS) -c -o $@ $^
+CUB_SRCS =	event_handling/mouse_hooks.c \
+			event_handling/keyboard_hooks.c \
+			game/game_reader.c \
+			game/game_utilities.c \
+			game/game_checks.c \
+			game/sprite_utils.c \
+			map/map_filler.c \
+			map/map_checker.c \
+			map/map_checker_utils.c \
+			player/player_checker.c \
+			player/player_move.c \
+			save/save.c \
+			raycast/raycast.c\
+			raycast/raycast1.c \
+			raycast/raycast2.c \
+			raycast/spritecast.c \
+			raycast/spritecast1.c \
+			struct_manager/struct_init.c\
+			struct_manager/struct_init1.c\
+			utils/string_utils.c \
+			utils/gen_utils.c \
+			window_funcs/textures.c \
+			window_funcs/win_fxns.c \
 
-clean	:
-	rm -f $(OBJ)
-	@make clean -C mlx
+LIBUTILS_DIR = libutils/
 
-fclean	:	clean
-	@$(RM) $(MLX)
-	@$(RM) $(NAME)
+LIBUTILS_SRCS = ft_atoi.c \
+			ft_bzero.c \
+			ft_calloc.c \
+			ft_isdigit.c \
+			ft_memset.c \
+			ft_memcpy.c \
+			ft_strchr.c \
+			ft_strdup.c \
+			ft_strjoin.c \
+			ft_strcpy.c \
+			ft_strlcpy.c \
+			ft_strlen.c \
+			ft_substr.c \
+			ft_get_next_line.c
 
-re		:	fclean all
+BNS_DIR = cub/bonus/
 
-.PHONY	:	all clean fclean re
+BNS_SRCS = 	mini_map.c \
+			player_mov_bonus.c \
+			mouse_rotation.c
 
-test	:	all
-	./cub3D map.cub
+CUB_DIRSRCS = $(addprefix ${CUB_DIR}, ${CUB_SRCS})
+
+BNS_DIRSRCS = $(addprefix ${BNS_DIR}, ${BNS_SRCS})
+
+OBJS = ${CUB_DIRSRCS:.c=.o}
+
+LIBUTILS_DIRSRCS = $(addprefix ${LIBUTILS_DIR}, ${LIBUTILS_SRCS})
+
+LIBUTILS_OBJS = ${LIBUTILS_DIRSRCS:.c=.o}
+
+BNS_OBJS = $(BNS_DIRSRCS:.c=.o)
+
+all: ${NAME}
+
+$(NAME): ${OBJS} ${LIBUTILS_OBJS}
+	@${AR} ${NAME} ${OBJS} ${LIBUTILS_OBJS}
+	@${RAN} ${NAME}
+	@mv ${NAME} cub
+	@make -C cub/minilibx
+	@cp cub/minilibx/libmlx.dylib .
+	@${CC} ${CMLXFLAGS} ./cub/${NAME} cub/main.c libmlx.dylib -o cub3D
+
+bonus: fclean ${OBJS} ${LIBUTILS_OBJS} ${BNS_OBJS}
+	@${AR} ${NAME} ${OBJS} ${LIBUTILS_OBJS} ${BNS_OBJS}
+	@${RAN} ${NAME}
+	@mv ${NAME} cub
+	@make -C cub/minilibx
+	@cp cub/minilibx/libmlx.dylib .
+	@${CC} ${CMLXFLAGS} ./cub/${NAME} cub/bonus/main_bonus.c libmlx.dylib -o cub3D
+
+clean:
+	@${RM} ${OBJS} $(BNS_OBJS) ${LIBUTILS_OBJS}
+	@make clean -C cub/minilibx
+
+fclean: clean
+	@${RM} ./cub/${NAME}
+	@${RM} libmlx.dylib
+	@${RM} cub3d
+
+re: fclean all
+
+.PHONY: all bonus clean fclean re
