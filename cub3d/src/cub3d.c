@@ -26,128 +26,23 @@ void	ft_main_parsing(char *path, t_all *all, t_vars *vars)
 	free(line);
 }
 
-int		ft_gettextures(t_vars *vars) // <----------------segfault qui (non trova più i pathfiles)
+int		ft_gettextures(t_vars *vars)
 {
-	vars->texture[0].img = mlx_xpm_file_to_image(vars->mlx, vars->texture[0].path, \
-	 &vars->texture[0].width, &vars->texture[0].height);
-//	vars->texture[0].img = mlx_xpm_file_to_image(vars->mlx, "./textures/a.xpm", \
-//	 &vars->texture[0].width, &vars->texture[0].height);
-	//puts(vars->texture[0].path);
-	//./textures/a.xpm
-	if (!vars->texture[0].img)
-		return (0);
-	vars->texture[0].addr = mlx_get_data_addr(vars->texture[0].img, &vars->texture[0].bits_per_pixel, \
-	 &vars->texture[0].line_length, &vars->texture[0].endian);
-	vars->texture[0].colors = (int *)vars->texture[0].addr;
-//	vars->texture[0].colors = (int *)mlx_get_data_addr(vars->texture[0].img, &vars->texture[0].bits_per_pixel, \
-//	 &vars->texture[0].line_length, &vars->texture[0].endian);
-	vars->texture[1].img = mlx_xpm_file_to_image(vars->mlx, vars->texture[1].path, \
-	 &vars->texture[1].width, &vars->texture[1].height);
-	vars->texture[1].addr = mlx_get_data_addr(vars->texture[1].img, &vars->texture[1].bits_per_pixel, \
-	 &vars->texture[1].line_length, &vars->texture[1].endian);
-	vars->texture[1].colors = (int *)mlx_get_data_addr(vars->texture[1].img, &vars->texture[1].bits_per_pixel, \
-	 &vars->texture[1].line_length, &vars->texture[1].endian);
-	vars->texture[2].img = mlx_xpm_file_to_image(vars->mlx, vars->texture[2].path, \
-	 &vars->texture[2].width, &vars->texture[2].height);
-	vars->texture[2].addr = mlx_get_data_addr(vars->texture[2].img, &vars->texture[2].bits_per_pixel, \
-	 &vars->texture[2].line_length, &vars->texture[2].endian);
-	vars->texture[2].colors = (int *)mlx_get_data_addr(vars->texture[2].img, &vars->texture[2].bits_per_pixel, \
-	 &vars->texture[2].line_length, &vars->texture[2].endian);
-	vars->texture[3].img = mlx_xpm_file_to_image(vars->mlx, vars->texture[3].path, \
-	 &vars->texture[3].width, &vars->texture[3].height);
-	vars->texture[3].addr = mlx_get_data_addr(vars->texture[3].img, &vars->texture[3].bits_per_pixel, \
-	 &vars->texture[3].line_length, &vars->texture[3].endian);
-	vars->texture[3].colors = (int *)mlx_get_data_addr(vars->texture[3].img, &vars->texture[3].bits_per_pixel, \
-	 &vars->texture[3].line_length, &vars->texture[3].endian);
-	vars->texture[4].img = mlx_xpm_file_to_image(vars->mlx, vars->texture[4].path, \
-	 &vars->texture[4].width, &vars->texture[4].height);
-	vars->texture[4].addr = mlx_get_data_addr(vars->texture[4].img, &vars->texture[4].bits_per_pixel, \
-	 &vars->texture[4].line_length, &vars->texture[4].endian);
-	vars->texture[4].colors = (int *)mlx_get_data_addr(vars->texture[4].img, &vars->texture[4].bits_per_pixel, \
-	 &vars->texture[4].line_length, &vars->texture[4].endian);
-	vars->texture[5].img = mlx_xpm_file_to_image(vars->mlx, vars->texture[5].path, \
-	 &vars->texture[5].width, &vars->texture[5].height);
-	vars->texture[5].addr = mlx_get_data_addr(vars->texture[5].img, &vars->texture[5].bits_per_pixel, \
-	 &vars->texture[5].line_length, &vars->texture[5].endian);
-	vars->texture[5].colors = (int *)mlx_get_data_addr(vars->texture[5].img, &vars->texture[5].bits_per_pixel, \
-	 &vars->texture[5].line_length, &vars->texture[5].endian);
-	vars->texture[6].img = mlx_xpm_file_to_image(vars->mlx, vars->texture[6].path, \
-	 &vars->texture[6].width, &vars->texture[6].height);
-	vars->texture[6].addr = mlx_get_data_addr(vars->texture[6].img, &vars->texture[6].bits_per_pixel, \
-	 &vars->texture[6].line_length, &vars->texture[6].endian);
-	vars->texture[6].colors = (int *)mlx_get_data_addr(vars->texture[6].img, &vars->texture[6].bits_per_pixel, \
-	 &vars->texture[6].line_length, &vars->texture[6].endian);
+	int	i;
+
+	i = 0;
+	while (i < 7)
+	{
+		vars->texture[i].img = mlx_xpm_file_to_image(vars->mlx, vars->texture[i].path, \
+		 &vars->texture[i].width, &vars->texture[i].height);
+		if (!vars->texture[i].img)
+			return (0);
+		vars->texture[i].addr = mlx_get_data_addr(vars->texture[i].img, &vars->texture[i].bits_per_pixel, \
+		 &vars->texture[i].line_length, &vars->texture[i].endian);
+		vars->texture[i].colors = (int *)vars->texture[i].addr;
+		i++;
+	}
 	return(1);
-}
-
-
-void	ft_spritecasting(t_vars *vars, t_data *img, double *buffer)// 65 lines
-{
-	t_sprite	*sprite;
-	int			spriteOrder[vars->nSprites];
-	double		spriteDistance[vars->nSprites];
-	int			i;
-
-	i = 0;
-	sprite = malloc(sizeof(t_sprite) * vars->nSprites);
-	if (!sprite)
-	{
-		printf("Error\n");
-		exit(0);
-	}
-	ft_getcoordinates(vars, sprite);
-	while (i < vars->nSprites)
-	{
-		spriteOrder[i] = i;
-		spriteDistance[i] = (vars->posX - sprite[i].x) * (vars->posX - sprite[i].x) +(vars->posY - sprite[i].y) * (vars->posY - sprite[i].y);
-		i++;
-	}
-	ft_sortsprites(spriteOrder, spriteDistance, vars->nSprites);
-	i = 0;
-	while (i < vars->nSprites)
-	{
-		vars->spriteX = sprite[spriteOrder[i]].x - vars->posX;
-		vars->spriteY = sprite[spriteOrder[i]].y - vars->posY;
-		vars->invDet = 1.0 / (vars->planeX * vars->dirY - vars->dirX * vars->planeY);
-		vars->transformX = vars->invDet * (vars->dirY * vars->spriteX - vars->dirX * vars->spriteY);
-		vars->transformY = vars->invDet * (-vars->planeY * vars->spriteX + vars->planeX * vars->spriteY);
-		vars->spriteScreenX = (int)((vars->ScreenWidth / 2) * (1 + vars->transformX / vars->transformY));
-		vars->spriteHeight = abs((int)(vars->ScreenHeight / vars->transformY));
-		vars->drawStartY = -vars->spriteHeight / 2 + vars->ScreenHeight / 2;
-		if (vars->drawStartY < 0)
-			vars->drawStartY = 0;
-		vars->drawEndY = vars->spriteHeight / 2 + vars->ScreenHeight / 2;
-		if (vars->drawEndY >= vars->ScreenHeight)
-			vars->drawEndY = vars->ScreenHeight - 1;
-		vars->spriteWidth = abs((int)(vars->ScreenHeight / vars->transformY));
-		vars->drawStartX = -vars->spriteWidth / 2 + vars->spriteScreenX;
-		if (vars->drawStartX < 0)
-			vars->drawStartX = 0;
-		vars->drawEndX = vars->spriteWidth / 2 + vars->spriteScreenX;
-		if (vars->drawEndX >= vars->ScreenWidth)
-			vars->drawEndX = vars->ScreenWidth - 1;
-		vars->stripe = vars->drawStartX;
-		while (vars->stripe < vars->drawEndX)
-		{
-			vars->texX = (int)(256 * (vars->stripe - (-vars->spriteWidth / 2 + vars->spriteScreenX)) * TEXWIDTH /vars->spriteWidth) / 256;
-			if (vars->transformY > 0 && vars->stripe > 0 && vars->stripe < vars->ScreenWidth && vars->transformY < buffer[vars->stripe])
-			{
-				vars->y = vars->drawStartY;
-				while (vars->y < vars->drawEndY)
-				{
-					vars->d = (vars->y) * 256 - vars->ScreenHeight * 128 + vars->spriteHeight *128;
-					vars->texY = ((vars->d * TEXHEIGHT) / vars->spriteHeight) / 256;
-					vars->color = vars->texture[6].colors[TEXWIDTH * vars->texY + vars->texX];
-					if ((vars->color & 0x00FFFFFF) != 0)
-						my_mlx_pixel_put(img, vars->stripe, vars->y, vars->color);
-					vars->y++;
-				}
-			}
-			vars->stripe++;
-		}
-		i++;
-	}
-	free(sprite);
 }
 
 int render_next_frame(t_vars *vars)// 157 lines
