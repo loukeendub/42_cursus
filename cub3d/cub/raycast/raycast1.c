@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 11:31:48 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/12 13:21:58 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/13 15:29:37 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,7 @@ void	ver_line(int x, t_caster *caster, t_window *win, t_data *img)
 	{
 		if (!win->game->skybox || win->game->bonus == 0)
 			my_mlx_pixel_put(img, x, i, win->game->ccolr->n_color);
-		else// qui è dove aggiungere il ceiling
+		else
 		{
 			tex = win->textures->skybox;
 			my_mlx_pixel_put(img, x, i,

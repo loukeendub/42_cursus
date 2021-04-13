@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/12 11:33:30 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/12 12:21:34 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/13 15:24:04 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,6 @@ void	clean_window_struct(t_window *window)
 	clean_mouse_pos(window->mouse_pos);
 	clean_keys(window->keys);
 	window->close = 0;
-	system("afplay fastlane.mp3&");
+	if (!window->game->save)
+		system("afplay lavender.mp3&");
 }
