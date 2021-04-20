@@ -1,4 +1,4 @@
-service nginx restart
-service php7.3-fpm reload
-service mariadb restart
+service nginx start
+service php7.3-fpm start
+service mysql start
 bash

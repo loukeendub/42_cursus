@@ -23,10 +23,10 @@
 define('DB_NAME', 'ft_server');
 
 /** Nome utente del database MySQL */
-define('DB_USER', 'admin');
+define('DB_USER', 'root');
 
 /** Password del database MySQL */
-define('DB_PASSWORD', 'admin');
+define('DB_PASSWORD', '');
 
 /** Hostname MySQL  */
 define('DB_HOST', 'localhost');
