@@ -25,8 +25,8 @@ int	main(void)
 		usleep(200000);
 	}
 	system("clear");
-	write(1, "BAT", 3);
-	usleep(200000);
-	write(1, "MAAAAN", 6);
+	write(1, "BAT\n", 4);
+	usleep(250000);
+	write(1, "MAAAAN\n", 7);
 	return (0);
 }
