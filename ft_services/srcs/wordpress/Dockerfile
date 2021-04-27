@@ -6,14 +6,16 @@
 #    By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/23 15:55:38 by lmarzano          #+#    #+#              #
-#    Updated: 2021/04/23 16:26:31 by lmarzano         ###   ########.fr        #
+#    Updated: 2021/04/27 17:38:15 by lmarzano         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-FROM alpine:latest
+FROM alpine:3.12
+
+USER root
 
 # update OS
-RUN apk update && apk upgrade
+RUN apk update && apk upgrade --no-cache
 
 # Install utils
 RUN apk add vim wget tar -y

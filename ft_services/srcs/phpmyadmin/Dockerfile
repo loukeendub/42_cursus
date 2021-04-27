@@ -6,29 +6,43 @@
 #    By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/23 15:55:26 by lmarzano          #+#    #+#              #
-#    Updated: 2021/04/23 16:26:16 by lmarzano         ###   ########.fr        #
+#    Updated: 2021/04/27 16:22:11 by lmarzano         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-FROM alpine:latest
+FROM alpine:3.12
+
+USER root
 
 # update OS
-RUN apk update && apk upgrade
+RUN apk update && apk -U upgrade
 
 # Install Utils
-RUN apk add vim wget tar -y
+RUN apk add php7 php7-fpm php7-pdo_mysql php7-cli php7-json php7-mbstring php7-common php7-session php7-iconv php7-gd php7-curl php7-xml php7-mysqli php7-imap php7-cgi fcgi php7-pdo php7-soap php7-xmlrpc php7-posix php7-mcrypt php7-gettext php7-ldap php7-ctype php7-dom --no-cache
+RUN apk add nginx openssl openrc --no-cache
+
+# Get CSR for nginx using OpenSSL
+RUN openssl req -new -newkey rsa:2048 -nodes -days 365 -x509 \
+    -subj "/C=IT/O=42RomaLuiss/CN=lmarzano" \
+    -keyout etc/ssl/private/ft_services.key -out etc/ssl/certs/ft_services.crt
 
 # Install PHPMYADMIN
 WORKDIR /tmp
+RUN rc-status
+RUN touch /run/openrc/softlevel
 RUN wget https://files.phpmyadmin.net/snapshots/phpMyAdmin-5.2+snapshot-all-languages.tar.gz
 RUN tar -xzvf phpMyAdmin-5.2+snapshot-all-languages.tar.gz
+RUN mkdir /var/www/html
 RUN mv phpMyAdmin-5.2+snapshot-all-languages /var/www/html/phpmyadmin 
 RUN rm -rf phpMyAdmin-5.2+snapshot-all-languages.tar.gz
 
+# Copy nginx config
+COPY srcs/nginx.conf /etc/nginx/nginx.conf
+
 # Copy config
-WORKDIR /root
+WORKDIR /
 COPY srcs/config.inc.php /var/www/html/phpmyadmin/config.inc.php 
 
 EXPOSE 5000
 
-CMD bash
+#CMD bash

@@ -6,11 +6,11 @@
 #    By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/23 15:55:03 by lmarzano          #+#    #+#              #
-#    Updated: 2021/04/23 16:45:46 by lmarzano         ###   ########.fr        #
+#    Updated: 2021/04/27 16:47:14 by lmarzano         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-FROM alpine:latest
+FROM alpine:3.12
 
 # update OS
 RUN apk update && apk upgrade
