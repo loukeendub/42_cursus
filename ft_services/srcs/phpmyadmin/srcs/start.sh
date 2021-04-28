@@ -1,6 +1,6 @@
 #! /bin/sh
 
-# configuring php & starting openrc
+# starting openrc
 mkdir -p run/nginx
 openrc default
 openrc boot
