@@ -6,7 +6,7 @@
 #    By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/23 15:55:26 by lmarzano          #+#    #+#              #
-#    Updated: 2021/04/28 13:00:46 by lmarzano         ###   ########.fr        #
+#    Updated: 2021/04/28 14:22:27 by lmarzano         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,4 +45,4 @@ COPY srcs/config.inc.php /var/www/html/phpmyadmin/config.inc.php
 
 EXPOSE 5000
 
-#CMD bash
+#CMD sh start.sh
