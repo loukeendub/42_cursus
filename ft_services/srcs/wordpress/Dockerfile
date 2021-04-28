@@ -6,11 +6,11 @@
 #    By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/23 15:55:38 by lmarzano          #+#    #+#              #
-#    Updated: 2021/04/27 17:38:15 by lmarzano         ###   ########.fr        #
+#    Updated: 2021/04/28 13:02:24 by lmarzano         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-FROM alpine:3.12
+FROM alpine:latest
 
 USER root
 
