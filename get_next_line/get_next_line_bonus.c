@@ -3,13 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/26 11:19:48 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/01/28 16:26:59 by lmarzano         ###   ########.fr       */
-/*   Updated: 2021/01/29 12:06:05 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/04/29 15:23:28 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 
 #include "get_next_line_bonus.h"
 
@@ -51,11 +51,7 @@ int	get_next_line(int fd, char **line)
 	*line = NULL;
 	if (just_do_it(line, buffer[fd]))
 	{
-<<<<<<< HEAD
-		*line =ft_realloc_finale(line);
-=======
 		*line = ft_realloc_finale(line);
->>>>>>> origin/main
 		return (1);
 	}
 	while ((i = read(fd, buffer[fd], BUFFER_SIZE)) > 0)
@@ -63,21 +59,13 @@ int	get_next_line(int fd, char **line)
 		buffer[fd][i] = '\0';
 		if (just_do_it(line, buffer[fd]))
 		{
-<<<<<<< HEAD
-			*line =ft_realloc_finale(line);
-=======
 			*line = ft_realloc_finale(line);
->>>>>>> origin/main
 			return (1);
 		}
 	}
 	if (i < 0)
 		return (-1);
 	just_do_it(line, buffer[fd]);
-<<<<<<< HEAD
-	*line =ft_realloc_finale(line);
-=======
 	*line = ft_realloc_finale(line);
->>>>>>> origin/main
 	return (i);
 }
