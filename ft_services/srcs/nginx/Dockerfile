@@ -6,7 +6,7 @@
 #    By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/22 12:21:22 by lmarzano          #+#    #+#              #
-#    Updated: 2021/04/28 13:02:24 by lmarzano         ###   ########.fr        #
+#    Updated: 2021/04/29 12:14:30 by lmarzano         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,14 +19,14 @@ RUN apk update && apk upgrade --no-cache
 
 # Install nginx & utils
 RUN apk add nginx openssl --no-cache
+RUN mkdir -p run/nginx
 
 # Get CSR for nginx using OpenSSL
 RUN openssl req -new -newkey rsa:2048 -nodes -days 365 -x509 \
     -subj "/C=IT/O=42RomaLuiss/CN=lmarzano" \
-    -keyout etc/ssl/private/ft_services.key -out etc/ssl/certs/ft_services.crt
- Copy config
+    -keyout etc/nginx/ft_services.key -out etc/nginx/ft_services.crt
+#  Copy config
 COPY srcs/nginx.conf /etc/nginx/nginx.conf
-
 EXPOSE 80 443
 
-CMD nginx -g "daemon off;"
+#CMD nginx -g "daemon off;"
