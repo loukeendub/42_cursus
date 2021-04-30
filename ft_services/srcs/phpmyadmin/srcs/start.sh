@@ -1,7 +1,6 @@
 #! /bin/sh
 
 # starting openrc
-mkdir -p run/nginx
 openrc default
 openrc boot
 # start services
