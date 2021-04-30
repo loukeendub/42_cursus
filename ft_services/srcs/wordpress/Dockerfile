@@ -6,7 +6,7 @@
 #    By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/23 15:55:38 by lmarzano          #+#    #+#              #
-#    Updated: 2021/04/28 13:02:24 by lmarzano         ###   ########.fr        #
+#    Updated: 2021/04/30 11:49:16 by lmarzano         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,4 +34,4 @@ COPY srcs/wp-config.php /var/www/html/wordpress/wp-config.php
 
 EXPOSE 5050
 
-CMD bash
+#CMD bash

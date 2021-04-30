@@ -6,7 +6,7 @@
 #    By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/23 15:55:26 by lmarzano          #+#    #+#              #
-#    Updated: 2021/04/30 11:28:15 by lmarzano         ###   ########.fr        #
+#    Updated: 2021/04/30 11:36:02 by lmarzano         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,4 +43,4 @@ COPY srcs/start.sh /
 
 EXPOSE 5000
 
-#CMD sh start.sh
+CMD sh start.sh

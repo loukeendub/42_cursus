@@ -6,7 +6,7 @@
 #    By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/22 12:21:22 by lmarzano          #+#    #+#              #
-#    Updated: 2021/04/29 12:14:30 by lmarzano         ###   ########.fr        #
+#    Updated: 2021/04/30 12:33:26 by lmarzano         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,8 +25,11 @@ RUN mkdir -p run/nginx
 RUN openssl req -new -newkey rsa:2048 -nodes -days 365 -x509 \
     -subj "/C=IT/O=42RomaLuiss/CN=lmarzano" \
     -keyout etc/nginx/ft_services.key -out etc/nginx/ft_services.crt
+
 #  Copy config
-COPY srcs/nginx.conf /etc/nginx/nginx.conf
+COPY ./srcs/nginx.conf /etc/nginx/nginx.conf
+COPY ./srcs/index.html /var/www/localhost/htdocs/index.html
+
 EXPOSE 80 443
 
-#CMD nginx -g "daemon off;"
+CMD nginx -g "daemon off;"
