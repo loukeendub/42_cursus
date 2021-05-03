@@ -6,7 +6,7 @@
 #    By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/26 16:47:23 by lmarzano          #+#    #+#              #
-#    Updated: 2021/04/27 16:47:43 by lmarzano         ###   ########.fr        #
+#    Updated: 2021/05/03 11:50:18 by lmarzano         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,9 +27,14 @@ kubectl create secret generic -n metallb-system memberlist --from-literal=secret
 
 # Build docker images
 docker build ./srcs/nginx -t nginx
-#docker build ./srcs/phpmyadmin -t phpmyadmin
-#docker build ./srcs/wordpress -t wordpress
-#docker build ./srcs/mysql -t mysql
+docker build ./srcs/phpmyadmin -t phpmyadmin
+docker build ./srcs/wordpress -t wordpress
+docker build ./srcs/mysql -t mysql
 
 # Apply yaml config files
 kubectl apply -f ./srcs/k8s/mlb_conf.yaml
+kubectl apply -f ./srcs/k8s/nginx.yaml
+kubectl apply -f ./srcs/k8s/phpmyadmin.yaml
+kubectl apply -f ./srcs/k8s/mysql.yaml
+kubectl apply -f ./srcs/k8s/wordpress.yaml
+

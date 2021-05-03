@@ -6,7 +6,7 @@
 #    By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/23 15:55:38 by lmarzano          #+#    #+#              #
-#    Updated: 2021/04/30 16:05:25 by lmarzano         ###   ########.fr        #
+#    Updated: 2021/05/03 12:20:40 by lmarzano         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,4 +39,4 @@ WORKDIR /
 
 EXPOSE 5050
 
-#CMD start.sh
+CMD start.sh
