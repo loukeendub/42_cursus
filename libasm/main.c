@@ -6,11 +6,18 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/27 18:06:19 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/27 18:07:33 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/05/04 12:04:59 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libasm.h"
+#include <stdio.h>
+
 int	main(void)
 {
+	char	s[] = "ciao";
+	char	d[20];
+
+	printf("%s\n", ft_strcpy(d,s));
 	return (0);
 }

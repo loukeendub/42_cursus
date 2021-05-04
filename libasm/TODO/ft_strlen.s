@@ -1,13 +1,15 @@
 global _ft_strlen
 
-section .data
-
 section .text
 
 _ft_strlen:
-		mov		rax, -1
-loop:	inc		rax	
-		mov		cl, byte [rdi+rax]
-		cmp		cl, 0
-    	jne		loop
-		ret
+	mov		rax, 0
+
+loop:
+	cmp		byte[rdi+rax], 0
+	je		exit
+	inc		rax
+	jmp		loop
+
+exit:
+	ret

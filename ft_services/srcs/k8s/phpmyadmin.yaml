@@ -14,6 +14,10 @@ spec:
     port: 5000
     protocol: TCP
     targetPort: 5000
+  - name: http
+    port: 80
+    protocol: TCP
+    targetPort: 80
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -33,5 +37,8 @@ spec:
         image: phpmyadmin
         imagePullPolicy: Never
         ports:
-        - name: http
+        - name: https
           containerPort: 5000
+        - name: http
+          containerPort: 80
+      restartPolicy: Always

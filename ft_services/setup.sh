@@ -6,7 +6,7 @@
 #    By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/26 16:47:23 by lmarzano          #+#    #+#              #
-#    Updated: 2021/05/03 11:50:18 by lmarzano         ###   ########.fr        #
+#    Updated: 2021/05/04 17:56:45 by lmarzano         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,15 +26,15 @@ kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.9.6/manife
 kubectl create secret generic -n metallb-system memberlist --from-literal=secretkey="$(openssl rand -base64 128)"
 
 # Build docker images
-docker build ./srcs/nginx -t nginx
-docker build ./srcs/phpmyadmin -t phpmyadmin
-docker build ./srcs/wordpress -t wordpress
-docker build ./srcs/mysql -t mysql
+docker build --no-cache ./srcs/nginx -t nginx
+docker build --no-cache ./srcs/phpmyadmin -t phpmyadmin
+docker build --no-cache ./srcs/wordpress -t wordpress
+docker build --no-cache ./srcs/mysql -t mysql
 
 # Apply yaml config files
 kubectl apply -f ./srcs/k8s/mlb_conf.yaml
 kubectl apply -f ./srcs/k8s/nginx.yaml
-kubectl apply -f ./srcs/k8s/phpmyadmin.yaml
 kubectl apply -f ./srcs/k8s/mysql.yaml
+kubectl apply -f ./srcs/k8s/phpmyadmin.yaml
 kubectl apply -f ./srcs/k8s/wordpress.yaml
 
