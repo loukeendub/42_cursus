@@ -7,3 +7,5 @@ kubectl delete pvc mysql-pv-claim
 kubectl delete pv mysql-pv-volume
 kubectl delete service phpmyadmin
 kubectl delete deployment phpmyadmin
+kubectl delete service wordpress
+kubectl delete deployment wordpress
