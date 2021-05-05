@@ -9,3 +9,4 @@ kubectl delete service phpmyadmin
 kubectl delete deployment phpmyadmin
 kubectl delete service wordpress
 kubectl delete deployment wordpress
+rm -rf tmp.token

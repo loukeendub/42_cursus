@@ -6,7 +6,7 @@
 #    By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/23 15:55:26 by lmarzano          #+#    #+#              #
-#    Updated: 2021/05/04 17:34:42 by lmarzano         ###   ########.fr        #
+#    Updated: 2021/05/05 14:50:41 by lmarzano         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,12 +36,13 @@ RUN mkdir /var/www/html/phpmyadmin/tmp
 RUN rm -rf phpMyAdmin-5.2+snapshot-all-languages.tar.gz
 
 # Copy configs from srcs
-COPY srcs/nginx.conf /etc/nginx/nginx.conf
+COPY srcs/nginx.conf /etc/nginx/conf.d/default.conf
 COPY srcs/config.inc.php /var/www/html/phpmyadmin/config.inc.php
 RUN rm -rf /var/www/html/phpmyadmin/config.sample.inc.php
 COPY srcs/start.sh /tmp/start.sh
 
 EXPOSE 5000
+
 RUN rc-update add nginx default
 RUN rc-update add php-fpm7 default
 
