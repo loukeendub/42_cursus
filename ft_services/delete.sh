@@ -9,4 +9,6 @@ kubectl delete service phpmyadmin
 kubectl delete deployment phpmyadmin
 kubectl delete service wordpress
 kubectl delete deployment wordpress
+kubectl delete service ftps
+kubectl delete deployment ftps
 rm -rf tmp.token
