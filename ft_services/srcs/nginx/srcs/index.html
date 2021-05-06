@@ -1,23 +1,98 @@
 <!DOCTYPE HTML>
 <html>
-	<head>
-		<title>Ft_Services</title>
+<head>
+	<title>Ft_SeRvIcEs</title>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Eater&display=swap" rel="stylesheet">
+	<style>
+		body {
+			background-image: url("door.jpeg");
+ 			background-color: #000;
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
+		h1 {
+			color: rgba(255,0,0,0.6);
+			text-align: center;
+			font-size: 0.8em;
+			font-family: 'Eater', cursive;
+			}
+		.title {
+			width: 100%;
+			height: 30% ;
+			margin: 7.7% 0%;
+		}
+		/* Style the buttons that are used to open and close the accordion panel */
+		.accordion {
+	  		background-color: transparent;
+ 			color: rgba(78, 15, 15, 0.8);
+  			cursor: pointer;
+ 	 		padding: 18px;
+ 			width: 20%;
+			margin: 0% 40%;
+			text-align: center;
+			border: none;
+			outline: none;
+			transition: 0.4s;
+			font-family: 'Eater', cursive;
+		}
+		.sites-avaibles{
+			margin: 10%;
+		}
+
+/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
+		.active, .accordion:hover {
+  			background-color: none;
+		}
+
+/* Style the accordion panel. Note: hidden by default */
+		.panel {
+			padding: 0 18px;
+			background-color: transparent;
+			display: none;
+			overflow: hidden;
+			color: white;
+			width: 20%;
+			margin: 0% 40%;
+		}
+	</style>
 	</head>
 	<body>
-		<h1>Ft_Services</h1> 
-		</br>
-		<div class="sites-avaibles">
-			<h3>sites availables</h3>
-			nginx (http): <a href="http://localhost:80">Port:80</a></br>
-			or (https): <a href="https://localhost:443">Port:443</a></br>
-			wordpress: <a href="http://localhost:5050">Port:5050</a>admin:admin</br>
-			phpmyadmin: <a href="http://localhost:5000">Port:5000</a> wp_admin:password</a></br> 
-			<!-- grafana: <a href="http://localhost:3000">Port:3000</a>admin:admin</br> -->
+		<div class="title">
+			<h1>Lasciate ogni speranza voi che entrate</h1> 
 		</div>
-		<!-- <div class="others"> -->
-			<!-- ftps: open filezilla and connect to localhost on port 21</br> -->
-			<!-- ftps_admin:password </br> -->
-		<!-- </div> -->
-		
-	</body>
+		<button class="accordion">Door Available</button>
+		<div class="panel">
+			<div class="sites-avaibles">
+			<ul>
+				<li>nginx (http): <a href="http://localhost:80"> Door 80</a></li>
+				<li>or (https): <a href="https://localhost:443"> Door 443</li>
+				<li>wordpress: <a href="http://localhost:5050"> Door 5050</a> admin:admin</li>
+				<li>phpmyadmin: <a href="http://localhost:5000"> Door 5000</a> wp_admin:password</a></li>
+				<li>grafana: <a href="http://localhost:3000">Door 3000</a> admin:admin</li>
+				<li>ftps: Door 21. You have to access Filezilla first admin:password</li>
+			  </ul>
+			</div>
+		</div>
+		</body>
 </html>
+<script>
+var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].addEventListener("click", function() {
+    /* Toggle between adding and removing the "active" class,
+    to highlight the button that controls the panel */
+    this.classList.toggle("active");
+
+    /* Toggle between hiding and showing the active panel */
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  });
+}
+</script>

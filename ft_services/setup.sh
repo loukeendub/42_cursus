@@ -35,8 +35,8 @@ docker build --no-cache ./srcs/phpmyadmin -t phpmyadmin
 docker build --no-cache ./srcs/wordpress -t wordpress
 docker build --no-cache ./srcs/mysql -t mysql
 docker build --no-cache ./srcs/ftps -t ftps
-# docker build --no-cache ./srcs/influxdb -t influxdb
-# docker build --no-cache ./srcs/grafana -t grafana
+docker build --no-cache ./srcs/influxdb -t influxdb
+docker build --no-cache ./srcs/grafana -t grafana
 
 
 # Apply yaml config files
@@ -46,8 +46,8 @@ kubectl apply -f ./srcs/k8s/mysql.yaml
 kubectl apply -f ./srcs/k8s/phpmyadmin.yaml
 kubectl apply -f ./srcs/k8s/wordpress.yaml
 kubectl apply -f ./srcs/k8s/ftps.yaml
-# kubectl apply -f ./srcs/k8s/influxdb.yaml
-# kubectl apply -f ./srcs/k8s/grafana.yaml
+kubectl apply -f ./srcs/k8s/influxdb.yaml
+kubectl apply -f ./srcs/k8s/grafana.yaml
 
 # Create Dashboard user
 kubectl apply -f srcs/dashboard/dashboard-adminuser.yaml

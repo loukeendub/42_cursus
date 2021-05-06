@@ -32,6 +32,7 @@ RUN rm -rf /var/www/html/wordpress/wp-config-sample.php
 # Copy config
 COPY srcs/nginx.conf /etc/nginx/nginx.conf
 COPY srcs/wp-config.php /var/www/html/wordpress/wp-config.php
+COPY srcs/start.sql /tmp/start.sql
 COPY srcs/start_wp.sh /tmp/start_wp.sh
 
 WORKDIR /
