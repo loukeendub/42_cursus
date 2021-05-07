@@ -5,94 +5,169 @@
 	<link rel="preconnect" href="https://fonts.gstatic.com">
 	<link href="https://fonts.googleapis.com/css2?family=Eater&display=swap" rel="stylesheet">
 	<style>
+		@font-face {
+  		font-family: benguiat;
+  		src: url("BenguiatBold.ttf");
+		}
+
+		a {
+			display: block;
+		}
 		body {
-			background-image: url("door.jpeg");
  			background-color: #000;
-			background-repeat: no-repeat;
-			background-size: cover;
+			font-family: benguiat;
 		}
 		h1 {
-			color: rgba(255,0,0,0.6);
+			color: rgb(255,0,0);
 			text-align: center;
-			font-size: 0.8em;
-			font-family: 'Eater', cursive;
+			font-size: 2em;
+			}
+		h2 {
+			color: rgb(255,0,0);
+			text-align: center;
+			font-size: 1.5em;
 			}
 		.title {
 			width: 100%;
 			height: 30% ;
 			margin: 7.7% 0%;
-		}
-		/* Style the buttons that are used to open and close the accordion panel */
-		.accordion {
-	  		background-color: transparent;
- 			color: rgba(78, 15, 15, 0.8);
-  			cursor: pointer;
- 	 		padding: 18px;
- 			width: 20%;
-			margin: 0% 40%;
-			text-align: center;
-			border: none;
-			outline: none;
-			transition: 0.4s;
-			font-family: 'Eater', cursive;
+			z-index: 0;
+			position: absolute;
 		}
 		.sites-avaibles{
 			margin: 10%;
 		}
-
-/* Add a background color to the button if it is clicked on (add the .active class with JS), and when you move the mouse over it (hover) */
-		.active, .accordion:hover {
-  			background-color: none;
+		.mybg{
+			height: 100%;
+			width: 100%;
+    		padding:0;
+   			margin:0;
+			position: absolute;
 		}
-
-/* Style the accordion panel. Note: hidden by default */
-		.panel {
-			padding: 0 18px;
-			background-color: transparent;
-			display: none;
-			overflow: hidden;
-			color: white;
-			width: 20%;
-			margin: 0% 40%;
+		.mybg img{
+			height: 100%;
+			width: 100%;
+			z-index: 1;
+		}
+		.nginx{
+		position: absolute;
+    	z-index: 0;
+    	margin-top: 20%;
+    	margin-left: 14.5%;
+    	width: 5%;
+    	text-align: center;
+		}
+		.nginx img{
+			width: 50%;
+			margin-bottom: 20%;
+		}
+		.wordpress{
+		position: absolute;
+    	z-index: 0;
+    	margin-top: 20%;
+    	margin-left: 30.5%;
+    	width: 6%;
+    	text-align: center;
+		}
+		.wordpress img{
+			width: 40%;
+			margin-bottom: 20%;
+		}
+		.grafana{
+		position: absolute;
+    	z-index: 0;
+    	margin-top: 20%;
+    	margin-left: 63.5%;
+    	width: 5%;
+    	text-align: center;
+		}
+		.grafana img{
+			width: 50%;
+			margin-bottom: 20%;
+		}
+		.php{
+		position: absolute;
+    	z-index: 0;
+    	margin-top: 20%;
+    	margin-left: 47%;
+    	width: 6%;
+    	text-align: center;
+		}
+		.php img{
+			width: 40%;
+			margin-bottom: 20%;
+		}
+		.ftps{
+		position: absolute;
+    	z-index: 0;
+    	margin-top: 20%;
+    	margin-left: 79.5%;
+    	width: 5%;
+    	text-align: center;
+		}
+		.powered{
+			position:absolute;
+			z-index: 0;
+			text-align: left;
+			margin-top: 40%;
+   			margin-left: 5%;
 		}
 	</style>
 	</head>
 	<body>
-		<div class="title">
-			<h1>Lasciate ogni speranza voi che entrate</h1> 
+		<div class="mybg">
+			<img src="images/doors.gif" rel:animated_src="images/doors.gif"
+			rel:auto_play="1" rel:rubbable="1" rel:loop_mode="0"/>
 		</div>
-		<button class="accordion">Door Available</button>
-		<div class="panel">
-			<div class="sites-avaibles">
+  		<div class="title">
+			<h1>Ft SeRvIcEs</h1>
+			<h2>Lasciate ogni speranza voi che entrate</h2> 
+		</div>
+		<div class="nginx">
+			<img src="images/zginx.png"></img>
+			ZGINX<br>
+			HTTP<br>
+			<a href="http://localhost:80"> Door 80</a>
+			HTTPS<br>
+			<a href="https://localhost:443"> Door 443</a>
+		</div>
+		<div class="wordpress">
+			<img src="images/wordepressed.png"></img>
+			<img src="images/mysqtl.png"></img>
+			WORDEPRESSED
+			<a href="http://localhost:5050"> Door 5050</a>
+			KEY<br>
+			admin:admin
+		</div>
+		<div class="php">
+			<img src="images/dndmyadmin.png"></img>
+			<img src="images/mysqtl.png"></img>
+			D&DMYADMIN
+			<a href="https://localhost:5000"> Door 5000</a>
+			KEY<br>
+			wp_admin:admin
+		</div>
+		<div class="grafana">
+			<img src="images/gyozafana.png"></img>
+			GYOZAFANA
+			<a href="http://localhost:3000">Door 3000</a>
+			KEY<br>
+			admin:admin
+		</div>
+		<div class="ftps">
+			FTPS<br>
+			Door 21<br>
+			Access Filezilla<br>
+			KEY<br>
+			admin:password
+		</div>
+		<div class="powered">
+			Powered by:
 			<ul>
-				<li>nginx (http): <a href="http://localhost:80"> Door 80</a></li>
-				<li>or (https): <a href="https://localhost:443"> Door 443</li>
-				<li>wordpress: <a href="http://localhost:5050"> Door 5050</a> admin:admin</li>
-				<li>phpmyadmin: <a href="http://localhost:5000"> Door 5000</a> wp_admin:password</a></li>
-				<li>grafana: <a href="http://localhost:3000">Door 3000</a> admin:admin</li>
-				<li>ftps: Door 21. You have to access Filezilla first admin:password</li>
-			  </ul>
-			</div>
+				<li>lmarzano</li>
+				<li>gfratini</li>
+				<li>gdi-lore</li>
+			</ul>
 		</div>
 		</body>
 </html>
-<script>
-var acc = document.getElementsByClassName("accordion");
-var i;
-
-for (i = 0; i < acc.length; i++) {
-  acc[i].addEventListener("click", function() {
-    /* Toggle between adding and removing the "active" class,
-    to highlight the button that controls the panel */
-    this.classList.toggle("active");
-
-    /* Toggle between hiding and showing the active panel */
-    var panel = this.nextElementSibling;
-    if (panel.style.display === "block") {
-      panel.style.display = "none";
-    } else {
-      panel.style.display = "block";
-    }
-  });
-}
-</script>

@@ -24,11 +24,19 @@ RUN mkdir -p run/nginx
 # Get CSR for nginx using OpenSSL
 RUN openssl req -new -newkey rsa:2048 -nodes -days 365 -x509 \
     -subj "/C=IT/O=42RomaLuiss/CN=lmarzano" \
-    -keyout etc/nginx/ft_services.key -out etc/nginx/ft_services.crt
+    -addext "subjectAltName=DNS:localhost" \
+    -newkey rsa:2048 -keyout /etc/ssl/private/nginx-selfsigned.key \
+    -out /etc/ssl/certs/nginx-selfsigned.pem
+
+# Telegraf
+RUN mkdir -p /etc/telegraf
+COPY ./srcs/telegraf.conf etc/telegraf/telegraf.conf
 
 #  Copy config
-COPY ./srcs/nginx.conf /etc/nginx/nginx.conf
+COPY ./srcs/nginx.conf /etc/nginx/conf.d/default.conf
 COPY ./srcs/index.html /var/www/html/index.html
+COPY ./srcs/images /var/www/html/images
+COPY ./srcs/BenguiatBold.ttf /var/www/html/BenguiatBold.ttf
 COPY ./srcs/start.sh /tmp/start.sh
 
 EXPOSE 80 443

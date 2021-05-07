@@ -16,7 +16,6 @@ FROM alpine:latest
 RUN apk update && apk upgrade --no-cache
 
 # Install Utils
-# RUN apk add php7 php7-fpm php7-pdo_mysql php7-cli php7-json php7-mbstring php7-common php7-session php7-iconv php7-gd php7-curl php7-xml php7-mysqli php7-imap php7-cgi fcgi php7-pdo php7-soap php7-xmlrpc php7-posix php7-mcrypt php7-gettext php7-ldap php7-ctype php7-dom --no-cache
 RUN apk add nginx openssl openrc libc6-compat telegraf --no-cache
 
 # # Get CSR for nginx using OpenSSL
@@ -36,9 +35,13 @@ RUN rm -rf grafana-7.5.5.linux-amd64.tar.gz
 RUN mkdir -p /etc/telegraf
 COPY ./srcs/telegraf.conf etc/telegraf/telegraf.conf
 
+# Datasource & Dashboard
+COPY ./srcs/datasource.yaml /var/www/html/grafana/conf/provisioning/datasources/datasource.yaml
+COPY ./srcs/dashboard.yaml /var/www/html/grafana/conf/provisioning/dashboards/dashboard.yaml
+COPY ./srcs/dashboard/*.json /var/www/html/grafana/conf/provisioning/dashboards/
+
 # Copy configs from srcs
 COPY srcs/nginx.conf /etc/nginx/nginx.conf
-# COPY srcs/config.inc.php /var/www/html/phpmyadmin/config.inc.php 
 COPY srcs/start.sh /
 
 EXPOSE 3000

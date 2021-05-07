@@ -1,5 +1,7 @@
 #! /usr/local/bin
 
+telegraf &
+
 openrc default
 openrc boot
 /etc/init.d/mariadb setup

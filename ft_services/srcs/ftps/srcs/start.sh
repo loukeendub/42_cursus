@@ -1,5 +1,5 @@
 #! bin/sh
-
+telegraf &
 # starting openrc
 openrc default
 openrc boot

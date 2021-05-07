@@ -6,18 +6,14 @@ metadata:
     metallb.universe.tf/allow-shared-ip: ft_services_key
 spec:
   type: LoadBalancer
-  loadBalancerIP: 127.0.0.49
+  loadBalancerIP: 127.0.0.42
   selector:
     app: phpmyadmin
   ports:
   - name: https
     port: 5000
     protocol: TCP
-    targetPort: 5000
-  - name: http
-    port: 80
-    protocol: TCP
-    targetPort: 80
+    targetPort: 443
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -38,7 +34,5 @@ spec:
         imagePullPolicy: Never
         ports:
         - name: https
-          containerPort: 5000
-        - name: http
-          containerPort: 80
+          containerPort: 443
       restartPolicy: Always

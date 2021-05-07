@@ -25,6 +25,10 @@ RUN openssl req -new -newkey rsa:2048 -nodes -days 365 -x509 \
     -subj "/C=IT/O=42RomaLuiss/CN=lmarzano" \
     -keyout /etc/vsftpd/vsftpd.key -out /etc/vsftpd/vsftpd.crt
 
+# Telegraf
+RUN mkdir -p /etc/telegraf
+COPY ./srcs/telegraf.conf etc/telegraf/telegraf.conf
+
 # Copy configs from srcs
 COPY ./srcs/vsftpd.conf /etc/vsftpd/vsftpd.conf
 COPY srcs/start.sh /tmp/start.sh

@@ -6,7 +6,7 @@ metadata:
     metallb.universe.tf/allow-shared-ip: ft_services_key
 spec:
   type: LoadBalancer
-  loadBalancerIP: 127.0.0.49
+  loadBalancerIP: 127.0.0.42
   ports:
   - name: http
     port: 80
@@ -41,3 +41,4 @@ spec:
           containerPort: 80
         - name: https
           containerPort: 443
+      restartPolicy: Always

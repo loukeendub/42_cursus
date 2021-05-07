@@ -22,6 +22,10 @@ RUN apk add mysql bash mariadb mysql-client mariadb-client openrc telegraf --no-
 RUN mkdir ./etc/telegraf
 RUN mv /etc/telegraf.conf /etc/telegraf/telegraf.conf
 
+# Telegraf
+RUN mkdir -p /etc/telegraf
+COPY ./srcs/telegraf.conf etc/telegraf/telegraf.conf
+
 # Copy config
 RUN mkdir -p /run/mysqld
 COPY ./srcs/mariadb-server.cnf /etc/my.cnf.d/mariadb-server.cnf

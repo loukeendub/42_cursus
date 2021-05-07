@@ -25,9 +25,9 @@ $i = 0;
  */
 $i++;
 /* Authentication type */
-$cfg['Servers'][$i]['auth_type'] = 'http';
+$cfg['Servers'][$i]['auth_type'] = 'cookie';
 /* Server parameters */
-$cfg['Servers'][$i]['host'] = 'localhost';
+$cfg['Servers'][$i]['host'] = 'mysql';
 //$cfg['Servers'][$i]['port'] = "3306";
 $cfg['Servers'][$i]['compress'] = false;
 $cfg['Servers'][$i]['AllowNoPassword'] = true;
@@ -153,5 +153,5 @@ $cfg['TempDir'] = '/tmp';
  * You can find more configuration options in the documentation
  * in the doc/ folder or at <https://docs.phpmyadmin.net/>.
  */
-$cfg['PmaAbsoluteUri'] = '/'; //'http://phpmyadmin/phpmyadmin/';
+$cfg['PmaAbsoluteUri'] = '/phpmyadmin/'; //'http://phpmyadmin/phpmyadmin/';
 $cfg['ForceSSL'] = true;
