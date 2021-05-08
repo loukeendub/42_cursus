@@ -3,6 +3,8 @@
 <head>
 	<title>Ft_SeRvIcEs</title>
 	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link rel="preload" as="image" href="images/doors2.gif">
+	<link rel="preload" as="image" href="images/doors3.gif">
 	<link href="https://fonts.googleapis.com/css2?family=Eater&display=swap" rel="stylesheet">
 	<style>
 		@font-face {
@@ -33,6 +35,11 @@
 			margin: 7.7% 0%;
 			z-index: 0;
 			position: absolute;
+			opacity: 0;
+			animation-name: fadein;
+  			animation-duration: 4s;
+			animation-delay: 1s;
+			animation-fill-mode: forwards;  
 		}
 		.sites-avaibles{
 			margin: 10%;
@@ -56,6 +63,11 @@
     	margin-left: 14.5%;
     	width: 5%;
     	text-align: center;
+		opacity: 0;
+		animation-name: fadein;
+  		animation-duration: 4s;
+	    animation-delay: 2s;
+		animation-fill-mode: forwards;  
 		}
 		.nginx img{
 			width: 50%;
@@ -68,6 +80,11 @@
     	margin-left: 30.5%;
     	width: 6%;
     	text-align: center;
+		opacity: 0;
+		animation-name: fadein;
+  		animation-duration: 4s;
+	    animation-delay: 3.1s;
+		animation-fill-mode: forwards;  
 		}
 		.wordpress img{
 			width: 40%;
@@ -80,6 +97,11 @@
     	margin-left: 63.5%;
     	width: 5%;
     	text-align: center;
+		opacity: 0;
+		animation-name: fadein;
+  		animation-duration: 4s;
+	    animation-delay: 4.8s;
+		animation-fill-mode: forwards;  
 		}
 		.grafana img{
 			width: 50%;
@@ -92,6 +114,11 @@
     	margin-left: 47%;
     	width: 6%;
     	text-align: center;
+		opacity: 0;
+		animation-name: fadein;
+  		animation-duration: 4s;
+	    animation-delay: 4s;
+		animation-fill-mode: forwards;  
 		}
 		.php img{
 			width: 40%;
@@ -104,70 +131,124 @@
     	margin-left: 79.5%;
     	width: 5%;
     	text-align: center;
+		opacity: 0;
+		animation-name: fadein;
+  		animation-duration: 4s;
+	    animation-delay: 5.6s;
+		animation-fill-mode: forwards;  
 		}
 		.powered{
 			position:absolute;
 			z-index: 0;
 			text-align: left;
-			margin-top: 40%;
+			margin-top: 39.5%;
    			margin-left: 5%;
+			opacity: 0;
+			animation-name: fadein;
+  			animation-duration: 4s;
+	    	animation-delay: 2s;
+			animation-fill-mode: forwards;  
 		}
+		.list{
+			width: 7%;
+			padding-left: 5%;
+			padding-right: 10px;
+		}
+
+		@keyframes fadein {
+  		from {opacity: 0;}
+ 		to {opacity: 1;}
+		}
+
 	</style>
 	</head>
-	<body>
+	<body onload = "startTimer()">
 		<div class="mybg">
-			<img src="images/doors.gif" rel:animated_src="images/doors.gif"
-			rel:auto_play="1" rel:rubbable="1" rel:loop_mode="0"/>
+			<img id="doors" src="images/doors1.gif">
 		</div>
-  		<div class="title">
+  		<div class="title service">
 			<h1>Ft SeRvIcEs</h1>
-			<h2>Lasciate ogni speranza voi che entrate</h2> 
+			<h2>Choose Your Path</h2> 
 		</div>
-		<div class="nginx">
+		<div class="nginx service">
 			<img src="images/zginx.png"></img>
 			ZGINX<br>
 			HTTP<br>
-			<a href="http://localhost:80"> Door 80</a>
+			<a class="wait" href="http://localhost:80"> Door 80</a>
 			HTTPS<br>
-			<a href="https://localhost:443"> Door 443</a>
+			<a class="wait" href="https://localhost:443"> Door 443</a>
 		</div>
-		<div class="wordpress">
+		<div class="wordpress service">
 			<img src="images/wordepressed.png"></img>
 			<img src="images/mysqtl.png"></img>
 			WORDEPRESSED
-			<a href="http://localhost:5050"> Door 5050</a>
+			<a class="wait" href="http://localhost:5050"> Door 5050</a>
 			KEY<br>
 			admin:admin
 		</div>
-		<div class="php">
+		<div class="php service">
 			<img src="images/dndmyadmin.png"></img>
 			<img src="images/mysqtl.png"></img>
 			D&DMYADMIN
-			<a href="https://localhost:5000"> Door 5000</a>
+			<a class="wait" href="https://localhost:5000"> Door 5000</a>
 			KEY<br>
 			wp_admin:admin
 		</div>
-		<div class="grafana">
+		<div class="grafana service">
 			<img src="images/gyozafana.png"></img>
 			GYOZAFANA
-			<a href="http://localhost:3000">Door 3000</a>
+			<a class="wait" href="http://localhost:3000">Door 3000</a>
 			KEY<br>
 			admin:admin
 		</div>
-		<div class="ftps">
+		<div class="ftps service">
 			FTPS<br>
 			Door 21<br>
 			Access Filezilla<br>
 			KEY<br>
 			admin:password
 		</div>
-		<div class="powered">
-			Powered by:
-			<ul>
-				<li>lmarzano</li>
-				<li>gfratini</li>
-				<li>gdi-lore</li>
-			</ul>
+		<div class="powered service">
+			Powered by:<br><br>
+				<img class="list" src="images/void.png"></img>lmarzano<br>
+				<img class="list" src="images/sith.png"></img>gfratini<br>
+				<img class="list" src="images/void.png"></img>gdi-lore<br>
 		</div>
 		</body>
+	<script>
+		function startTimer()
+		{
+			setTimeout(function()
+			{
+				changeImg(); 
+			}, 7000);
+		}
+		function changeImg()
+		{
+			var myimg = document.getElementById('doors');
+			myimg.src='images/doors2.gif';
+		}
+
+		function waitBeforeNavigate(ev) 
+		{
+  			ev.preventDefault();                    // prevent default anchor behavior
+  			const goTo = this.getAttribute("href"); // store anchor href
+			
+			var myimg = document.getElementById('doors');
+			myimg.src='images/doors3.gif';
+			var hidethis = document.getElementsByClassName('service');
+			for (var i = 0; i < hidethis.length; i++)
+			{
+				hidethis[i].style.display = "none";
+			}
+			
+	  		setTimeout(function()
+			{
+   				window.location = goTo;
+  			}, 4000);                             // time in ms
+		}
+
+		document.querySelectorAll(".wait")
+  		.forEach(EL => EL.addEventListener("click", waitBeforeNavigate));
+	</script>
 </html>
