@@ -6,19 +6,19 @@
 #    By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/04/27 17:43:38 by lmarzano          #+#    #+#              #
-#    Updated: 2021/04/27 17:59:29 by lmarzano         ###   ########.fr        #
+#    Updated: 2021/05/10 14:39:11 by lmarzano         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	=	libasm.a
 
-SRCS	=
+SRCS	=	ft_read.s ft_write.s ft_strlen.s ft_strcpy.s ft_strcmp.s ft_strdup.s
 
-OBJ		=	$(SRCS:.c=.o)
+OBJ		=	$(SRCS:.s=.o)
 
-CC		=	gcc
+CC		=	nasm
 
-CFLAGS	=	-Wall -Werror -Wextra
+CFLAGS	=	-fmacho64
 
 AR		=	ar -rcs
 
@@ -26,13 +26,13 @@ AR		=	ar -rcs
 
 BSRCS	=
 
-BOBJ	=	$(BSRCS:.c=.o)
+BOBJ	=	$(BSRCS:.s=.o)
 
 # rules
 
-%.o		:	%.c
-			${CC} ${CFLAGS} -c $< -o $@
-
+%.o		:	%.s
+			${CC} ${CFLAGS} -o $@ $<
+ 
 $(NAME)	:	$(OBJ)
 			$(AR) $(NAME) $(OBJ)
 
@@ -42,11 +42,14 @@ clean	:
 			rm -f $(OBJ) $(BOBJ)
 
 fclean	:	clean
+			rm -rf ft_write.res
+			rm -rf test
 			rm -f $(NAME)
 
 re		:	fclean all
 
-bonus	:	$(OBJ) $(BOBJ)
-			$(AR) $(NAME) $(OBJ) $(BOBJ)
+test	:	all
+			gcc -Wall -Wextra -Werror main.c functions.c libasm.a -o test
+
 
 .PHONY	:	all clean fclean re bonus
