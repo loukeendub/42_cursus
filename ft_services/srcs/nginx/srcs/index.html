@@ -1,0 +1,254 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<title>Ft_SeRvIcEs</title>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link rel="preload" as="image" href="images/doors2.gif">
+	<link rel="preload" as="image" href="images/doors3.gif">
+	<link href="https://fonts.googleapis.com/css2?family=Eater&display=swap" rel="stylesheet">
+	<style>
+		@font-face {
+  		font-family: benguiat;
+  		src: url("BenguiatBold.ttf");
+		}
+
+		a {
+			display: block;
+		}
+		body {
+ 			background-color: #000;
+			font-family: benguiat;
+		}
+		h1 {
+			color: rgb(255,0,0);
+			text-align: center;
+			font-size: 2em;
+			}
+		h2 {
+			color: rgb(255,0,0);
+			text-align: center;
+			font-size: 1.5em;
+			}
+		.title {
+			width: 100%;
+			height: 30% ;
+			margin: 7.7% 0%;
+			z-index: 0;
+			position: absolute;
+			opacity: 0;
+			animation-name: fadein;
+  			animation-duration: 4s;
+			animation-delay: 1s;
+			animation-fill-mode: forwards;  
+		}
+		.sites-avaibles{
+			margin: 10%;
+		}
+		.mybg{
+			height: 100%;
+			width: 100%;
+    		padding:0;
+   			margin:0;
+			position: absolute;
+		}
+		.mybg img{
+			height: 100%;
+			width: 100%;
+			z-index: 1;
+		}
+		.nginx{
+		position: absolute;
+    	z-index: 0;
+    	margin-top: 20%;
+    	margin-left: 14.5%;
+    	width: 5%;
+    	text-align: center;
+		opacity: 0;
+		animation-name: fadein;
+  		animation-duration: 4s;
+	    animation-delay: 2s;
+		animation-fill-mode: forwards;  
+		}
+		.nginx img{
+			width: 50%;
+			margin-bottom: 20%;
+		}
+		.wordpress{
+		position: absolute;
+    	z-index: 0;
+    	margin-top: 20%;
+    	margin-left: 30.5%;
+    	width: 6%;
+    	text-align: center;
+		opacity: 0;
+		animation-name: fadein;
+  		animation-duration: 4s;
+	    animation-delay: 3.1s;
+		animation-fill-mode: forwards;  
+		}
+		.wordpress img{
+			width: 40%;
+			margin-bottom: 20%;
+		}
+		.grafana{
+		position: absolute;
+    	z-index: 0;
+    	margin-top: 20%;
+    	margin-left: 63.5%;
+    	width: 5%;
+    	text-align: center;
+		opacity: 0;
+		animation-name: fadein;
+  		animation-duration: 4s;
+	    animation-delay: 4.8s;
+		animation-fill-mode: forwards;  
+		}
+		.grafana img{
+			width: 50%;
+			margin-bottom: 20%;
+		}
+		.php{
+		position: absolute;
+    	z-index: 0;
+    	margin-top: 20%;
+    	margin-left: 47%;
+    	width: 6%;
+    	text-align: center;
+		opacity: 0;
+		animation-name: fadein;
+  		animation-duration: 4s;
+	    animation-delay: 4s;
+		animation-fill-mode: forwards;  
+		}
+		.php img{
+			width: 40%;
+			margin-bottom: 20%;
+		}
+		.ftps{
+		position: absolute;
+    	z-index: 0;
+    	margin-top: 20%;
+    	margin-left: 79.5%;
+    	width: 5%;
+    	text-align: center;
+		opacity: 0;
+		animation-name: fadein;
+  		animation-duration: 4s;
+	    animation-delay: 5.6s;
+		animation-fill-mode: forwards;  
+		}
+		.powered{
+			position:absolute;
+			z-index: 0;
+			text-align: left;
+			margin-top: 39.5%;
+   			margin-left: 5%;
+			opacity: 0;
+			animation-name: fadein;
+  			animation-duration: 4s;
+	    	animation-delay: 2s;
+			animation-fill-mode: forwards;  
+		}
+		.list{
+			width: 7%;
+			padding-left: 5%;
+			padding-right: 10px;
+		}
+
+		@keyframes fadein {
+  		from {opacity: 0;}
+ 		to {opacity: 1;}
+		}
+
+	</style>
+	</head>
+	<body onload = "startTimer()">
+		<div class="mybg">
+			<img id="doors" src="images/doors1.gif">
+		</div>
+  		<div class="title service">
+			<h1>Ft SeRvIcEs</h1>
+			<h2>Choose Your Path</h2> 
+		</div>
+		<div class="nginx service">
+			<img src="images/zginx.png"></img>
+			ZGINX<br>
+			HTTP<br>
+			<a class="wait" href="http://localhost:80"> Door 80</a>
+			HTTPS<br>
+			<a class="wait" href="https://localhost:443"> Door 443</a>
+		</div>
+		<div class="wordpress service">
+			<img src="images/wordepressed.png"></img>
+			<img src="images/mysqtl.png"></img>
+			WORDEPRESSED
+			<a class="wait" href="http://localhost:5050"> Door 5050</a>
+			KEY<br>
+			admin:admin
+		</div>
+		<div class="php service">
+			<img src="images/dndmyadmin.png"></img>
+			<img src="images/mysqtl.png"></img>
+			D&DMYADMIN
+			<a class="wait" href="https://localhost:5000"> Door 5000</a>
+			KEY<br>
+			wp_admin:admin
+		</div>
+		<div class="grafana service">
+			<img src="images/gyozafana.png"></img>
+			GYOZAFANA
+			<a class="wait" href="http://localhost:3000">Door 3000</a>
+			KEY<br>
+			admin:admin
+		</div>
+		<div class="ftps service">
+			FTPS<br>
+			Door 21<br>
+			Access Filezilla<br>
+			KEY<br>
+			admin:password
+		</div>
+		<div class="powered service">
+			Powered by:<br><br>
+				<img class="list" src="images/void.png"></img>lmarzano<br>
+				<img class="list" src="images/sith.png"></img>gfratini<br>
+				<img class="list" src="images/void.png"></img>gdi-lore<br>
+		</div>
+		</body>
+	<script>
+		function startTimer()
+		{
+			setTimeout(function()
+			{
+				changeImg(); 
+			}, 7000);
+		}
+		function changeImg()
+		{
+			var myimg = document.getElementById('doors');
+			myimg.src='images/doors2.gif';
+		}
+
+		function waitBeforeNavigate(ev) 
+		{
+  			ev.preventDefault();                    // prevent default anchor behavior
+  			const goTo = this.getAttribute("href"); // store anchor href
+			
+			var myimg = document.getElementById('doors');
+			myimg.src='images/doors3.gif';
+			var hidethis = document.getElementsByClassName('service');
+			for (var i = 0; i < hidethis.length; i++)
+			{
+				hidethis[i].style.display = "none";
+			}
+			
+	  		setTimeout(function()
+			{
+   				window.location = goTo;
+  			}, 4000);                             // time in ms
+		}
+
+		document.querySelectorAll(".wait")
+  		.forEach(EL => EL.addEventListener("click", waitBeforeNavigate));
+	</script>
+</html>
