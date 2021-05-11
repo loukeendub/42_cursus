@@ -6,41 +6,12 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/11 09:58:11 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/05/11 09:58:20 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/05/11 10:48:52 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libasm.h"
 #include "main.h"
-
-char		*rot13(char *s)
-{
-	char	*s1;
-	int		i;
-
-	i = 0;
-	s1 = (char *)malloc((ft_strlen(s) + 1) * sizeof(char));
-	while (s[i])
-	{
-		if (s[i] >= 65 && s[i] <= 90)
-		{
-			if (s[i] + 13 >= 90)
-				s1[i] = s[i] - 13;
-			else
-				s1[i] = s[i] + 13;
-		}
-		if (s[i] >= 97 && s[i] <= 122)
-		{
-			if (s1[i] + 13 >= 122)
-				s1[i] = s[i] - 13;
-			else
-				s1[i] += 13;
-		}
-		i++;
-	}
-	s1[i] = 0;
-	return (s1);
-}
 
 void		simple_test(char *str)
 {

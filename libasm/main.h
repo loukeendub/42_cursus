@@ -6,7 +6,7 @@
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/10 14:16:12 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/05/10 14:16:16 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/05/11 10:48:40 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@
 # define WHT "\e[0;37m"
 # define NRM "\e[0;0m"
 
-char		*rot13(char *s);
 void		simple_test(char *str);
 void		test_read(void);
 void		test_write(char *str);
