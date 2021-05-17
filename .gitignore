@@ -50,5 +50,9 @@ modules.order
 Module.symvers
 Mkfile.old
 dkms.conf
+<<<<<<< HEAD
 
 **/.DS_Store
+=======
+.DS_Store
+>>>>>>> work_in_progress

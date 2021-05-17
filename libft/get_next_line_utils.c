@@ -1,29 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/23 10:46:37 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/04/29 15:26:44 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/05/17 16:31:35 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-#include "get_next_line_bonus.h"
-
-size_t	ft_strlen(const char *s)
-{
-	size_t	i;
-
-	i = 0;
-	if (!s)
-		return (0);
-	while (s[i])
-		i++;
-	return (i);
-}
+#include "get_next_line.h"
 
 char	*ft_realloc(char **line)
 {
@@ -31,7 +18,8 @@ char	*ft_realloc(char **line)
 	int		i;
 
 	i = 0;
-	if (!(new = malloc(ft_strlen(*line) + BUFFER_SIZE + 1)))
+	new = malloc(ft_strlen(*line) + BUFFER_SIZE + 1);
+	if (!new)
 		return (NULL);
 	if (*line)
 	{
@@ -53,7 +41,8 @@ char	*ft_realloc_finale(char **line)
 	int		i;
 
 	i = 0;
-	if (!(new = malloc(ft_strlen(*line) + 1)))
+	new = malloc(ft_strlen(*line) + 1);
+	if (!new)
 		return (NULL);
 	if (*line)
 	{

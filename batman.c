@@ -1,30 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear.c                                      :+:      :+:    :+:   */
+/*   batman.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/21 14:18:09 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/05/17 12:54:54 by lmarzano         ###   ########.fr       */
+/*   Created: 2021/04/22 10:57:37 by lmarzano          #+#    #+#             */
+/*   Updated: 2021/04/22 11:11:05 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include <unistd.h>
+#include <stdlib.h>
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+int	main(void)
 {
-	t_list	*p;
+	int	a;
 
-	if (lst && del)
+	a = 16;
+	while (a > 0)
 	{
-		while (*lst)
-		{
-			p = (*lst)->next;
-			del((*lst)->content);
-			free(*lst);
-			*lst = p;
-		}
+		write(1, "na ", 3);
+		a--;
+		usleep(200000);
 	}
-	*lst = NULL;
+	system("clear");
+	write(1, "BAT\n", 4);
+	usleep(250000);
+	write(1, "MAAAAN\n", 7);
+	return (0);
 }

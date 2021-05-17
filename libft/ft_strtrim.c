@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/18 16:56:57 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/01/20 12:45:04 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/05/17 14:20:33 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_isinset(char const *set, char c)
+int	ft_isinset(char const *set, char c)
 {
 	while (*set)
 	{
@@ -37,7 +37,8 @@ char	*ft_strtrim(char const *s1, char const *set)
 		start++;
 	while (end > start && ft_isinset(set, s1[end - 1]))
 		end--;
-	if (!(s2 = malloc(end - start + 1)))
+	s2 = malloc(end - start + 1);
+	if (!s2)
 		return (NULL);
 	ft_strlcpy(s2, s1 + start, end - start + 1);
 	return (s2);
