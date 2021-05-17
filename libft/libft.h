@@ -3,17 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/15 09:17:36 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/01/21 17:24:20 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/05/17 16:32:01 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 32
+# endif
 
 # include <stdlib.h>
+# include <string.h>
 # include <unistd.h>
 
 void			*ft_memset(void *str, int c, size_t n);
@@ -55,7 +59,13 @@ void			ft_putnbr_fd(int n, int fd);
 
 char			*ft_strcpy_bonus(char *dst, char *src);
 
-typedef struct	s_list
+int				get_next_line(int fd, char **line);
+int				just_do_it(char **line, char *buffer);
+int				ft_do(char	**line, int fd, char *buffer);
+char			*ft_realloc(char **line);
+char			*ft_realloc_finale(char **line);
+
+typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;

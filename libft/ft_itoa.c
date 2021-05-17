@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmarzano <marvin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/20 15:30:49 by lmarzano          #+#    #+#             */
-/*   Updated: 2021/01/20 16:42:54 by lmarzano         ###   ########.fr       */
+/*   Updated: 2021/05/17 11:46:30 by lmarzano         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_intcount(int n)
+int	ft_intcount(int n)
 {
-	int count;
+	int	count;
 
 	count = 1;
 	while (!(n / 10 == 0))
@@ -25,6 +25,14 @@ int		ft_intcount(int n)
 	return (count);
 }
 
+size_t	ft_check(int n, size_t len)
+{
+	len = ft_intcount(n);
+	if (n < 0)
+		len += 1;
+	return (len);
+}
+
 char	*ft_itoa(int n)
 {
 	char	*res;
@@ -32,8 +40,9 @@ char	*ft_itoa(int n)
 
 	if (n == -2147483648)
 		return (ft_strdup("-2147483648"));
-	len = n >= 0 ? ft_intcount(n) : ft_intcount(n) + 1;
-	if (!(res = malloc((len + 1) * sizeof(char))))
+	len = ft_check(n, len);
+	res = malloc((len + 1) * sizeof(char));
+	if (!res)
 		return (NULL);
 	res[len] = '\0';
 	if (n == 0)
