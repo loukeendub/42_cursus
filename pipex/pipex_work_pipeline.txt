@@ -1,0 +1,82 @@
+---	Pipex working pipeline	---
+
+
+	GOOD TO KEEP IN MIND:
+
+
+		--- REDIR ---
+	>	:	# Redirect stdout to a file.
+			# Creates the file if not present, otherwise overwrites it.
+	>>	:	# Redirect stdout to a file.
+			# Creates the file if not present, otherwise appends to it
+
+
+	----------[ PIPEX ]----------
+
+	---	PARSING	---
+
+	[V]	create a structure of type t_data with the following vars:
+		°	char	*infile			- to store the file1 content (argv[1]);
+		°	char	*outfile		- to store the file2 content (argv[4]);
+		°	char	**cmd1			- to store cmd1 content (argv[2]) on multiple strings, if path, flags, etc.. occur;
+		°	char	**cmd2			- to store cmd2 content (argv[3]) on multiple strings, if path, flags, etc.. occur;
+		°	int		fd[2]			- fd[0] = READ; fd[1] = WRITE;
+		°	int		fdin			- to check if open()/close() returns an error on opening infile.
+		°	int		fdout			- to check if open()/close() returns an error on opening outfile.
+		°	char	**path			- to store $PATH on path[1] (path[0] MUST be PATH);
+		°	char	*pathcmd1		- to store the first command, and later add it up to path[1] (don't forget to add up "/" in between!!!);
+		°	char	*pathcmd2		- to store the second command, and later add it up to path[1] (don't forget to add up "/" in between!!!);
+		°	int		fork_id			- to store the process id and identify Child(id=0) and Parent(id=?) process;
+		°	int		flag1			- to flag (1) in case the path is relative or (0) absolute (when calling cd as a cmd);
+		°	int		flag2			- to flag (1) in case the path is relative or (0) absolute (when calling cd as a cmd);
+
+			--- MAIN ---
+
+	[V]	check if num of argc is => 5 (for bonuses, handling multiple pipes) or == 5 (mandatory);
+
+	[V]	initialize t_data structure (malloc (sizeof(t_data) for the struct pointer declared in MAIN));
+		°	write a function that initializes all t_data vars.
+		
+	[V]	copy argv[] into respective data of the struct (prototype : ./pipex "file1" "cmd1" "cmd2" "file2");
+		°	example 1 : {		 ./pipex infile "ls -l" "wc -l" outfile					};
+		°	example 2 : {		 ./pipex test/infile "ls -l" "wc -l" test/outfile		};
+		°	example 3 : {		 ./pipex test/infile "grep a1" "wc -w" test/outfile		};
+
+	[V]	populate struct with data from argv's:
+		°	- argv[1] : infile;
+		°	- argv[2] : cmd1* ;
+		°	- argv[3] : cmd2* ;
+		°	- argv[4] : outfile;
+
+	*	initialize a tmp string to store cmd, split tmp (" " as a separator) to subdivide cmd from its flags;
+
+	[V]	get cmd1 path by checking **envp string by string, being careful not to pick up PATH (so check path[0] first);
+
+	[V]	now that all data are stored, check them and, if something returns wrong, trigger errors;
+		°	- set fdin (open infile with permission flags O_RDWR) and fdout (open outfile with permission flags O_RDWR, O_CREAT, O_TRUNC);
+
+	[V]	if cmd1 or cmd2 has a flag on absolute path (flag1, flag2), verify if path is valid, else return error.
+
+	[V]	Time to fork():
+		°	should be something like this: data->fork_id = fork();
+
+	[V] now the child process (id=0) should manage the execution of cmd1, writing on infile("file1").
+		°	this is where you use dup2 and execve for cmd1;
+		°	use close() on fdin and return error if it goes wrong.
+
+	[V]	same thing (almost) for cmd2:
+		°	*Time to fork();
+		°	child process executes cmd2 and closes fdout;
+
+	[V]	make it back to MAIN and that's basically it.
+
+
+(*) DEBUG :
+
+	[V]	pathcmd1 and pathcmd2 are not getting the usr/local/bin path attached to the relative cmd;
+	[V]	execve() returns error on execution (due to wrong closing of fd's);
+	[V]	error message gets printed (overwrites) into outfile, instead of being returned on terminal;
+
+
+
+	(c)lmarzano
