@@ -1,0 +1,24 @@
+12 :	rb	pa	pa
+21 : 	pa	pa
+13 :	rb	pa	ra	pa
+31 :	pa	ra	pa
+14 :	pa	rra	pa	ra	ra
+41 :	rb	pa	rra	pa	ra	ra
+51 :	pa	ra	pa
+15 :	pa	pa	ra
+23 :	rr	pa	pa	rra
+32 :	ra	pa	pa	rra
+24 :	rrr	pa	rra	pa	rra
+42 :	rra	pa	rra	pa	rra
+25 :	ra	pa	rra	pa	ra
+52 :	rr	pa	rra	pa	ra
+34 :	rrr	pa	pa	rra	rra
+43 :	rra	pa	pa	rra	rra
+35 :	rb	pa	rra	pa	rra	rra
+53 :	pa	rra	pa	rra	rra
+45 :	pa	ra	pa	ra
+54 :	pa	pa	ra	ra
+
+https://stattrek.com/statistics/random-number-generator.aspx#error
+
+link to random number generator above.
