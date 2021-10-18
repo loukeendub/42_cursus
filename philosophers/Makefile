@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: loukeen <loukeen@student.42.fr>            +#+  +:+       +#+         #
+#    By: lmarzano <lmarzano@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/22 11:57:24 by lmarzano          #+#    #+#              #
-#    Updated: 2021/10/09 09:49:01 by loukeen          ###   ########.fr        #
+#    Updated: 2021/10/18 21:26:30 by lmarzano         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,13 +40,13 @@ OBJS	=	$(SRCS:.c=.o)
 all			:	philo score
 
 $(NAME)		:	$(OBJS) $(INCLUDE)
-				$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
+				@$(CC) $(CFLAGS) $(OBJS) -o $(NAME)
 
 clean		:
-				$(RM) $(OBJS)
+				@$(RM) $(OBJS)
 
 fclean		:	clean
-				$(RM) $(NAME)
+				@$(RM) $(NAME)
 
 philo		:	$(NAME)
 
