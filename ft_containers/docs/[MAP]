@@ -1,0 +1,94 @@
+[map]
+https://www.cplusplus.com/reference/map/map/
+
+PROTOTIPO:
+
+template < class Key,                                     // map::key_type
+           class T,                                       // map::mapped_type
+           class Compare = less<Key>,                     // map::key_compare
+           class Alloc = allocator<pair<const Key,T> >    // map::allocator_type
+           > class map;
+
+
+Tipi di Membri:
+*   key_type					primo parametro di Template (Key)
+*   mapped_type					secondo parametro di Template (T)
+*   value_type					pair<const key_type,mapped_type>
+*   key_compare					terzo parametro di Template (Compare)
+*   value_compare				Nested function class to compare elements
+*   allocator_type				quarto parametro di Template (Alloc)
+*   reference					allocator_type::reference
+*   const_reference				allocator_type::const_reference
+*   pointer						allocator_type::pointer
+*   const_pointer				allocator_type::const_pointer
+*   iterator					un bidirectional iterator a value_type
+*   const_iterator				un bidirectional iterator a const value_type
+*   reverse_iterator			reverse_iterator<iterator>
+*   const_reverse_iterator		reverse_iterator<const_iterator>
+*   difference_type				un signed int identico a iterator_traits<iterator>::difference_type
+*   size_type					un unsigned int che rappresenta qualsiasi valore non negativo di difference_type
+
+
+Funzioni Membro:
+
+costruttore				Costruisce vector (public)
+distruttore				Distruttore vector (public)
+operator=				Assegna un contenuto (public)
+
+
+Iteratori:
+
+begin					rimanda l'iteratore all'inizio (public member) 
+end						rimanda l'iteratore alla fine (public member)
+cbegin					rimanda il const_iterator all'inizio (public member)
+cend					rimanda il const_iterator alla fine (public member)
+rbegin					rimanda il reverse_iterator al reverse beginning (public member)
+rend					rimanda il reverse_iterator al reverse end (public member)
+crbegin					rimanda il const_reverse_iterator al reverse beginning (public member)
+crend					rimanda il const_reverse_iterator al reverse end (public member)
+
+
+Capacità:
+
+empty
+size
+max_size
+
+
+Elementi di accesso:
+
+operator[]				accesso a elemento (public member)
+at						accesso a elemento (public member)
+
+
+Modificatori:
+
+insert					inserisce elementi (public member)
+erase					cancella elementi (public member)
+swap					scambia contenuto (public member)
+clear					elimina contenuto (public member)
+emplace					costruisce e inserisce un elemento (public member)
+emplace_back			costruisce e inserisce un elemento alla fine (public member)
+
+
+Osservatori:
+
+key_comp
+value_comp
+
+
+Operazioni:
+
+find
+count
+lower_bound
+upper_bound
+equal_range
+
+
+Allocatori:
+
+get_allocator			get allocator (public member)
+
+
+------------------------------------------------------------------

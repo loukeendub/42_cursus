@@ -1,0 +1,134 @@
+[vector]
+https://www.cplusplus.com/reference/vector/
+
+Tipi di Membri:
+
+*	value_type				primo parametro di Template (T)
+*	allocator_type			secondo parametro di Template (alloc)
+*	reference				allocator_type::reference
+*	const_reference			allocator_type::const_reference
+*	pointer					allocator_type::pointer
+*	const_pointer			allocator_type::const_pointer
+*   iterator				un random access iterator a value_type
+*   const_iterator			un random access iterator a const value_type
+*   reverse_iterator		reverse_iterator<iterator>
+*   const_reverse_iterator	reverse_iterator<const_iterator>
+*   difference_type			un int identico a iterator_traits<iterator>::difference_type
+*   size_type				un unsigned int che rappresenta qualsiasi valore non negativo di difference_type
+
+
+Funzioni Membro:
+
+costruttore				Costruisce vector (public)
+distruttore				Distruttore vector (public)
+operator=				Assegna un contenuto (public)
+
+
+Iteratori:
+
+begin					rimanda l'iteratore all'inizio (public member) 
+end						rimanda l'iteratore alla fine (public member)
+rbegin					rimanda il reverse_iterator al reverse beginning (public member)
+rend					rimanda il reverse_iterator al reverse end (public member)
+cbegin					rimanda il const_iterator all'inizio (public member)
+cend					rimanda il const_iterator alla fine (public member)
+crbegin					rimanda il const_reverse_iterator al reverse beginning (public member)
+crend					rimanda il const_reverse_iterator al reverse end (public member)
+
+
+Elementi di accesso:
+
+operator[]				accesso a elemento (public member)
+at						accesso a elemento (public member)
+front					accesso al primo elemento (public member)
+back					accesso all'ultimo elemento (public member)
+data					accesso a data (public member)
+
+
+Modificatori:
+
+assign					assegna il contenuto di vector (public member)
+push_back				aggiunge un elemento alla fine (public member)
+pop_back				elimina l'ultimo elemento (public member)
+insert					inserisce elementi (public member)
+erase					cancella elementi (public member)
+swap					scambia contenuto (public member)
+clear					elimina contenuto (public member)
+emplace					costruisce e inserisce un elemento (public member)
+emplace_back			costruisce e inserisce un elemento alla fine (public member)
+
+
+Allocatori:
+
+get_allocator			get allocator (public member)
+
+
+Overload Funzioni non membro:
+
+relational operators	operatori relazionali per classe vector (template)
+swap					scambia contenuto tra vettori (template)
+
+
+Specializzazioni di Template:
+
+vector<bool>			vector per booleani (specializzazione)
+
+------------------------------------------------------------------
+
+[ITERATOR]
+https://www.cplusplus.com/reference/iterator/
+
+Proprietà:
+
+ra_it = random-access iterator type
+
+*	costruttore di default  	(ra_it a;)
+*	costruttore copia			(ra_it b(a);)
+*	distruttore
+*	operator=					(b = a;)
+
+*	operator==					(a == b)
+*	operator!=					(a !=	b)
+
+*	operator*					(*a;)	rvalue
+*	operator->					(a->m;) lvalue
+
+*	operator++()				(a++)
+*	operator++(int)				(++a)
+
+*	operator--()				(a--)
+*	operator--(int)				(--a)
+
+*	operator+					(a + n)
+*	operator-					(a - n)
+
+*	operator<					(a < b)
+*	operator>					(a > b)
+*	operator<=					(a <= b)
+*	operator>=					(a >= b)
+
+*	operator+=					(a += n)
+*	operator-=					(a -= n)
+
+*	operator[]					(a[n])
+
+------------------------------------------------------------------
+
+[ITERATOR_TRAITS]
+https://www.cplusplus.com/reference/iterator/iterator_traits/?kw=iterator_traits
+
+
+------------------------------------------------------------------
+
+[RANDOM_ACCESS_ITERATOR_TAG]
+https://www.cplusplus.com/reference/iterator/RandomAccessIterator/
+
+
+------------------------------------------------------------------
+
+[REVERSE_ITERATOR]
+https://www.cplusplus.com/reference/iterator/reverse_iterator/
+
+------------------------------------------------------------------
+
+[]

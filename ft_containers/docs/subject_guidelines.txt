@@ -1,0 +1,93 @@
+ft_containers:
+
+headers.hpp :
+	nessuna funzione implementata direttamente al suo interno;
+	header.hpp devono essere protetti (ifndef / define / endif);
+
+filenames :
+	i nomi dei files / classi / funzioni imposti dal subject devono essere rispettati alla lettera;
+	i files associati ad una classe devono essere chiamati sempre ClassName.hpp / ClassName.cpp 
+		a meno che non venga specificato altrimenti;
+
+FORBIDDEN :
+	*alloc;
+	*printf;
+	*free;
+
+	containers STL;
+
+	"using namespace";
+	"friend";
+
+	librerie esterne;
+	C++11;
+	Boost;	
+
+ALLOWED :
+	qualsiasi funzione della STL (meglio se riscritte cmq in C++);
+
+COMPILER / FLAGS :
+	clang++ -Wall -Wextra -Werror -std=c++98;
+
+includes :
+	devono essere inclusi indipendentemente dagli altri;
+	devono contenere tutti gli includes da cui dipendono;
+
+OBIETTIVO :
+	implementare i vari tipi di container della libreria standard dei template in C++;
+	per ogni container andranno consegnati i files di classe, propriamente nominati;
+	il namespace deve sempre essere ft. I containers verranno testati usando ft::<container>;
+	la struttura del container originale di riferimento va rispettata.
+	Se il container di riferimento non possiede parti della forma canonica ortodossa di classe,
+		non andrà implementata;
+	andranno implementati soltanto gli elementi presenti in C++98 (anche se deprecati);
+	elementi appartenenti a versioni di C++ più recenti non vanno implementati;
+
+MANDATORIA:
+
+	referenze:
+
+	https://www.cplusplus.com/
+	https://cppreference.com/
+
+	nomi dei files da consegnare per i containers implementati saranno <container>.hpp;
+	deve esserci un main.cpp che testi tutto il lavoro svolto;
+	va prodotto un binary contenente soltanto i containers implementati,
+		e un altro che testi i containers della STL;
+	veranno comparati output e velocità di esecuzione;
+	i containers implementati possono essere fina a max 20 volte più lenti degli originali STL;
+	dovranno esser presenti funzioni membro, funzioni non membro e overloads;
+	i nomi vanno rispettati;
+	deve esser usato std::allocator;
+	ogni elemento della struttura dati dei containers deve essere giustificato;
+		(usare un semplice array per una mappa non va bene affatto!)
+	se un container STL ha un sistema di iterazione, esso va replicato;
+
+	devono essere implementati anche : 
+	*	iterators_traits,
+		reverse_iterator,
+		enable_if,
+		is_integral,
+		equal/lexicographical compare,
+		std::pair,
+		std::make_pair;
+
+	funzioni pubblice non presenti nei containers STL non vanno implementate;
+	qualsiasi variabile o funzione pubblica deve essere giustificata;
+	"friend" è permessa solo per gli overloads non membri, ma qualsiasi uso di questa keyword
+		deve essere giustificato e verificato in correzione;
+
+	Containers (e funzioni associate) da consegnare:
+	
+	-	vector*;
+	-	map;
+	-	stack;
+
+	-	[BONUS] set (con un albero Nero - Rosso;
+
+	*specializzazione vector<bool> non mandatoria;
+
+	stack userà la classe vector come default underlaying container
+	Dovrà comunque essere compatibile con qualsiasi altro container come in STL;
+
+github tester by mamoussa: https://github.com/mamoussa405/ft_containers_tests
